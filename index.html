@@ -4,6 +4,7 @@
 <head>
     <title>AQI</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	
 </head>
 
 <body>
@@ -95,39 +96,55 @@
 		</div>
 	</section>
 	
-	<section>
+	<section class="radial-charts">
 		<div class="square">
-			
+			<svg id="one" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="two" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="three" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="four" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="five" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="six" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="seven" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="eight" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="nine" width="200" height="200"></svg>
 		</div>
 		<div class="square">
-			
+			<svg id="ten" width="200" height="200"></svg>
 		</div>
 	</section>
 
-
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3-scale-radial.js"></script>
+	<script src="js/radial-bar.js"></script>
+	
+	<script>
+		drawCircleBar();
+		draw("data/2009_monthly_inverted_relative.csv", "#one", "2009");
+		draw("data/2010_monthly_inverted_relative.csv", "#two", "2010");
+		draw("data/2011_monthly_inverted_relative.csv", "#three", "2011");
+		draw("data/2012_monthly_inverted_relative.csv", "#four", "2012");
+		draw("data/2013_monthly_inverted_relative.csv", "#five", "2013");
+		draw("data/2014_monthly_inverted_relative.csv", "#six", "2014");
+		draw("data/2015_monthly_inverted_relative.csv", "#seven", "2015");
+		draw("data/2016_monthly_inverted_relative.csv", "#eight", "2016");
+		draw("data/2017_monthly_inverted_relative.csv", "#nine", "2017");
+		//draw("data/2013_monthly_inverted_relative.csv", "#ten");
+	</script>
 </body>
 </html>

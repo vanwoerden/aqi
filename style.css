@@ -72,12 +72,19 @@ li {
 .container {
 	max-width: 1000px;
 }
+svg {
+	display: block;
+	margin: 0 auto;
+	margin-top: 50px;
+}
 .square {
 	width: 25%;
-	height: 200px;
-	background: #ccc;
-	border: 1px dashed #555;
+	height: 300px;
+	/*border: 0.4px dashed #f5f5f5;*/
 	float: left;
+}
+.radial-charts {
+	padding: 2em;
 }
 .paragraph {
 	max-width: 640px;
