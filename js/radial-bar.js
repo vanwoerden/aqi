@@ -107,7 +107,7 @@ function draw(csvFile, target, year) {
 	
 	  yAxis.append("text")
 		  .attr("y", function(d) { return -y(y.ticks(5).pop()); })
-		  .attr("dy", "6.6em")
+		  .attr("dy", "7.4em")
 		  .text(year);
 	
 	  var legend = g.append("g")

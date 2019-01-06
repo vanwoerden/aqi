@@ -2,15 +2,32 @@
 html{
 	font-family: "Fakt Pro";
 	/*font-family: "Maax Rounded";*/
-	font-size: 16px;
+	font-size: 18px;
 	line-height: 1.5em;
 }
 body {
-	
+	position: relative;
 }
 header {
-	padding-top: 30em;
-	padding-bottom: 10em;
+	padding-top: 10em;
+	padding-bottom: 18em;
+}
+.sky-background {
+	background: url(img/peiheng-yang-799503-unsplash.jpg) no-repeat center center;
+	background-size: cover;
+}
+.sky-header {
+	/*position: absolute;*/
+	font-size: 0.7em;
+	margin-top: -1.95em;
+	right: 1em;
+}
+.sky-header span, .sky-header a, .sky-header a:visited {
+	color: white;
+}
+.sky-header span {
+	background: black;
+	padding: 0.4em;
 }
 .hugo-background {
 	background-color: rgba(0, 0, 0, 0.5);	
@@ -19,37 +36,44 @@ header {
 }
 h1 {
 	font-family: "Tiempos Headline";
-	font-size: 5em;
+	font-size: 4.5em;
 	font-weight: bold;
 	line-height: 1em;
-	padding: 0.2em;
+	/*padding: 0.2em;*/
 	background: black;
 	/*text-align: center;*/
 }
 h2 {
-	font-size: 2em;
-	font-weight: bold;
+	font-size: 1.6em;
+	font-weight: normal;
 	line-height: 1.2em !important;
 	padding: 2em 0;
 }
 h3 {
 	font-family: "Tiempos Headline";
-	font-size: 2.4em;
+	font-size: 2.6em;
 	font-weight: bold;
 	/*font-style: italic;*/
 	line-height: 1.2em;
+	padding-bottom: 0.4em;
 }
 h4 {
 	padding: 1em 0;
-	font-size: 1.6em;
-	line-height: 1.2em;
+	font-size: 1.4em;
+	line-height: 1.3em;
 }
 p {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
+p.small {
+	font-size: small;
+}
+a, a:visited, h4 a, h4 a:visited {
+	color: black;
+}
 .large {
-	font-size: 1.2em;
+	/*font-size: 1.2em;*/
 }
 span.highlight {
 	font-family: "Tiempos Headline";
@@ -60,17 +84,25 @@ span.highlight {
 	background: black;
 }
 ol {
-	padding: 0 2em;
+	padding: 0 1em;
 }
 li {
 	padding: 0.5em 0;
 }
+ul {
+	list-style-type: disc;
+	padding: 0 1em;
+}
 .section {
-	padding: 4em 0;
+	position: relative;
+	padding: 8em 0;
 	overflow: hidden;
 }
 .container {
 	max-width: 1000px;
+}
+.container-12 {
+	max-width: 1250px;
 }
 svg {
 	display: block;
@@ -79,9 +111,11 @@ svg {
 }
 .square {
 	width: 25%;
-	height: 300px;
+	/*height: 300px;*/
 	/*border: 0.4px dashed #f5f5f5;*/
 	float: left;
+	font-size: 14px;
+	font-weight: bold;
 }
 .radial-charts {
 	padding: 2em;
@@ -101,17 +135,85 @@ svg {
 }
 .half-width {
 	width: 50%;
-	float: left;
+	/*float: left;*/
+}
+.three-q-width {
+	width: 75%;
+}
+.getting-better {
+	padding-left: 25px;
+}
+.hugo {
+	background: black;
+	height: 14em;
 }
 .image {
-	padding: 6em 6em;
+	/*padding: 6em 6em;*/
+	width: 100%;
+}
+img {
+	display: block;
+}
+.flexbox-container {
+	display: flex;
+	align-items: center;
+	background: black;
+}
+
+.flexbox-container > div {
+	width: 70%;
+	/*padding: 10px;*/
+}
+
+.flexbox-container > div:first-child {
+	width: 30%;
+}
+.image70 {
+	
+}
+.caption-container {
+	position: relative;
+	overflow: hidden;
+}
+.hugo-caption {
+	padding: 2em 15%;
+	background: black;
+	color: white;
+}
+h3.bad-air {
+	font-family: "Tiempos Headline";
+	font-size: 3em;
+	line-height: 120%;
+}
+.caption {
+	font-size: 0.8em;
 }
 .block {
-	padding: 2em 6em;
+	/*padding: 2em 6em;*/
 }
 .gray {
 	background: #f5f5f5;
 }
 .white {
 	color: #fff;
+}
+.black {
+	background: transparent;
+}
+/* radial charts */
+.radial-charts-container {
+	flex-direction: column;
+    flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	/*background: #f5f5f5;*/
+}
+
+.radial-charts-container > div {
+	width: 250px;
+		
+}
+
+.radial-charts-container > div:first-child {
+	/*width: 20%;*/
 }
