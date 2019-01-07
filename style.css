@@ -218,3 +218,11 @@ h3.bad-air {
 .radial-charts-container > div:first-child {
 	/*width: 20%;*/
 }
+/*  bad days */
+.bad-days-2009 {
+	font-size: 1em;
+	padding: 0.4em;
+	background: #fff;
+	font-weight: normal;
+	text-align: center;
+}
