@@ -91,10 +91,10 @@
 
 @font-face {
 	font-family: 'Tiempos';
-	src: url('fonts/Tiempos-Headline-Black.eot');
+	src: url('fonts/Tiempos-Headline-Black.eot'); 
 	src: url('fonts/Tiempos-Headline-Black.eot?#iefix') format('embedded-opentype'),
 	     url('fonts/Tiempos-Headline-Black.woff') format('woff'),
 	     url('fonts/Tiempos-Headline-Black.ttf') format('truetype');
-	/*font-weight: 600;*/
+	font-weight: 600;
 	font-style: normal;
 }
