@@ -4,6 +4,7 @@ html{
 	/*font-family: "Maax Rounded";*/
 	font-size: 18px;
 	line-height: 1.5em;
+	font-weight: 300;
 }
 body {
 	position: relative;
@@ -62,6 +63,7 @@ h4 {
 	padding: 1em 0;
 	font-size: 1.4em;
 	line-height: 1.3em;
+	font-weight: 300;
 }
 p {
 	padding-top: 0.5em;
@@ -112,7 +114,7 @@ svg {
 }
 .square {
 	width: 25%;
-	/*height: 300px;*/
+	height: 280px;
 	/*border: 0.4px dashed #f5f5f5;*/
 	float: left;
 	font-size: 14px;
@@ -220,9 +222,15 @@ h3.bad-air {
 }
 /*  bad days */
 .year {
-	font-size: 1em;
+	font-size: 0.9em;
 	padding: 0.4em;
 	background: #fff;
-	font-weight: normal;
+	font-weight: 400;
 	text-align: center;
+}
+.bad-days-number {
+	font-size: 1.6em;
+	font-weight: 300;
+	text-align: center;
+	margin-top: -6.6em;
 }

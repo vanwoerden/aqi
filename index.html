@@ -161,42 +161,52 @@
 				<div class="square">
 					<svg id="one" width="200" height="200"></svg>
 					<div class="year">2009</div>
+					<div class="bad-days-number" id="bad-number-2009">0</div>
 				</div>
 				<div class="square">
 					<svg id="two" width="200" height="200"></svg>
 					<div class="year">2010</div>
+					<div class="bad-days-number" id="bad-number-2010">0</div>
 				</div>
 				<div class="square">
 					<svg id="three" width="200" height="200"></svg>
 					<div class="year">2011</div>
+					<div class="bad-days-number" id="bad-number-2011">0</div>
 				</div>
 				<div class="square">
 					<svg id="four" width="200" height="200"></svg>
 					<div class="year">2012</div>
+					<div class="bad-days-number" id="bad-number-2012">0</div>
 				</div>
 				<div class="square">
 					<svg id="five" width="200" height="200"></svg>
 					<div class="year">2013</div>
+					<div class="bad-days-number" id="bad-number-2013">0</div>
 				</div>
 				<div class="square">
 					<svg id="six" width="200" height="200"></svg>
 					<div class="year">2014</div>
+					<div class="bad-days-number" id="bad-number-2014">0</div>
 				</div>
 				<div class="square">
 					<svg id="seven" width="200" height="200"></svg>
 					<div class="year">2015</div>
+					<div class="bad-days-number" id="bad-number-2015">0</div>
 				</div>
 				<div class="square">
 					<svg id="eight" width="200" height="200"></svg>
 					<div class="year">2016</div>
+					<div class="bad-days-number" id="bad-number-2016">0</div>
 				</div>
 				<div class="square">
 					<svg id="nine" width="200" height="200"></svg>
 					<div class="year">2017</div>
+					<div class="bad-days-number" id="bad-number-2017">0</div>
 				</div>
 				<div class="square">
 					<svg id="ten" width="200" height="200"></svg>
 					<div class="year">2018</div>
+					<div class="bad-days-number" id="bad-number-2017">0</div>
 				</div>
 			</div>
 		</div>
@@ -230,9 +240,15 @@
 	<script src="js/d3.min.js"></script>
 	<script src="js/d3-scale-radial.js"></script>
 	<script src="js/radial-bar.js"></script>
+	<script src="js/bad-days.js"></script>
 	
 	<script>
-		drawCircleBar();
+		// get the bad days first
+		var bad_days = function () {
+			initSliders();
+		}
+		//console.log("bad days: " + bad_days);
+		
 		draw("data/2009_monthly_inverted_relative.csv", "#one", "");
 		draw("data/2010_monthly_inverted_relative.csv", "#two", "");
 		draw("data/2011_monthly_inverted_relative.csv", "#three", "");
@@ -244,7 +260,6 @@
 		//draw("data/2017_monthly_inverted_relative.csv", "#nine", "2017");
 		draw("data/2017_monthly_inverted_relative_berkeley.csv", "#nine", "");
 		draw("data/2018_monthly_inverted_relative_berkeley.csv", "#ten", "");
-		//draw("data/2013_monthly_inverted_relative.csv", "#ten");
 	</script>
 </body>
 </html>

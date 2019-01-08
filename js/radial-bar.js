@@ -1,6 +1,3 @@
-function drawCircleBar() {
-		console.log("drawCircleBar");
-	}
 function draw(csvFile, target, year) {
 	var svg = d3.select(target),
 	width = +svg.attr("width"),
@@ -9,8 +6,8 @@ function draw(csvFile, target, year) {
 	outerRadius = 200, //Math.min(width, height) / 2,
 	g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 	
-	console.log(width);
-	console.log(height);
+	//console.log(width);
+	//console.log(height);
 
 	var x = d3.scaleBand()
 		.range([0, 2 * Math.PI])
