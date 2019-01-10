@@ -121,6 +121,22 @@ function initSliders(){
 				
 			});
 	};
+	//update the hours slider value label
+	document.getElementsByClassName("slider-hours")[1].oninput = function() {
+			var low = document.getElementsByClassName("slider-hours")[0].valueLow;
+			var high = document.getElementsByClassName("slider-hours")[0].valueHigh;
+			var hours = high - low;
+			console.log(hours + "1");
+			document.getElementById("max-hrs").innerHTML = hours;
+	};
+	document.getElementsByClassName("slider-hours")[0].oninput = function() {
+			var low = document.getElementsByClassName("slider-hours")[0].valueLow;
+			var high = document.getElementsByClassName("slider-hours")[0].valueHigh;
+			var hours = high - low;
+			console.log(hours + "0");
+			
+			document.getElementById("max-hrs").innerHTML = hours;
+	};
 	document.getElementsByClassName("slider-hours")[1].onchange = function() {
 			var low = document.getElementsByClassName("slider-hours")[0].valueLow;
 			var high = document.getElementsByClassName("slider-hours")[0].valueHigh;
@@ -156,7 +172,7 @@ function initSliders(){
 }
 
 function updateTheScore(aqi, hours, csv, target) {
-
+	console.log("update score");
 	d3.csv(csv, function(error, data) {
 			if (error) throw error;
 			

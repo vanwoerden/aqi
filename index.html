@@ -5,10 +5,10 @@
     <title>AQI</title>
     <link rel="stylesheet" type="text/css" href="fonts.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	
+	<link rel="stylesheet" type="text/css" href="multirange.css">
 </head>
 
-<body>
+<body onload="initSliders()">
 	
 	<!--<header class="hugo-background">-->
 	<!--	<div class="container center white">-->
@@ -134,25 +134,49 @@
 	</section>
 	
 	<section class="section">
-		<div class="container center">
-			<div class="half-width">
+		<div class="container center row">
+			<div class="column-50">
 				<h3>
 					Yes, it's getting better.
 				</h3>
 				<p>
 					Below is a yearly plot of percentual pm2.5 values in Beijing. There are some white gaps in the data in the first few years; those are invalid readings. A few findings that jump out: 
 				</p>
-					<ul>
-						<li>
-							From 2009 to 2012, the air is pretty much problematic year-round.
-						</li>
-						<li>
-							From 2013 to 2016, fall and winter are much worse than spring and summer. March through September are steadily improving.
-						</li>
-						<li>
-							2017 (except for a spike in January) and 2018 are a significant improvement.
-						</li>
-					</ul>
+				<ul>
+					<li>
+						From 2009 to 2012, the air is pretty much problematic year-round.
+					</li>
+					<li>
+						From 2013 to 2016, fall and winter are much worse than spring and summer. March through September are steadily improving.
+					</li>
+					<li>
+						2017 (except for a spike in January) and 2018 are a significant improvement.
+					</li>
+				</ul>
+				
+			</div>
+			<div class="column-50">
+				<div id="sliders">
+					<h5 class="sliders-title">
+						What's a bad air day? 
+					</h5>
+					<p>
+						According to the XYZ, a day where the pm2.5 level exceeds 60 for more than 8 hours is considered bad. 
+					</p>
+					<p>
+						Drag the sliders to define your own bad air day. 
+					</p>
+					<span class="slider-label">0</span>
+					<input id="slider-AQI" type="range" min="0" max="600" step="1" value="150">
+					<span class="slider-label">600</span>
+					<div class="horizontal-slider">
+						<span class="slider-label">9</span>
+						<input class="slider-hours" type="range" multiple value="9,18" min="0" max="24" step="1">
+						<span class="slider-label">24</span>
+					</div>
+					<div id="max-aqi">150</div>
+					<div id="max-hrs">5</div>
+				</div>
 			</div>
 		</div>
 		<div class="container-12 center">
@@ -239,6 +263,7 @@
 
 	<script src="js/d3.min.js"></script>
 	<script src="js/d3-scale-radial.js"></script>
+	<script src="js/multirange.js"></script>
 	<script src="js/radial-bar.js"></script>
 	<script src="js/bad-days.js"></script>
 	

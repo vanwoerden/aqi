@@ -65,6 +65,14 @@ h4 {
 	line-height: 1.3em;
 	font-weight: 300;
 }
+h5 {
+	text-transform: uppercase;
+	font-size: 1em;
+	color: #555;
+	font-weight: 600;
+	padding: 0.4em 0;
+	letter-spacing: -0.0em;
+}
 p {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
@@ -142,6 +150,16 @@ svg {
 }
 .three-q-width {
 	width: 75%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: bottom;
+  padding-bottom: 2em;
+}
+
+.column-50 {
+  flex: 50%;
 }
 .getting-better {
 	padding-left: 25px;
@@ -229,8 +247,23 @@ h3.bad-air {
 	text-align: center;
 }
 .bad-days-number {
-	font-size: 1.6em;
-	font-weight: 300;
+	font-size: 1.3em;
+	font-weight: 400;
 	text-align: center;
-	margin-top: -6.6em;
+	margin-top: -8.1em;
+}
+/* sliders */
+#sliders {
+	/*position: absolute;*/
+	margin-top: 4.5em;
+	margin-left: 4em;
+	background: #f5f5f5;
+	padding: 1em;
+}
+#slider-AQI {
+    /*transform: rotate(270deg);*/
+    /*width: 10em;*/
+}
+#slider-AQI, .slider-hours {
+	width: 25em;
 }
