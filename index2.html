@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>AQI</title>
+    <link rel="stylesheet" type="text/css" href="fonts.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="multirange.css">
+</head>
+
+<body onload="initSliders()">
+	
+	<!--<header class="hugo-background">-->
+	<!--	<div class="container center white">-->
+	<!--		<h1 class="highlight">-->
+	<!--			Air quality in Beijing: clearing up?	-->
+	<!--		</h1>-->
+	<!--		<!--<h2>-->
+	<!--			Exploring the air quality in Beijing and other parts of the world.-->
+	<!--		</h2>-->
+	<!--	</div>-->
+	<!--</header>-->
+	
+	<header class="sky-background">
+		<div class="container center">
+			<h1 class="black">
+				Air quality in Beijing: clearing up?
+			</h1>
+			<!--<h2>-->
+			<!--	Exploring the air quality in Beijing and other parts of the world.-->
+			<!--</h2>-->
+		</div>
+	</header>
+	
+	<div class="container center">
+		<div class="sky-header">
+			<span>photo by <a href="https://unsplash.com/photos/HIwWAzwbdG0">Peiheng Yang</a></span>
+		</div>
+	</div>
+	
+	<section class="section">
+		
+		<div class="container center">
+			
+			<!--<h3>-->
+			<!--	This is a (air) quality investigation.-->
+			<!--</h3>-->
+			<div class="paragraph">
+				<h4>
+					I live in Beijing. 
+				</h4>
+				<p>
+					Before moving here, I never worried about air quality. In Beijing, it's different. You know you've been here for a while if the first thing you do when you arrive in another country is checking the AQI (Air Quality Index).
+				</p>
+				<p>
+					Where people elsewhere are obsessed with the weather, here it's all about AQI. Possibly because, save air quality, the forecast is straightforward; scorching hot or freezing, with a few weeks of spring or fall in between.
+				</p>
+				<p>
+					The AQI can make or break your day. What could be have been a perfect day for lounging at the pool becomes a sad Saturday spent inside, on a 'bad airday'.
+				</p>
+				<p>
+					At Xiaomi, I worked on the India launch of the Mi Air Purifier 2. The launch event was set to happen in Delhi, which in recent years has come to rival Beijing in terms of air pollution. In the launch presentation, we compared the air quality in Beijing, Delhi, and San Francisco. I had already worked on <a href="http://seriousness.nl/wake_me_run_run.html" target="_blank">an AQI based alarm app</a> with a friend, but what really sparked my interest was finding out that several organizations publish air quality data online. 
+				</p>
+				<p>
+					
+				</p>
+			</div>
+		</div>
+		
+	</section>
+	
+	<div class="flexbox-container">
+		<div>
+			<div class="hugo-caption">
+					<h3 class="bad-air">
+						A bad air day in Beijing.
+					</h3>
+					<p>
+						Taken from the Mi Air Purifier 2 launch deck, here we have Hugo Barra wearing an air pollution mask on a less than ideal air day in Beijing.
+					</p>
+					<p class="small">
+						(Photo by yours truly)
+					</p>
+			</div>
+		</div>
+		<div>
+			<div class="image70">
+				<img src="img/hugo_mask.jpg"/>
+			<!--<div class="caption">In Beijing, the air isn't always great.</div>-->
+			</div>
+		</div>
+	</div>
+	
+	<!--<section class="hugo-background">-->
+	<!--	<h1>Beijing on a bad airday</h1>-->
+	<!--</section>-->
+	
+	<section class="section gray">
+		<div class="container center">
+			<div class="three-q-width left">
+				<div class="block">
+					<h3>
+						Getting the data
+					</h3>
+					<h4>
+						The US Embassy in Beijing has been collecting <a href="http://stateair.net/web/historical/1/1.html" target="_blank">hourly pm2.5 data</a> since 2008. Sadly, they haven't published any data since June 2017. However, Berkeley Earth has been collecting <a href="http://berkeleyearth.lbl.gov/air-quality/local/China/Beijing/Beijing" target="_blank">pm2.5 data since 2014</a>, and their data is current. </br></br>Looking at both of those sources, can we answer the following questions:
+					</h4>
+				</div>
+			</div>
+		
+			<div class="three-q-width left">
+				<div class="block">
+					
+					<ol class="large">
+						<li>
+							Is the air getting better in Beijing?
+						</li>
+						<li>
+							What's the best time to get out of the city? What's the best time of year to stay in (or visit) Beijing and enjoy clean air?
+						</li>
+						<li>
+							How does the air quality in Beijing fluctuate throughout the day? How does that impact daily life?
+						</li>
+						<li>
+							How does Beijing air compare to other parts of the world?
+						</li>
+						<li>
+							What can we say about factors that influence air quality in Beijing? Do cars play a big role? What about factories/coal plants? Wind? Rain? Temperature? Government? National holidays? Seasons?
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="section">
+		<div class="container center row">
+			
+			<div class="column-50">
+				<div id="sliders">
+					<h5 class="sliders-title">
+						What's a bad air day? 
+					</h5>
+					<p>
+						According to the XYZ, a day where the pm2.5 level exceeds 60 for more than 8 hours is considered bad. 
+					</p>
+					<p>
+						Drag the sliders to define your own bad air day. 
+					</p>
+					<div id="aqi-rectangle"></div>
+					<div id="sky-rectangle"></div>
+					<div class="sliders-container">
+						<div class="aqi-slider-container">
+							<input id="slider-AQI" type="range" min="0" max="600" step="1" value="150" list="tickmarks">
+							<datalist id="tickmarks">
+								<option value="0" label="0%">
+								<option value="50">
+								<option value="100">
+								<option value="150">
+								<option value="200">
+								<option value="250" label="50%">
+								<option value="300">
+								<option value="350">
+								<option value="400">
+								<option value="450">
+								<option value="500">
+								<option value="550">
+								<option value="600" label="100%">
+							</datalist>
+						</div>
+						
+						<div class="horizontal-slider">
+							<input class="slider-hours" type="range" multiple value="9,17" min="0" max="24" step="1" list="tickmarks-hours">
+								<!--<datalist id="tickmarks-hours">
+									<option value="0">
+									<option value="1">
+									<option value="2">
+									<option value="3">
+									<option value="4">
+									<option value="5">
+									<option value="6">
+									<option value="7">
+									<option value="8">
+									<option value="9">
+									<option value="10">
+									<option value="11">
+									<option value="12">
+									<option value="13">
+									<option value="14">
+									<option value="15">
+									<option value="16">
+									<option value="17">
+									<option value="18">
+									<option value="19">
+									<option value="20">
+									<option value="21">
+									<option value="22">
+									<option value="23">
+									<option value="24">
+								</datalist>-->
+							<div id="low-hrs" class="slider-label">0</div>
+							<div id="high-hrs" class="slider-label">24</div>
+						</div>
+					</div>
+
+					<div id="max-aqi">150</div>
+					<div id="max-hrs">5</div>
+					
+				</div>
+				
+			</div>
+			<div class="column-50">
+			<div class="sparklines-container">
+				<table class="bad-days">
+					<thead>
+						<tr>
+						  <th>Year</th>
+						  <th>Bad days</th>
+						  <th>By month</th>
+						  <th>Change</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td>2009</td>
+							<td>
+								<div class="bad-number" id="bad-number-2009"></div>
+								<canvas id="pie-2009"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2009"></td>
+							
+						</tr>
+						<tr>
+							<td>2010</td>
+							<td>
+								<div class="bad-number" id="bad-number-2010"></div>
+								<canvas id="pie-2010"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2010"></td>
+							<td class="sparkline" id="difference-2011"></td>
+						</tr>
+						<tr>
+							<td>2011</td>
+							<td>
+								<div class="bad-number" id="bad-number-2011"></div>
+								<canvas id="pie-2011"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2011"></td>
+						</tr>
+						<tr>
+							<td>2012</td>
+							<td>
+								<div class="bad-number" id="bad-number-2012"></div>
+								<canvas id="pie-2012"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2012"></td>
+						</tr>
+						<tr>
+							<td>2013</td>
+							<td>
+								<div class="bad-number" id="bad-number-2013"></div>
+								<canvas id="pie-2013"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2013"></td>
+						</tr>
+						<tr>
+							<td>2014</td>
+							<td>
+								<div class="bad-number" id="bad-number-2014"></div>
+								<canvas id="pie-2014"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2014"></td>
+						</tr>
+						<tr>
+							<td>2015</td>
+							<td>
+								<div class="bad-number" id="bad-number-2015"></div>
+								<canvas id="pie-2015"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2015"></td>
+						</tr>
+						<tr>
+							<td>2016</td>
+							<td>
+								<div class="bad-number" id="bad-number-2016"></div>
+								<canvas id="pie-2016"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2016"></td>
+						</tr>
+						<tr>
+							<td>2017</td>
+							<td>
+								<div class="bad-number" id="bad-number-2017"></div>
+								<canvas id="pie-2017"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2017"></td>
+						</tr>
+						<tr>
+							<td>2018</td>
+							<td>
+								<div class="bad-number" id="bad-number-2018"></div>
+								<canvas id="pie-2018"></canvas>
+							</td>
+							<td class="sparkline" id="bad-days-2018"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</div>
+		<div class="container-12 center">
+			<svg id="mmm-2009"></svg>
+			<svg id="mmm-2010"></svg>
+			<svg id="mmm-2011"></svg>
+			<svg id="mmm-2012"></svg>
+			<svg id="mmm-2013"></svg>
+			<svg id="mmm-2014"></svg>
+			<svg id="mmm-2015"></svg>
+			<svg id="mmm-2016"></svg>
+			<svg id="mmm-2017"></svg>
+			<svg id="mmm-2018"></svg>				
+			
+			<div id="compare-bad-days-chart">
+				
+			</div>
+		</div>
+	<section class="section">
+		<div class="container center">
+			<div class="half-width left">
+				<h3>
+					Yes, it's getting better.
+				</h3>
+				<p>
+					Below is a yearly plot of percentual pm2.5 values in Beijing. There are some white gaps in the data in the first few years; those are invalid readings. A few findings that jump out: 
+				</p>
+				<ul>
+					<li>
+						From 2009 to 2012, the air is pretty much problematic year-round.
+					</li>
+					<li>
+						From 2013 to 2016, fall and winter are much worse than spring and summer. March through September are steadily improving.
+					</li>
+					<li>
+						2017 (except for a spike in January) and 2018 are a significant improvement.
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+		
+	
+		
+		<div class="container-12 center">
+			
+			<div class="radial-charts-container">
+				<div class="square">
+					<svg id="one" width="200" height="200"></svg>
+					<div class="year">2009</div>
+					<div class="bad-days-number" id="bad-number-2009">0</div>
+					mean amount of pm2.5 per day
+					total amount of pm2.5 yearly
+					how many cigarettes per day
+				</div>
+				<div class="square">
+					<svg id="two" width="200" height="200"></svg>
+					<div class="year">2010</div>
+					<div class="bad-days-number" id="bad-number-2010">0</div>
+				</div>
+				<div class="square">
+					<svg id="three" width="200" height="200"></svg>
+					<div class="year">2011</div>
+					<div class="bad-days-number" id="bad-number-2011">0</div>
+				</div>
+				<div class="square">
+					<svg id="four" width="200" height="200"></svg>
+					<div class="year">2012</div>
+					<div class="bad-days-number" id="bad-number-2012">0</div>
+				</div>
+				<div class="square">
+					<svg id="five" width="200" height="200"></svg>
+					<div class="year">2013</div>
+					<div class="bad-days-number" id="bad-number-2013">0</div>
+				</div>
+				<div class="square">
+					<svg id="six" width="200" height="200"></svg>
+					<div class="year">2014</div>
+					<div class="bad-days-number" id="bad-number-2014">0</div>
+				</div>
+				<div class="square">
+					<svg id="seven" width="200" height="200"></svg>
+					<div class="year">2015</div>
+					<div class="bad-days-number" id="bad-number-2015">0</div>
+				</div>
+				<div class="square">
+					<svg id="eight" width="200" height="200"></svg>
+					<div class="year">2016</div>
+					<div class="bad-days-number" id="bad-number-2016">0</div>
+				</div>
+				<div class="square">
+					<svg id="nine" width="200" height="200"></svg>
+					<div class="year">2017</div>
+					<div class="bad-days-number" id="bad-number-2017">0</div>
+				</div>
+				<div class="square">
+					<svg id="ten" width="200" height="200"></svg>
+					<div class="year">2018</div>
+					<div class="bad-days-number" id="bad-number-2017">0</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="section">
+		<div class="container center">
+			<div class="half-width left">
+				<div class="block">
+					<h3>
+						Next: The best time of year to visit Beijing
+					</h3>
+					<h4>
+						A deep dive into the best and worst time to be in Beijing throughout the year.
+					</h4>
+				</div>
+			</div>
+		
+			<div class="half-width left">
+				<div class="block">
+					Leave your email and get notified
+				</div>
+				<input type="email">
+					
+				<input type="submit">
+					
+			</div>
+		</div>
+	</section>
+
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3-scale-radial.js"></script>
+	<script src="js/Chart.min.js"></script>
+	<script src="js/multirange.js"></script>
+	<script src="js/radial-bar.js"></script>
+	<script src="js/line-chart.js"></script>
+	<script src="js/min-mean-max-chart.js"></script>
+	<script src="js/bad-days.js"></script>
+	
+	<script>
+		// get the bad days first
+		var bad_days = function () {
+			//initSliders();
+		}
+		//console.log("bad days: " + bad_days);
+		
+		draw("data/2009_monthly_inverted_relative.csv", "#one", "");
+		draw("data/2010_monthly_inverted_relative.csv", "#two", "");
+		draw("data/2011_monthly_inverted_relative.csv", "#three", "");
+		draw("data/2012_monthly_inverted_relative.csv", "#four", "");
+		draw("data/2013_monthly_inverted_relative.csv", "#five", "");
+		draw("data/2014_monthly_inverted_relative.csv", "#six", "");
+		draw("data/2015_monthly_inverted_relative.csv", "#seven", "");
+		draw("data/2016_monthly_inverted_relative.csv", "#eight", "");
+		//draw("data/2017_monthly_inverted_relative.csv", "#nine", "2017");
+		draw("data/2017_monthly_inverted_relative_berkeley.csv", "#nine", "");
+		draw("data/2018_monthly_inverted_relative_berkeley.csv", "#ten", "");
+	</script>
+</body>
+</html>
