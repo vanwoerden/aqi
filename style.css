@@ -50,11 +50,11 @@ header {
 }
 h1 {
 	font-family: "Tiempos";
-	font-size: 4.5em;
+	font-size: 4em;
 	font-weight: bold;
 	line-height: 1em;
 	/*padding: 0.2em;*/
-	background: black;
+	/*background: black;*/
 	/*text-align: center;*/
 }
 h2 {
@@ -73,9 +73,9 @@ h3 {
 }
 h4 {
 	padding: 1em 0;
-	font-size: 1.4em;
+	font-size: 1.2em;
 	line-height: 1.3em;
-	font-weight: 300;
+	font-weight: 400;
 }
 h5 {
 	text-transform: uppercase;
@@ -160,6 +160,9 @@ svg {
 	width: 50%;
 	/*float: left;*/
 }
+.two-thirds-width {
+	width: 66%;
+}
 .three-q-width {
 	width: 75%;
 }
@@ -232,11 +235,13 @@ h3.bad-air {
 .gray {
 	background: #f5f5f5;
 }
-.white {
-	color: #fff;
-}
 .black {
 	background: transparent;
+}
+.white {
+	color: white;
+	/*box-shadow: 0px 10px 33px -9px rgba(0, 0, 0, 0.46);*/
+	text-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
 }
 /* radial charts */
 .radial-charts-container {

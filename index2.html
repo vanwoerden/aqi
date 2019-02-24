@@ -23,7 +23,7 @@
 	
 	<header class="sky-background">
 		<div class="container center">
-			<h1 class="black">
+			<h1 class="white">
 				Air quality in Beijing: clearing up?
 			</h1>
 			<!--<h2>-->
@@ -47,11 +47,11 @@
 			<!--</h3>-->
 			<div class="paragraph">
 				<h4>
-					I live in Beijing. 
+					In Beijing, the AQI is the weather.
 				</h4>
-				<p>
+				<!--<p>
 					Before moving here, I never worried about air quality. In Beijing, it's different. You know you've been here for a while if the first thing you do when you arrive in another country is checking the AQI (Air Quality Index).
-				</p>
+				</p>-->
 				<p>
 					Where people elsewhere are obsessed with the weather, here it's all about AQI. Possibly because, save air quality, the forecast is straightforward; scorching hot or freezing, with a few weeks of spring or fall in between.
 				</p>
@@ -97,7 +97,7 @@
 	
 	<section class="section gray">
 		<div class="container center">
-			<div class="three-q-width left">
+			<div class="half-width left">
 				<div class="block">
 					<h3>
 						Getting the data
@@ -108,7 +108,7 @@
 				</div>
 			</div>
 		
-			<div class="three-q-width left">
+			<div class="half-width left">
 				<div class="block">
 					
 					<ol class="large">
@@ -210,106 +210,109 @@
 				
 			</div>
 			<div class="column-50">
-			<div class="sparklines-container">
-				<table class="bad-days">
-					<thead>
-						<tr>
-						  <th>Year</th>
-						  <th>Bad days</th>
-						  <th>By month</th>
-						  <th>Change</th>
-						</tr>
-					</thead>
-					
-					<tbody>
-						<tr>
-							<td>2009</td>
-							<td>
-								<div class="bad-number" id="bad-number-2009"></div>
-								<canvas id="pie-2009"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2009"></td>
-							
-						</tr>
-						<tr>
-							<td>2010</td>
-							<td>
-								<div class="bad-number" id="bad-number-2010"></div>
-								<canvas id="pie-2010"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2010"></td>
-							<td class="sparkline" id="difference-2011"></td>
-						</tr>
-						<tr>
-							<td>2011</td>
-							<td>
-								<div class="bad-number" id="bad-number-2011"></div>
-								<canvas id="pie-2011"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2011"></td>
-						</tr>
-						<tr>
-							<td>2012</td>
-							<td>
-								<div class="bad-number" id="bad-number-2012"></div>
-								<canvas id="pie-2012"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2012"></td>
-						</tr>
-						<tr>
-							<td>2013</td>
-							<td>
-								<div class="bad-number" id="bad-number-2013"></div>
-								<canvas id="pie-2013"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2013"></td>
-						</tr>
-						<tr>
-							<td>2014</td>
-							<td>
-								<div class="bad-number" id="bad-number-2014"></div>
-								<canvas id="pie-2014"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2014"></td>
-						</tr>
-						<tr>
-							<td>2015</td>
-							<td>
-								<div class="bad-number" id="bad-number-2015"></div>
-								<canvas id="pie-2015"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2015"></td>
-						</tr>
-						<tr>
-							<td>2016</td>
-							<td>
-								<div class="bad-number" id="bad-number-2016"></div>
-								<canvas id="pie-2016"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2016"></td>
-						</tr>
-						<tr>
-							<td>2017</td>
-							<td>
-								<div class="bad-number" id="bad-number-2017"></div>
-								<canvas id="pie-2017"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2017"></td>
-						</tr>
-						<tr>
-							<td>2018</td>
-							<td>
-								<div class="bad-number" id="bad-number-2018"></div>
-								<canvas id="pie-2018"></canvas>
-							</td>
-							<td class="sparkline" id="bad-days-2018"></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+                <div class="sparklines-container">
+                    <table class="bad-days">
+                        <thead>
+                            <tr>
+                              <th>Year</th>
+                              <th>Bad days</th>
+                              <th>By month</th>
+                              <th>Change</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>2009</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2009"></div>
+                                    <canvas id="pie-2009"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2009"></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2010"></div>
+                                    <canvas id="pie-2010"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2010"></td>
+                                <td class="sparkline" id="difference-2011"></td>
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2011"></div>
+                                    <canvas id="pie-2011"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2011"></td>
+                            </tr>
+                            <tr>
+                                <td>2012</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2012"></div>
+                                    <canvas id="pie-2012"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2012"></td>
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2013"></div>
+                                    <canvas id="pie-2013"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2013"></td>
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2014"></div>
+                                    <canvas id="pie-2014"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2014"></td>
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2015"></div>
+                                    <canvas id="pie-2015"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2015"></td>
+                            </tr>
+                            <tr>
+                                <td>2016</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2016"></div>
+                                    <canvas id="pie-2016"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2016"></td>
+                            </tr>
+                            <tr>
+                                <td>2017</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2017"></div>
+                                    <canvas id="pie-2017"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2017"></td>
+                            </tr>
+                            <tr>
+                                <td>2018</td>
+                                <td>
+                                    <div class="bad-number" id="bad-number-2018"></div>
+                                    <canvas id="pie-2018"></canvas>
+                                </td>
+                                <td class="sparkline" id="bad-days-2018"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 		</div>
-		</div>
-		<div class="container-12 center">
+        <div class="bad-days-bar-background">
+            <canvas id="bar-bkg"></canvas>
+        </div>
+		<!--<div class="container-12 center">
 			<svg id="mmm-2009"></svg>
 			<svg id="mmm-2010"></svg>
 			<svg id="mmm-2011"></svg>
@@ -324,7 +327,7 @@
 			<div id="compare-bad-days-chart">
 				
 			</div>
-		</div>
+		</div>-->
 	<section class="section">
 		<div class="container center">
 			<div class="half-width left">

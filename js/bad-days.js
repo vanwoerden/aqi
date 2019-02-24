@@ -162,6 +162,7 @@ var csvs = [
 
 
 function initSliders(){
+	createBarChart("bar-bkg");
 	csvs.forEach(function(e, index){
 		aqi = AQI_threshold;
 		hours = bad_hours_threshold;
@@ -549,6 +550,54 @@ console.log(_2015);
 console.log("months2 length: " + months.length);
 function onParseComplete() {
 	showDifferenceBetweenYears(months[2].bad_days, months[months.length-1].bad_days);
+}
+
+function createBarChart(bar) {
+	console.log('create bar chart');
+	// draw pie charts with bad days
+	var ctx = document.getElementById(bar).getContext("2d");
+	//ctx.height = 50;
+	//ctx.width = 25;
+	myChart = {};	
+	myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			
+			datasets: [{
+				label: '',
+				data: [100, 88, 84, 75, 84, 35, 64, 55, 43, 23],
+				//backgroundColor: [
+				//	'#000',
+				//	'#fff'
+				//],
+				//borderColor: [
+				//	'#000',
+				//	'#999'
+				//],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			maintainAspectRatio: false,
+			responsive: false,
+			scales: {
+				yAxes: [{
+					display: false,
+					stacked: true
+				}],
+				xAxes: [{
+					display: false,
+					stacked: true
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				enabled: false
+			}
+		}
+	});
 }
 function createPieChart(chart) {
 	console.log('create pie chart');
