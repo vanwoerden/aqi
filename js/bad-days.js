@@ -322,7 +322,7 @@ function calculateMinMeanMax(csv, target) {
 			})
 			.entries(data);
 			
-		console.log('min, mean, mx:');
+		//console.log('min, mean, mx:');
 		//console.log(mmm);
 		
 		var minMeanMax = [];
@@ -330,7 +330,7 @@ function calculateMinMeanMax(csv, target) {
 		mmm.forEach(function(item, index) {
 			minMeanMax.push(item.value);
 		})
-		console.log(minMeanMax);
+		//console.log(minMeanMax);
 		drawMinMeanMax(minMeanMax, target);
 		
 		var totalOutput = [];
@@ -347,8 +347,8 @@ function calculateMinMeanMax(csv, target) {
 			})
 			.entries(data);
 		totalOutputArray.push(totalOutput);
-		console.log("total pm2.5 output: ");
-		console.log(totalOutputArray);
+		//console.log("total pm2.5 output: ");
+		//console.log(totalOutputArray);
 	})
 }
 function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsArray) {
@@ -556,46 +556,28 @@ function createBarChart(bar) {
 	console.log('create bar chart');
 	// draw pie charts with bad days
 	var ctx = document.getElementById(bar).getContext("2d");
+	ctx.height = 150;
 	//ctx.height = 50;
 	//ctx.width = 25;
 	myChart = {};	
 	myChart = new Chart(ctx, {
 		type: 'bar',
 		data: {
-			
-			datasets: [{
-				label: '',
-				data: [100, 88, 84, 75, 84, 35, 64, 55, 43, 23],
-				//backgroundColor: [
-				//	'#000',
-				//	'#fff'
-				//],
-				//borderColor: [
-				//	'#000',
-				//	'#999'
-				//],
-				borderWidth: 1
-			}]
+		  labels: ["2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017" ,"2018"],
+		  datasets: [
+			{
+			  label: "bad days",
+			  //backgroundColor: ["#3e95cd"],
+			  data: [194,216,190,198,228, 216, 173, 171, 74, 55]
+			}
+		  ]
 		},
 		options: {
-			maintainAspectRatio: false,
-			responsive: false,
-			scales: {
-				yAxes: [{
-					display: false,
-					stacked: true
-				}],
-				xAxes: [{
-					display: false,
-					stacked: true
-				}]
-			},
-			legend: {
-				display: false
-			},
-			tooltips: {
-				enabled: false
-			}
+		  legend: { display: false },
+		  title: {
+			display: true,
+			text: 'Bad air days in Beijing'
+		  }
 		}
 	});
 }

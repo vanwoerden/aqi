@@ -108,14 +108,14 @@
 				</div>
 			</div>
 		
-			<div class="half-width left">
+			<div class="half-width right">
 				<div class="block">
 					
 					<ol class="large">
 						<li>
 							Is the air getting better in Beijing?
 						</li>
-						<li>
+						<!--<li>
 							What's the best time to get out of the city? What's the best time of year to stay in (or visit) Beijing and enjoy clean air?
 						</li>
 						<li>
@@ -126,10 +126,13 @@
 						</li>
 						<li>
 							What can we say about factors that influence air quality in Beijing? Do cars play a big role? What about factories/coal plants? Wind? Rain? Temperature? Government? National holidays? Seasons?
-						</li>
+						</li>-->
 					</ol>
 				</div>
 			</div>
+            <div class="bad-days-bar-background">
+                <canvas id="bar-bkg"></canvas>
+            </div>
 		</div>
 	</section>
 	
@@ -209,6 +212,64 @@
 				</div>
 				
 			</div>
+            <div class="column-50">
+                <div class="sparklines-container">
+                    <table class="bad-days">
+                        
+                                    <div class="bad-number" id="bad-number-2009"></div>
+                                    <canvas id="pie-2009"></canvas>
+                               
+                                <div class="sparkline" id="bad-days-2009"></div>
+                                
+                            
+                                    <div class="bad-number" id="bad-number-2010"></div>
+                                    <canvas id="pie-2010"></canvas>
+                                
+                                <div class="sparkline" id="bad-days-2010"></div>
+                                <div class="sparkline" id="difference-2011"></div>
+                            
+                                    <div class="bad-number" id="bad-number-2011"></div>
+                                    <canvas id="pie-2011"></canvas>
+                               
+                                <div class="sparkline" id="bad-days-2011"></div>
+                            
+                                    <div class="bad-number" id="bad-number-2012"></div>
+                                    <canvas id="pie-2012"></canvas>
+                                
+                                <div class="sparkline" id="bad-days-2012"></div>
+                            
+                                    <div class="bad-number" id="bad-number-2013"></div>
+                                    <canvas id="pie-2013"></canvas>
+                                
+                                <div class="sparkline" id="bad-days-2013"></div>
+                            
+                                    <div class="bad-number" id="bad-number-2014"></div>
+                                    <canvas id="pie-2014"></canvas>
+                               
+                                <div class="sparkline" id="bad-days-2014"></div>
+                           
+                                    <div class="bad-number" id="bad-number-2015"></div>
+                                    <canvas id="pie-2015"></canvas>
+                                
+                                <div class="sparkline" id="bad-days-2015"></div>
+                            
+                                    <div class="bad-number" id="bad-number-2016"></div>
+                                    <canvas id="pie-2016"></canvas>
+                                
+                                <div class="sparkline" id="bad-days-2016"></div>
+                           
+                                    <div class="bad-number" id="bad-number-2017"></div>
+                                    <canvas id="pie-2017"></canvas>
+                               
+                                <div class="sparkline" id="bad-days-2017"></div>
+                           
+                                    <div class="bad-number" id="bad-number-2018"></div>
+                                    <canvas id="pie-2018"></canvas>
+                               
+                                <div class="sparkline" id="bad-days-2018"></div>
+                           
+                </div>
+            </div>  
 			<div class="column-50">
                 <div class="sparklines-container">
                     <table class="bad-days">
@@ -309,9 +370,7 @@
                 </div>
             </div>
 		</div>
-        <div class="bad-days-bar-background">
-            <canvas id="bar-bkg"></canvas>
-        </div>
+        
 		<!--<div class="container-12 center">
 			<svg id="mmm-2009"></svg>
 			<svg id="mmm-2010"></svg>
@@ -328,9 +387,9 @@
 				
 			</div>
 		</div>-->
-	<section class="section">
-		<div class="container center">
-			<div class="half-width left">
+	
+		<div class="container-14 center">
+			<div class="block-left">
 				<h3>
 					Yes, it's getting better.
 				</h3>
@@ -347,23 +406,17 @@
 					<li>
 						2017 (except for a spike in January) and 2018 are a significant improvement.
 					</li>
+                    mean amount of pm2.5 per day
+					total amount of pm2.5 yearly
+					how many cigarettes per day
 				</ul>
 			</div>
-		</div>
-	</section>
-		
-	
-		
-		<div class="container-12 center">
-			
 			<div class="radial-charts-container">
 				<div class="square">
 					<svg id="one" width="200" height="200"></svg>
 					<div class="year">2009</div>
 					<div class="bad-days-number" id="bad-number-2009">0</div>
-					mean amount of pm2.5 per day
-					total amount of pm2.5 yearly
-					how many cigarettes per day
+					
 				</div>
 				<div class="square">
 					<svg id="two" width="200" height="200"></svg>
@@ -429,12 +482,13 @@
 		
 			<div class="half-width left">
 				<div class="block">
-					Leave your email and get notified
+					
 				</div>
-				<input type="email">
-					
-				<input type="submit">
-					
+<!--				<form method="POST" action="https://formspree.io/hello@seriousness.nl">-->
+<!--                    <input type="email" name="email" placeholder="Your email">-->
+<!--                    <textarea name="message" placeholder="Test Message"></textarea>-->
+<!--                    <button type="submit">Send Test</button>-->
+<!--                </form>-->
 			</div>
 		</div>
 	</section>
