@@ -162,7 +162,7 @@ var csvs = [
 
 
 function initSliders(){
-	createBarChart("bar-bkg");
+	//createBarChart("bar-bkg");
 	csvs.forEach(function(e, index){
 		aqi = AQI_threshold;
 		hours = bad_hours_threshold;
@@ -189,18 +189,24 @@ function initSliders(){
 		
 	}
 	function updatePollution() {
-		console.log("updatePollution");
-		console.log("AQI: " + _aqi);
-		console.log("low: " + _low);
-		console.log("high: " + _high);
+		//console.log("updatePollution");
+		//console.log("AQI: " + _aqi);
+		//console.log("low: " + _low);
+		//console.log("high: " + _high);
 		_hours = _high - _low;
-		console.log("hours: " + _hours);
+		//console.log("hours: " + _hours);
 		document.getElementById("aqi-rectangle").style.height = (150 / 600 * _aqi) + 'px';
 		document.getElementById("aqi-rectangle").style.width = (390 / 24 * _hours) + 'px';
 		document.getElementById("aqi-rectangle").style.marginLeft = 1 + (390 / 24 * _low) + 'px';
-		document.getElementById("high-hrs").style.marginLeft = (390 / 24 * _high) * 0.96 + 'px';
-		document.getElementById("low-hrs").style.marginLeft = (390 / 24 * _low) * 0.99 + 'px';
+		document.getElementById("high-hrs").style.marginLeft = (390 / 24 * _high) * 0.938 - 2 + 'px';
+		document.getElementById("low-hrs").style.marginLeft = (390 / 24 * _low) * 0.938 - 2 + 'px';
+		
 		document.getElementById("max-aqi").style.marginTop = -Math.round((_aqi/600) * 150) * 0.92 - _aqiSliderOffset + 'px';
+		
+		//update labels for sliders and chart
+		document.getElementById("low-hrs").innerHTML = _low;
+		document.getElementById("high-hrs").innerHTML = _high;
+		document.getElementById("max-aqi-value").innerHTML = _aqi;
 	}
 
 	document.getElementById("slider-AQI").oninput = function() {
@@ -232,7 +238,8 @@ function initSliders(){
 			_high = document.getElementsByClassName("slider-hours")[0].valueHigh;
 			//var hours = high - low;
 			//console.log(hours + "1");
-			document.getElementById("max-hrs").innerHTML = _hours;
+			document.getElementById("max-hrs").innerHTML = _hours + " hours";
+			
 			updatePollution();
 			
 	};
@@ -242,7 +249,7 @@ function initSliders(){
 			//var hours = high - low;
 			//console.log(hours + "0");
 			
-			document.getElementById("max-hrs").innerHTML = _hours;
+			document.getElementById("max-hrs").innerHTML = _hours + " hours";
 			updatePollution();
 			
 	};
@@ -252,7 +259,7 @@ function initSliders(){
 			//var hours = high - low;
 			
 			_aqi = document.getElementById("slider-AQI").value;
-			document.getElementById("max-hrs").innerHTML = _hours;
+			document.getElementById("max-hrs").innerHTML = _hours + " hours";
 			
 			badDaysPerYear = [];
 			months = [];
@@ -269,7 +276,7 @@ function initSliders(){
 			//_hours = high - low;
 			
 			_aqi = document.getElementById("slider-AQI").value;
-			document.getElementById("max-hrs").innerHTML = _hours;
+			document.getElementById("max-hrs").innerHTML = _hours + " hours";
 			
 			badDaysPerYear = [];
 			months = [];
@@ -389,8 +396,17 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		});
 
 		document.getElementById(target).innerHTML = bad_days;
+		// set bar to height of 3*bad days
+		var tgt = "#" + sparkTarget + "-bar";
+		//console.log("tgt for bar = " + tgt);
+		//document.getElementById(tgt).style.height = bad_days * 2.5 + "px";
+		//$(tgt).fadeOut();
+		$( tgt ).animate({
+			height: bad_days * 2.5 + "px",    
+		}, 300 );
+		
 		badDaysPerYear.push(bad_days);
-		console.log("_initial = " + _initial);
+		//console.log("_initial = " + _initial);
 		if(_initial) {
 			// new
 			createPieChart(pieTarget);
@@ -460,58 +476,58 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		
 		switch(monthsArray) {
 			case "2009":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2009 = badDaysPerMonth;
 				break;
 			case "2010":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2010 = badDaysPerMonth;
 				break;
 			case "2011":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2011 = badDaysPerMonth;
 				break;
 			case "2012":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2012 = badDaysPerMonth;
 				break;
 			case "2013":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2013 = badDaysPerMonth;
 				break;
 			case "2014":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2014 = badDaysPerMonth;
 				break;
 			case "2015":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2015 = badDaysPerMonth;
 				break;
 			case "2016":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2016 = badDaysPerMonth;
 				break;
 			case "2017":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2017 = badDaysPerMonth;
 				break;
 			case "2018":
-				console.log("switch " + monthsArray);
+				//console.log("switch " + monthsArray);
 				_2018 = badDaysPerMonth;
 				break;
 		}
 		//showDifferenceBetweenYears(_2016, _2010);
 		function showDifferenceBetweenYears(year1, year2) {
-			console.log("************** showDifferenceBetweenYears");
-			console.log(year1);
-			console.log(year2);
+			//console.log("************** showDifferenceBetweenYears");
+			//console.log(year1);
+			//console.log(year2);
 			var diff = year2.map(function(item, index) {
 				// In this case item correspond to currentValue of array a, 
 				// using index to get value from array b
 				return item - year1[index];
 			})
-			console.log("the diff");
-			console.log(diff);
+			//console.log("the diff");
+			//console.log(diff);
 			// now create an array of coordinates from this array
 			var coordinates = [];
 			var arr = [];
@@ -522,14 +538,14 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 				coordinates.push(xy);
 				arr.push(item);
 			});
-			console.log(coordinates);
-			console.log('coords aboove');
+			//console.log(coordinates);
+			//console.log('coords aboove');
 			
 			//drawLine(coordinates, "#compare-bad-days-chart", 600, 100, 0);
 			// send array to sparkline difference div
 			
 			var targetID = "difference-" + sparkTarget.substr(-4)
-			console.log(targetID);
+			//console.log(targetID);
 			document.getElementById(targetID).innerHTML = "{" + arr + "}";
 		}
 		
@@ -540,14 +556,14 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		
 	})
 	
-	console.log("months: ");
-	console.log(months);
+	//console.log("months: ");
+	//console.log(months);
 	//console.log("month1 bad days: " + months[0].id);
 	
 }
-console.log("2015: ");
-console.log(_2015);
-console.log("months2 length: " + months.length);
+//console.log("2015: ");
+//console.log(_2015);
+//console.log("months2 length: " + months.length);
 function onParseComplete() {
 	showDifferenceBetweenYears(months[2].bad_days, months[months.length-1].bad_days);
 }
