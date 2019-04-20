@@ -46,9 +46,9 @@
 			<!--	This is a (air) quality investigation.-->
 			<!--</h3>-->
 			<div class="paragraph">
-				<h4>
+				<h3>
 					In Beijing, the AQI is the weather.
-				</h4>
+				</h3>
 				<!--<p>
 					Before moving here, I never worried about air quality. In Beijing, it's different. You know you've been here for a while if the first thing you do when you arrive in another country is checking the AQI (Air Quality Index).
 				</p>-->
@@ -69,47 +69,58 @@
 		
 	</section>
 	
-	<div class="flexbox-container">
-		<div>
-			<div class="hugo-caption">
-					<h3 class="bad-air">
-						A bad air day in Beijing.
-					</h3>
-					<p>
-						Taken from the Mi Air Purifier 2 launch deck, here we have Hugo Barra wearing an air pollution mask on a less than ideal air day in Beijing.
-					</p>
-					<p class="small">
-						(Photo by yours truly)
-					</p>
-			</div>
-		</div>
-		<div>
-			<div class="image70">
-				<img src="img/hugo_mask.jpg"/>
-			<!--<div class="caption">In Beijing, the air isn't always great.</div>-->
-			</div>
-		</div>
-	</div>
+	<!--<div class="flexbox-container">-->
+	<!--	<div>-->
+	<!--		<div class="hugo-caption">-->
+	<!--				<h3 class="bad-air">-->
+	<!--					A bad air day in Beijing.-->
+	<!--				</h3>-->
+	<!--				<p>-->
+	<!--					Taken from the Mi Air Purifier 2 launch deck, here we have Hugo Barra wearing an air pollution mask on a less than ideal air day in Beijing.-->
+	<!--				</p>-->
+	<!--				<p class="small">-->
+	<!--					(Photo by yours truly)-->
+	<!--				</p>-->
+	<!--		</div>-->
+	<!--	</div>-->
+	<!--	<div>-->
+	<!--		<div class="image70">-->
+	<!--			<img src="img/hugo_mask.jpg"/>-->
+	<!--		-->
+	<!--		</div>-->
+	<!--	</div>-->
+	<!--</div>-->
 	
-	<!--<section class="hugo-background">-->
-	<!--	<h1>Beijing on a bad airday</h1>-->
-	<!--</section>-->
+	<section class="hugo-background">
+        <div class="hugo-overlay">
+            <h2 class="bad-air-day">
+                <span class="black-bkg">A bad air day in Beijing.</span>
+            </h3>
+            <p>
+                 <span class="black-bkg">Taken from the Mi Air Purifier 2 launch deck: Hugo Barra wearing an air pollution mask on a less than ideal air day in Beijing.</span>
+            </p>
+            <!--<h4>-->
+            <!--    <span>AQI level: </span><span class="bad">BAD</span>-->
+            <!--</h4>-->
+            <p class="small">
+                (Photo by yours truly)
+            </p>
+		</div>
+	</section>
 	
-	<section class="section gray">
-		<div class="container center">
-			<div class="half-width left">
-				<div class="block">
-					<h3>
-						Getting the data
-					</h3>
-					<p class="paragraph">
-						The US Embassy in Beijing has been collecting <a href="http://stateair.net/web/historical/1/1.html" target="_blank">hourly pm2.5 data</a> since 2008. Sadly, they haven't published any data since June 2017. However, Berkeley Earth has been collecting <a href="http://berkeleyearth.lbl.gov/air-quality/local/China/Beijing/Beijing" target="_blank">pm2.5 data since 2014</a>, and their data is current. </br></br>So, is the air getting better or what?
-					</p>
-				</div>
-			</div>
+	
+			<!--<div class="half-width left">-->
+			<!--	<div class="block">-->
+			<!--		<h3>-->
+			<!--			Getting the data-->
+			<!--		</h3>-->
+			<!--		<p class="paragraph">-->
+			<!--			The US Embassy in Beijing has been collecting <a href="http://stateair.net/web/historical/1/1.html" target="_blank">hourly pm2.5 data</a> since 2008. Sadly, they haven't published any data since June 2017. However, Berkeley Earth has been collecting <a href="http://berkeleyearth.lbl.gov/air-quality/local/China/Beijing/Beijing" target="_blank">pm2.5 data since 2014</a>, and their data is current. </br></br>So, is the air getting better or what?-->
+			<!--		</p>-->
+			<!--	</div>-->
+			<!--</div>-->
 		
-			<div class="half-width right">
-				<div class="block">
+			
 					
 					<!--<ol class="large">-->
 					<!--	<li>-->
@@ -127,22 +138,24 @@
 						<li>
 							What can we say about factors that influence air quality in Beijing? Do cars play a big role? What about factories/coal plants? Wind? Rain? Temperature? Government? National holidays? Seasons?
 						</li>-->
-					</ol>
-				</div>
-			</div>
-            <div class="bad-days-bar-background">
-                <canvas id="bar-bkg"></canvas>
-            </div>
-		</div>
-	</section>
+					
 	
-	<section class="section">
-        <div class="container-12 center row">
+	
+	<section class="section gray">
+        <div class="container center row">
             <div class="column-1">
+                <div class="block">
+					<h3>
+						How many bad days?
+					</h3>
+					<p class="paragraph">
+						The US Embassy in Beijing has been collecting <a href="http://stateair.net/web/historical/1/1.html" target="_blank">hourly pm2.5 data</a> since 2008. Sadly, they haven't published any data since June 2017. However, Berkeley Earth has been collecting <a href="http://berkeleyearth.lbl.gov/air-quality/local/China/Beijing/Beijing" target="_blank">pm2.5 data since 2014</a>, and their data is current. 
+					</p>
+				</div>
 				<div id="sliders">
-					<h5 class="sliders-title">
+					<h4 class="sliders-title">
 						What's a bad air day? 
-					</h5>
+					</h4>
 					<p>
 						According to the XYZ, a day where the pm2.5 level exceeds 60 for more than 8 hours is considered bad. 
 					</p>
@@ -207,18 +220,17 @@
 
 					<div id="max-aqi">150</div>
 					<!--<div id="max-hrs">5</div>-->
-                    <div class="bad-conditions-label">
-                        <span id="max-hrs">5 </span>
-                        <span>hours of PM2.5 above </span>
-                        <span id="max-aqi-value">150</span>
-                    </div>
-					
+
 				</div>
 				
 			</div>
             
             <div class="column-2">
-                
+                 <div class="bad-conditions-label">
+                    <span id="max-hrs">5 </span>
+                    <span>hours of PM2.5 above </span>
+                    <span id="max-aqi-value">150</span>
+                </div>
                 <div class="bars-container">
                     <div class="spacer-block"></div>
                     <!--<div class="bad-conditions-label">-->
@@ -377,6 +389,7 @@
 			</div>
 		</div>-->
     </section>
+    <!--<section class="spacer gray"></section>-->
     <section class="section">
         
 		<div class="container-14 center">

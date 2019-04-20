@@ -402,7 +402,7 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		//document.getElementById(tgt).style.height = bad_days * 2.5 + "px";
 		//$(tgt).fadeOut();
 		$( tgt ).animate({
-			height: bad_days * 2.5 + "px",    
+			height: bad_days * 1.5 + "px",    
 		}, 300 );
 		
 		badDaysPerYear.push(bad_days);
