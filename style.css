@@ -94,7 +94,7 @@ h3 {
 	padding-bottom: 0.4em;
 }
 h4 {
-	padding: 1em 0;
+	padding: 1em 0 0.1em 0;;
 	font-size: 1.2em;
 	line-height: 1.3em;
 	font-weight: 400;
@@ -362,23 +362,25 @@ canvas#bar-bkg {
 	margin-top: -5px !important;
 }
 .slider-label, #max-aqi {
-	background: white;
-	border-radius: 3em;
-	padding: 0.5em;
+	border-radius: 10em;
+	/*padding: 0.5em;*/
 }
 .slider-label {
 	font-size: 0.8em;
+	/*width: 3em;*/
+	/*height: 3em;*/
 	position: absolute;
 	margin-top: -10px;
 	text-align: center;
+	/*line-height: 3.2em;*/
 }
 #max-aqi {
 	position: absolute;
 	margin-left: -50px;
 	/*margin-top: -6em;*/
-	font-size: 0.8em;
-	background: white;
-	padding: 0em 0.2em;
+	/*font-size: 0.8em;*/
+	/*background: white;*/
+	/*padding: 0em 0.2em;*/
 }
 #max-hrs {
 	
@@ -399,7 +401,7 @@ div.bad-conditions-label {
 	display: table;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: 100px;
+	margin-top: 83px;
 	width: auto;	
 }
 #aqi-rectangle, #sky-rectangle {
@@ -423,7 +425,7 @@ div.bad-conditions-label {
 #sky-rectangle {
 	/*background: #2162d6;*/
 	background: lightblue;
-	/*background: url(img/bj-bkg3.png) no-repeat center center;*/
+	background: url(img/bj-bkg5.png) no-repeat center center;
 	background-size: cover;
 	/*position: absolute;*/
 	/*margin-left: 0.8em;*/
@@ -516,8 +518,8 @@ span.spark-date {
 	padding: 5px;
 }
 .bar {
-	background: rgb(113,188,226);
-	background: linear-gradient(180deg, rgba(113,188,226,0.5) 0%, rgba(101,94,25,0.5) 63%, rgba(42,41,47,0.5) 100%);	
+	background: rgb(191,245,219);
+background: linear-gradient(180deg, rgba(191,245,219,1) 0%, rgba(247,219,118,0.5) 75%, rgba(232,169,69,0.5) 100%);
 	height: 200px;
 	position: relative;
 }

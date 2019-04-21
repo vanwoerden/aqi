@@ -198,8 +198,8 @@ function initSliders(){
 		document.getElementById("aqi-rectangle").style.height = (150 / 600 * _aqi) + 'px';
 		document.getElementById("aqi-rectangle").style.width = (390 / 24 * _hours) + 'px';
 		document.getElementById("aqi-rectangle").style.marginLeft = 1 + (390 / 24 * _low) + 'px';
-		document.getElementById("high-hrs").style.marginLeft = (390 / 24 * _high) * 0.938 - 2 + 'px';
-		document.getElementById("low-hrs").style.marginLeft = (390 / 24 * _low) * 0.938 - 2 + 'px';
+		document.getElementById("high-hrs").style.marginLeft = (390 / 24 * _high) * 0.938 + 5 + 'px';
+		document.getElementById("low-hrs").style.marginLeft = (390 / 24 * _low) * 0.938 + 5 + 'px';
 		
 		document.getElementById("max-aqi").style.marginTop = -Math.round((_aqi/600) * 150) * 0.92 - _aqiSliderOffset + 'px';
 		
@@ -238,7 +238,7 @@ function initSliders(){
 			_high = document.getElementsByClassName("slider-hours")[0].valueHigh;
 			//var hours = high - low;
 			//console.log(hours + "1");
-			document.getElementById("max-hrs").innerHTML = _hours + " hours";
+			document.getElementById("max-hrs").innerHTML = _hours;
 			
 			updatePollution();
 			
@@ -249,7 +249,7 @@ function initSliders(){
 			//var hours = high - low;
 			//console.log(hours + "0");
 			
-			document.getElementById("max-hrs").innerHTML = _hours + " hours";
+			document.getElementById("max-hrs").innerHTML = _hours;
 			updatePollution();
 			
 	};
@@ -259,7 +259,7 @@ function initSliders(){
 			//var hours = high - low;
 			
 			_aqi = document.getElementById("slider-AQI").value;
-			document.getElementById("max-hrs").innerHTML = _hours + " hours";
+			document.getElementById("max-hrs").innerHTML = _hours;
 			
 			badDaysPerYear = [];
 			months = [];
@@ -276,7 +276,7 @@ function initSliders(){
 			//_hours = high - low;
 			
 			_aqi = document.getElementById("slider-AQI").value;
-			document.getElementById("max-hrs").innerHTML = _hours + " hours";
+			document.getElementById("max-hrs").innerHTML = _hours;
 			
 			badDaysPerYear = [];
 			months = [];
@@ -454,6 +454,9 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 			
 			var bdm = {};
 			bdm.month = index + 1;
+			//if(bad_days_month <= 0){
+			//	bad_days_month = 0;
+			//}
 			bdm.bad_days = bad_days_month;
 			
 			//need to percentify for sparklines
