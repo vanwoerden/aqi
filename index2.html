@@ -102,10 +102,17 @@
             <!--<h4>-->
             <!--    <span>AQI level: </span><span class="bad">BAD</span>-->
             <!--</h4>-->
-            <p class="small">
-                (Photo by yours truly)
-            </p>
+            <!--<p class="small">-->
+            <!--    (Photo by yours truly)-->
+            <!--</p>-->
 		</div>
+        <div class="container center">
+            <div class="sky-header">
+                <span>
+                    photo by the author
+                </span>
+            </div>
+        </div>
 	</section>
 	
 	
@@ -392,9 +399,32 @@
     <!--<section class="spacer gray"></section>-->
     <section class="section">
         
-		<div class="container-14 center">
+		<div class="container-14 center flex-container">
 			
-			<div class="radial-charts-container">
+             <div class="block-right column-1">
+				<h3>
+					Yes, it's getting better.
+				</h3>
+				<p class="paragraph">
+					Below is a yearly plot of percentual pm2.5 values in Beijing. There are some white gaps in the data in the first few years; those are invalid readings. A few findings that jump out: 
+				</p>
+				<ul>
+					<li>
+						From 2009 to 2012, the air is pretty much problematic year-round.
+					</li>
+					<li>
+						From 2013 to 2016, fall and winter are much worse than spring and summer. March through September are steadily improving.
+					</li>
+					<li>
+						2017 (except for a spike in January) and 2018 are a significant improvement.
+					</li>
+                    mean amount of pm2.5 per day
+					total amount of pm2.5 yearly
+					how many cigarettes per day
+				</ul>
+			</div>
+             
+			<div class="radial-charts-container column-2">
 				<div class="square">
 					<svg id="one" width="200" height="200"></svg>
 					<div class="year">2009</div>
@@ -448,29 +478,6 @@
 				</div>
 			</div>
             
-            <div class="block-right">
-				<h3>
-					Yes, it's getting better.
-				</h3>
-				<p class="paragraph">
-					Below is a yearly plot of percentual pm2.5 values in Beijing. There are some white gaps in the data in the first few years; those are invalid readings. A few findings that jump out: 
-				</p>
-				<ul>
-					<li>
-						From 2009 to 2012, the air is pretty much problematic year-round.
-					</li>
-					<li>
-						From 2013 to 2016, fall and winter are much worse than spring and summer. March through September are steadily improving.
-					</li>
-					<li>
-						2017 (except for a spike in January) and 2018 are a significant improvement.
-					</li>
-                    mean amount of pm2.5 per day
-					total amount of pm2.5 yearly
-					how many cigarettes per day
-				</ul>
-			</div>
-            
 		</div>
 	</section>
 	
@@ -482,7 +489,10 @@
 						Next: The best time of year to visit Beijing
 					</h3>
 					<p class="paragraph">
-						A deep dive into the best and worst time to be in Beijing throughout the year.
+						A deep dive into the best and worst time to be in Beijing throughout the year. 
+					</p>
+                    <p class="paragraph">
+						Leave your email and I'll let you know when the next episode hits the streets.
 					</p>
 				</div>
 			</div>
@@ -494,7 +504,7 @@
                 <!-- Begin Mailchimp Signup Form -->
 <!--<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">-->
 <style type="text/css">
-	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	#mc_embed_signup{background:#fff; clear:left; /*font:14px Helvetica,Arial,sans-serif;*/ }
 	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
 	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
@@ -502,11 +512,12 @@
 <form action="https://fyi.us20.list-manage.com/subscribe/post?u=4f40e5bb4e0be541b8ca3bfc9&amp;id=7895f029d3" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
 	
-<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<!--<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>-->
 <div class="mc-field-group">
-	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-</label>
-	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+	<label class="form-label" for="mce-EMAIL">Email Address</label>
+	<p>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL">
+    </p>
 </div>
 	<div id="mce-responses" class="clear">
 		<div class="response" id="mce-error-response" style="display:none"></div>
@@ -519,18 +530,18 @@
 </div>
 
 <!--End mc_embed_signup-->                
-				<form method="POST" action="https://formspree.io/hello@seriousness.nl">
-                    <input type="email" name="email" placeholder="Your email">
-                    <textarea name="message" placeholder="Test Message"></textarea>
-                    <button type="submit">Send Test</button>
-                </form>
+<!--				<form method="POST" action="https://formspree.io/hello@seriousness.nl">-->
+<!--                    <input type="email" name="email" placeholder="Your email">-->
+<!--                    <textarea name="message" placeholder="Test Message"></textarea>-->
+<!--                    <button type="submit">Send Test</button>-->
+<!--                </form>-->
 			</div>
 		</div>
 	</section>
     <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
 	<script type="text/javascript" src="js/d3.min.js"></script>
 	<script type="text/javascript" src="js/d3-scale-radial.js"></script>
-	<script type="text/javascript" src="js/Chart.min.js"></script>
+	<!--<script type="text/javascript" src="js/Chart.min.js"></script>-->
 	<script type="text/javascript" src="js/multirange.js"></script>
 	<script type="text/javascript" src="js/radial-bar.js"></script>
 	<script type="text/javascript" src="js/line-chart.js"></script>
