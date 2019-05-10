@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="fonts.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="multirange.css">
+    <meta name="viewport" content="width=device-width">
 </head>
 
 <body onload="initSliders()">
@@ -148,10 +149,10 @@
 					
 	
 	
-	<section class="section gray">
-        <div class="container center row">
+	<section class="section gray sliders">
+        <div class="container-full center row">
             <div class="column-1">
-                <div class="block">
+                <div class="sliders-block">
 					<h3>
 						How many bad days?
 					</h3>
@@ -227,7 +228,6 @@
 
 					<div id="max-aqi" class="slider-label">150</div>
 					<!--<div id="max-hrs">5</div>-->
-
 				</div>
 				
 			</div>
@@ -399,89 +399,164 @@
     <!--<section class="spacer gray"></section>-->
     <section class="section">
         
-		<div class="container-14 center flex-container">
+		<div class="container center flex-container">
 			
-             <div class="block-right column-1">
+             <div class="block column-1-5">
 				<h3>
 					Yes, it's getting better.
 				</h3>
-				<p class="paragraph">
-					Below is a yearly plot of percentual pm2.5 values in Beijing. There are some white gaps in the data in the first few years; those are invalid readings. A few findings that jump out: 
+				<p class="large">
+					Let's do a yearly plot of percentual pm2.5 values in Beijing. There are some white gaps in the data in the first few years; those are invalid readings. A few findings that jump out: 
 				</p>
-				<ul>
-					<li>
-						From 2009 to 2012, the air is pretty much problematic year-round.
-					</li>
-					<li>
-						From 2013 to 2016, fall and winter are much worse than spring and summer. March through September are steadily improving.
-					</li>
-					<li>
-						2017 (except for a spike in January) and 2018 are a significant improvement.
-					</li>
+                
+                <h4 class="radial-chart-title">
+                    2009
+                </h4>
+                <p>
+                    2009 has some gaps in the data; January and half of February are missing. November and December have some pretty dark areas, but July through September are overall the worst period of the year.
+                </p>
+                <h4 class="radial-chart-title">
+                    2010
+                </h4>
+                <p>
+                    Interestingly enough, July has the least amount of green air. October through December have the highest amount of darkness going on, qnd January and April seem to be the nicest months of the year.
+                </p>
+                <h4 class="radial-chart-title">
+                    2011 - An extreme Q1
+                </h4>
+                <p>
+                    Great start of the year, but then Febuary, which had a similar spike in 2010, ruins it for everybody. March totally makes up for it though. Here we have the two nicest month and the worst month all in the first quarter of the year. Remarkable.
+                </p>
+                <h4 class="radial-chart-title">
+                    2012
+                </h4>
+                <p>
+                    Definitely a more balanced year, 2012 starts off with its worst month. The summer months are the best so far. Similar to 2011 and 2012, from October things start to get worse again. 
+                </p>
+                <h4 class="radial-chart-title">
+                    2013
+                </h4>
+                <p>
+                    Like 2012, January is the worst month of the year, but by much more. It's also interesting to see a bit of a trend develop: moderate but overall more polluted spring and summer, and extreme fall and winter. 2013 actually looks worse than 2012.
+                </p>
+                <h4 class="radial-chart-title">
+                    2014
+                </h4>
+                <p>
+                    2014 looks worse than 2013. What's going on? Moderate spring and summer vs extreme fall and winter trend is continuining. The last two months of the year looks like it's improving.
+                </p>
+                <h4 class="radial-chart-title">
+                    2015
+                </h4>
+                <p>
+                    From 2013 to 2016, fall and winter are much worse than spring and summer. March through September are steadily improving.
+                </p>
+                <h4 class="radial-chart-title">
+                    2016
+                </h4>
+                <p>
+                    2017 (except for a spike in January) and 2018 are a significant improvement.
+                </p>
+                <h4 class="radial-chart-title">
+                    2017
+                </h4>
+                <p>
                     mean amount of pm2.5 per day
 					total amount of pm2.5 yearly
 					how many cigarettes per day
-				</ul>
+                </p>
+                <h4 class="radial-chart-title">
+                    2018
+                </h4>
+                <p>
+                    Do a short description of each year, maybe add some events or newspaper links of extremely bad airdays, other things like govt meetings, vacations, traffic data? new regulations for factories? Government efforts to curb pollution?
+                </p>
 			</div>
              
 			<div class="radial-charts-container column-2">
 				<div class="square">
 					<svg id="one" width="200" height="200"></svg>
 					<div class="year">2009</div>
-					<div class="bad-days-number" id="bad-number-2009">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2009">0</div>
 					
 				</div>
 				<div class="square">
 					<svg id="two" width="200" height="200"></svg>
 					<div class="year">2010</div>
-					<div class="bad-days-number" id="bad-number-2010">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2010">0</div>
 				</div>
 				<div class="square">
 					<svg id="three" width="200" height="200"></svg>
 					<div class="year">2011</div>
-					<div class="bad-days-number" id="bad-number-2011">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2011">0</div>
 				</div>
 				<div class="square">
 					<svg id="four" width="200" height="200"></svg>
 					<div class="year">2012</div>
-					<div class="bad-days-number" id="bad-number-2012">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2012">0</div>
 				</div>
 				<div class="square">
 					<svg id="five" width="200" height="200"></svg>
 					<div class="year">2013</div>
-					<div class="bad-days-number" id="bad-number-2013">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2013">0</div>
 				</div>
 				<div class="square">
 					<svg id="six" width="200" height="200"></svg>
 					<div class="year">2014</div>
-					<div class="bad-days-number" id="bad-number-2014">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2014">0</div>
 				</div>
 				<div class="square">
 					<svg id="seven" width="200" height="200"></svg>
 					<div class="year">2015</div>
-					<div class="bad-days-number" id="bad-number-2015">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2015">0</div>
 				</div>
 				<div class="square">
 					<svg id="eight" width="200" height="200"></svg>
 					<div class="year">2016</div>
-					<div class="bad-days-number" id="bad-number-2016">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2016">0</div>
 				</div>
 				<div class="square">
 					<svg id="nine" width="200" height="200"></svg>
 					<div class="year">2017</div>
-					<div class="bad-days-number" id="bad-number-2017">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2017">0</div>
 				</div>
 				<div class="square">
 					<svg id="ten" width="200" height="200"></svg>
 					<div class="year">2018</div>
-					<div class="bad-days-number" id="bad-number-2017">0</div>
+					<div class="bad-days-number" id="radial-bad-number-2018">0</div>
 				</div>
 			</div>
-            
+            <div class="legend">
+                <div class="legend-title">PM2.5 level</div>
+                <div class="legend-item">
+                    <span class="rect green"></span>
+                    <span class="label">0 - 50</span>
+                </div>
+                <div class="legend-item">
+                    <span class="rect yellow"></span>
+                    <span class="label">50 - 100</span>
+                </div>
+                <div class="legend-item">
+                    <span class="rect orange"></span>
+                    <span class="label">100 - 150</span>
+                </div>
+                <div class="legend-item">
+                    <span class="rect red"></span>
+                    <span class="label">150 - 200</span>
+                </div>
+                <div class="legend-item">
+                    <span class="rect burgundy"></span>
+                    <span class="label">250 - 300</span>
+                </div>
+                <div class="legend-item">
+                    <span class="rect dark"></span>
+                    <span class="label">300+</span>
+                </div>
+            </div>
 		</div>
 	</section>
 	
-	<section class="section">
+	<section class="section-nopad">
 		<div class="container center">
 			<div class="half-width left">
 				<div class="block">
@@ -544,7 +619,7 @@
 	<!--<script type="text/javascript" src="js/Chart.min.js"></script>-->
 	<script type="text/javascript" src="js/multirange.js"></script>
 	<script type="text/javascript" src="js/radial-bar.js"></script>
-	<script type="text/javascript" src="js/line-chart.js"></script>
+	<!--s<script type="text/javascript" src="js/line-chart.js"></script>-->
 	<script type="text/javascript" src="js/min-mean-max-chart.js"></script>
 	<script type="text/javascript" src="js/bad-days.js"></script>
 	

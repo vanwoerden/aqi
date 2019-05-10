@@ -44,5 +44,4 @@
 		input[type="range"].multirange.ghost::-moz-range-track {
 			background: var(--track-background);
 		}
-
 }

@@ -5,6 +5,7 @@ const AQI_threshold = 150;
 const bad_hours_threshold = 5;
 
 var _initial = true;
+var _bad_days_initial = true;
 
 var _aqi = AQI_threshold;
 var _low = 9;
@@ -195,11 +196,13 @@ function initSliders(){
 		//console.log("high: " + _high);
 		_hours = _high - _low;
 		//console.log("hours: " + _hours);
+		var sliderWidth = document.getElementById("sky-rectangle").clientWidth;
+		console.log('slider width = ' + sliderWidth);
 		document.getElementById("aqi-rectangle").style.height = (150 / 600 * _aqi) + 'px';
-		document.getElementById("aqi-rectangle").style.width = (390 / 24 * _hours) + 'px';
-		document.getElementById("aqi-rectangle").style.marginLeft = 1 + (390 / 24 * _low) + 'px';
-		document.getElementById("high-hrs").style.marginLeft = (390 / 24 * _high) * 0.938 + 5 + 'px';
-		document.getElementById("low-hrs").style.marginLeft = (390 / 24 * _low) * 0.938 + 5 + 'px';
+		document.getElementById("aqi-rectangle").style.width = (sliderWidth / 24 * _hours) + 'px';
+		document.getElementById("aqi-rectangle").style.marginLeft = (sliderWidth/18) + 1 + (sliderWidth / 24 * _low) + 'px';
+		document.getElementById("high-hrs").style.marginLeft = (sliderWidth / 24 * _high) * 0.938 + 5 + 'px';
+		document.getElementById("low-hrs").style.marginLeft = (sliderWidth / 24 * _low) * 0.938 + 5 + 'px';
 		
 		document.getElementById("max-aqi").style.marginTop = -Math.round((_aqi/600) * 150) * 0.92 - _aqiSliderOffset + 'px';
 		
@@ -360,6 +363,7 @@ function calculateMinMeanMax(csv, target) {
 }
 function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsArray) {
 	console.log("******** UPDATE SCORE csv = " + csv);
+	
 	d3.csv(csv, function(error, data) {
 		if (error) throw error;
 		
@@ -396,13 +400,22 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		});
 
 		document.getElementById(target).innerHTML = bad_days;
+		// Set bad days for radial charts once only
+		// TODO need to check for each year separately, has it been set
+		// Or always update but use the same settings
+		if (_bad_days_initial == true) {
+			//_bad_days_initial = false;
+			document.getElementById("radial-" + target).innerHTML = bad_days;
+		}
+		
 		// set bar to height of 3*bad days
 		var tgt = "#" + sparkTarget + "-bar";
 		//console.log("tgt for bar = " + tgt);
 		//document.getElementById(tgt).style.height = bad_days * 2.5 + "px";
 		//$(tgt).fadeOut();
+		var pcnt = bad_days/365 * 200;
 		$( tgt ).animate({
-			height: bad_days * 1.5 + "px",    
+			height: pcnt + "px",//bad_days * 1.5 + "px",    
 		}, 300 );
 		
 		badDaysPerYear.push(bad_days);
