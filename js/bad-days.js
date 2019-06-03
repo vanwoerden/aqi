@@ -1,15 +1,15 @@
 var parseTime = d3.timeParse("%m/%d/%Y %H:%M");
 var parseDay = d3.timeParse("%m/%d/%Y");
 
-const AQI_threshold = 150;
-const bad_hours_threshold = 5;
+const AQI_threshold = 10;
+const bad_hours_threshold = 23.9;
 
 var _initial = true;
 var _bad_days_initial = true;
 
 var _aqi = AQI_threshold;
-var _low = 9;
-var _high = 17;
+var _low = 0;
+var _high = 23.9;
 var _hours = 0;
 var _aqiSliderOffset = 45;
 var d3data;
@@ -20,6 +20,7 @@ var months = [];
 var years = [];
 var _badDaysPerMonth = [];
 var totalOutputArray = [];
+var annualMeans = [];
 
 
 //month arrays for bad days
@@ -169,6 +170,8 @@ function initSliders(){
 		hours = bad_hours_threshold;
 		updateTheScore(aqi, hours, e.csv, e.target, e.sparkTarget, e.pieTarget, e.monthsArray);
 		calculateMinMeanMax(e.csv, mmmArray[index]);
+		calculateAnnualMean(e.csv, e.monthsArray);
+		calculateDaysWithMeanAbove(e.csv, e.monthsArray, 25);
 	});
 	_initial = false;
 	console.log('initsliders');
@@ -294,6 +297,89 @@ function initSliders(){
 	// finally run the first calculation with initial preset data
 	
 }
+function calculateAnnualMean(csv, year) {
+	d3.csv(csv, function(error, data) {
+		if (error) throw error;
+		
+		//d3data = data;
+		
+		data.forEach(function(d) {
+			d.date = parseDay(d.date);
+			d.year = +d.year;
+			d.month = +d.month;
+			d.day = +d.day;
+			d.hour = +d.hour;
+			d.value = +d.value;
+		});
+		
+		mmm = d3.nest()
+			.key(function(d) {
+				return d.year;
+			})
+			.rollup(function(v) {
+				return [
+						d3.mean(v, function(d) { if(d.value > -1) {return d.value;} else return; })
+						];
+			})
+			.entries(data);
+			
+		mmm.forEach(function(item, index) {
+			annualMeans.push(item.value);
+			console.log("pushing " + item.value + "into annual mean array");
+			var target = "annual-mean-" + year;
+			document.getElementById(target).innerHTML = Math.round(item.value);
+		});
+		
+		console.log(annualMeans);
+	})
+}
+
+function calculateDaysWithMeanAbove(csv, year, value) {
+	d3.csv(csv, function(error, data) {
+		if (error) throw error;
+		
+		//d3data = data;
+		
+		data.forEach(function(d) {
+			d.date = parseDay(d.date);
+			d.year = +d.year;
+			d.month = +d.month;
+			d.day = +d.day;
+			d.hour = +d.hour;
+			d.value = +d.value;
+		});
+		
+		var dailyMeans = [];
+		var daysWithMeanAbove = 0;
+		dailyMeans = d3.nest()
+			.key(function(d) {
+				return d.date;
+			})
+			.rollup(function(v) {
+				return [
+						d3.mean(v, function(d) {
+							if(d.value > -1) {
+								return d.value;
+								} else return;
+							})
+						];
+			})
+			.entries(data);
+			
+		dailyMeans.forEach(function(item, index) {
+			//annualMeans.push(item.value);
+			//console.log("pushing " + item.value + "into daily mean array");
+			if (item.value > value) {
+				daysWithMeanAbove++;
+			}
+		});
+		var target = "radial-bad-number-" + year;
+		console.log("setting " + daysWithMeanAbove + " into " + target);
+		document.getElementById(target).innerHTML = daysWithMeanAbove;
+		
+	})
+}
+
 function calculateMinMeanMax(csv, target) {
 	//currently calculating daily values which makes the chart very jagged
 	d3.csv(csv, function(error, data) {
@@ -332,8 +418,8 @@ function calculateMinMeanMax(csv, target) {
 			})
 			.entries(data);
 			
-		//console.log('min, mean, mx:');
-		//console.log(mmm);
+		console.log('min, mean, mx:');
+		console.log(mmm);
 		
 		var minMeanMax = [];
 		
@@ -473,21 +559,12 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 			bdm.bad_days = bad_days_month;
 			
 			//need to percentify for sparklines
-			
 			badDaysPerMonth.push(bdm.bad_days);
-			
-			//badDaysPerMonth.forEach(function(item, index){
-			//	
-			//})
 			
 			var max = Math.max.apply(Math, badDaysPerMonth); // picks out 5000
 			percents = badDaysPerMonth.map(n => Math.round(n/max * 100));
 			
 			document.getElementById(sparkTarget).innerHTML = "{" + percents + "}";
-			
-			
-			//console.log("bdm: ");
-			//console.log(bdm);
 		});
 		
 		switch(monthsArray) {

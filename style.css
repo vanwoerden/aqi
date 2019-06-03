@@ -378,10 +378,44 @@ canvas#bar-bkg {
 	font-size: 1.3em;
 	font-weight: 400;
 	text-align: center;
-	margin-top: -8.1em;
+	margin-top: -8.25em;
+}
+.bad-days-number-legend {
+	font-size: 1.5em;
+	font-weight: 400;
+}
+.annual-mean {
+	text-align: center;
+	font-weight: 400;
+	font-size: 0.9em;
+	margin-top: -0.7em;
+	color: #555;
+}
+.annual-mean-legend {
+	font-weight: 400;
+	font-size: 1.1em;
+	color: #555;
+}
+.legend-circle {
+	margin-top: 0.3em;
+	padding-top: 1.4em;
+	text-align: center;
+	width: 60px;
+	height: 60px;
+	border-radius: 50px;
+	border: 1px dotted #888;
+	float: left;
+}
+.legend-circle-labels {
+	font-size: 1.1em;
+  padding-left: 0.5em;
+  padding-top: 1.55em;
+	float: left;
 }
 /* radial charts legend */
 .legend {
+	position: absolute;
+	right: 4em;
 	font-size: 0.7em;
 	line-height: 1.5em;
 	margin-top: 10.5em;
@@ -390,6 +424,7 @@ canvas#bar-bkg {
 	font-size: 1.2em;
 	font-weight: 500;
 	padding-bottom: 0.5em;
+	padding-top: 1em;
 }
 .rect {
 	width: 1.2em;
