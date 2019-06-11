@@ -160,6 +160,25 @@ var csvs = [
  * 
  */
 
+
+$( document ).ready(function() {
+    $("#legend").click(function(){
+		$("#legend").toggleClass("popped");
+		//$('#legend').toggle(
+		//	function(){
+		//		$('#legend').animate({
+		//			bottom: "0"
+		//		}, 500);
+		//		
+		//	},
+		//	function(){
+		//		$('#legend').animate({
+		//			bottom: "-262"
+		//		}, 500);     
+		//});
+	});
+	
+});
 /* SLIDER STUFF */
 
 

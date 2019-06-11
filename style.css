@@ -170,7 +170,7 @@ svg {
 	margin-top: 50px;
 }
 .square {
-	width: 25%;
+
 	height: 260px;
 	/*border: 0.4px dashed #f5f5f5;*/
 	/*float: left;*/
@@ -213,7 +213,9 @@ p.large {
 }
 .flex-container {
 	display: flex;
+	flex-wrap: wrap;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -227,7 +229,7 @@ p.large {
 	flex: 1.5 1 0;
 }
 .column-2 {
-  flex: 2 1 0;
+  flex: 1 2 0;
 }
 column-3 {
 	flex: 3 1 0;
@@ -297,6 +299,7 @@ h3.bad-air {
 .block {
 	/*padding: 2em 6em;*/
 	overflow: auto;
+	max-width: 460px;
 }
 .gray {
 	background: #f5f5f5;
@@ -325,6 +328,54 @@ canvas#bar-bkg {
 	bottom: 0;
 }
 /* radial charts */
+.flex-item-1 {
+	flex-wrap: wrap;
+	order: -1;
+}
+.flex-item {
+	display: block;
+	flex-wrap: wrap;
+  align-items: center;
+}
+.narrow {
+	width: 250px;
+	margin-left: 2em;
+}
+.wide {
+	max-width: 460px;
+	width: 30%;
+	padding-right: 1em;
+}
+.first {
+	order: -1;
+}
+.second {
+	order: 1;
+}
+.third {
+	order: 2;
+}
+.fourth {
+	order: 3;
+}
+.fifth {
+	order: 4;
+}
+.sixth {
+	order: 5;
+}
+.seventh {
+	order: 6;
+}
+.eighth {
+	order: 7;
+}
+.ninth {
+	order: 8;
+}
+.tenth {
+	order: 9;
+}
 .block-left {
 	width: 40%;
 	float: left;
@@ -812,8 +863,11 @@ input[type=range]:focus::-moz-range-track {
   .flex-grid {
     display: block;
   }
+	svg {
+		margin-top: 0;
+	}
 	.section {
-		padding: 6em 0;
+		padding: 3em 0;
 	}
 	.section-nopad {
 		padding: 0 0 6em 0;
@@ -824,13 +878,20 @@ input[type=range]:focus::-moz-range-track {
 	.container-full {
 		
 	}
+	h1.white {
+		padding: 0 2rem;
+	}
+	.sky-background {
+		height: 600px;
+	}
 	.half-width {
 		width: 100%;
 		/*margin-left: 5%;*/
 	}
 	.flex-container {
-		display: block;
+		/*display: block;*/
 		padding: 0 2em;
+		justify-content: center;
 	}
 	.sliders-block, .sliders-title, #sliders > p {
 		padding: 0 2rem;
@@ -839,7 +900,8 @@ input[type=range]:focus::-moz-range-track {
 		padding-bottom: 1em;
 	}
 	.sliders-title {
-		padding: 1em 2rem 0.5em 2rem;
+		padding: 0;
+		padding-top: 1em;
 	}
 	.block-right {
 		padding: 0;
@@ -909,12 +971,74 @@ input[type=range]:focus::-moz-range-track {
 		padding-top: 6em;
 	}
 	.legend {
-		position: absolute;
-		margin-top: 2em;
+		position: fixed;
+    /* margin-top: 2em; */
+    z-index: 555;
+    /* top: 740px; */
+    /* margin-left: 2rem; */
+    bottom: -262px;
+    left: 0;
+    background: white;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    padding: 2rem;
+		padding-top: 0.4em;
+		cursor: pointer;
+	}
+	.popped {
+		transition-duration: 0.3s;
+		bottom: 0;
 	}
 	.email {
 		border: 1px solid #ccc;
 		width: 100%;
+	}
+	/* radial charts */
+	.radial-charts-container > div {
+    width: 150px;
+	}
+	.square {
+		/*scale: 0.7;*/
+		margin: 0 auto;
+	}
+	.wide {
+		width: 100%;
+		padding-right: 0;
+		padding-bottom: 3em;
+	}
+	.narrow {
+		
+		margin-left: 0;
+	}
+	.first {
+	order: -1;
+	}
+	.second {
+		order: 1;
+	}
+	.third {
+		order: 2;
+	}
+	.fourth {
+		order: 3;
+	}
+	.fifth {
+		order: 4;
+	}
+	.sixth {
+		order: 5;
+	}
+	.seventh {
+		order: 6;
+	}
+	.eighth {
+		order: 7;
+	}
+	.ninth {
+		order: 8;
+	}
+	.tenth {
+		order: 9;
 	}
 }
 
