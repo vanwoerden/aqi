@@ -120,7 +120,7 @@
 	
 	
     <!--<section class="spacer gray"></section>-->
-    <section class="section">
+    <section class="section radial-charts" id="radial-charts">
         <div class="container-14 center flex-container">
             <div class="block column-2">
                 <h3>
@@ -251,40 +251,47 @@
         </div>
             <div class="legend" id="legend">
                 <h4>LEGEND</h4>
-                <div class="legend-title">PM2.5 level</div>
-                <div class="legend-item">
-                    <span class="rect green"></span>
-                    <span class="label">0 - 50</span>
+                <div class="legend-title">PM2.5 (mg/ml)</div>
+                <div class="legend-left">
+                    
+                    <div class="legend-item">
+                        <span class="rect green"></span>
+                        <span class="label">0 - 50</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="rect yellow"></span>
+                        <span class="label">50 - 100</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="rect orange"></span>
+                        <span class="label">100 - 150</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="rect red"></span>
+                        <span class="label">150 - 200</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="rect burgundy"></span>
+                        <span class="label">250 - 300</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="rect dark"></span>
+                        <span class="label">300+</span>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <span class="rect yellow"></span>
-                    <span class="label">50 - 100</span>
+                <div class="right">
+                    
+                    <div class=legend-circle>
+                        <div class="bad-days-number-legend">124</div>
+                        <div class="annual-mean-legend">83</div>
+                    </div>
+                    <div class="legend-circle-labels">
+                        <div class="label">days with mean > 25</div>
+                        <div class="label">annual mean</div>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <span class="rect orange"></span>
-                    <span class="label">100 - 150</span>
-                </div>
-                <div class="legend-item">
-                    <span class="rect red"></span>
-                    <span class="label">150 - 200</span>
-                </div>
-                <div class="legend-item">
-                    <span class="rect burgundy"></span>
-                    <span class="label">250 - 300</span>
-                </div>
-                <div class="legend-item">
-                    <span class="rect dark"></span>
-                    <span class="label">300+</span>
-                </div>
-                <div class="legend-title">Bad days</div>
-                <div class=legend-circle>
-                    <div class="bad-days-number-legend">124</div>
-                    <div class="annual-mean-legend">83</div>
-                </div>
-                <div class="legend-circle-labels">
-                    <div class="label">annual bad days</div>
-                    <div class="label">annual mean PM2.5 level</div>
-                </div>
+                
+
                 
             </div>
 		</div>
@@ -589,6 +596,7 @@
 		</div>
 	</section>
     <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="https://static.sekandocdn.net/static/feednami/feednami-client-v1.1.js"></script>
 	<script type="text/javascript" src="js/d3.min.js"></script>
 	<script type="text/javascript" src="js/d3-scale-radial.js"></script>
 	<!--<script type="text/javascript" src="js/Chart.min.js"></script>-->

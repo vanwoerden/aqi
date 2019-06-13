@@ -197,6 +197,7 @@ p.large {
 }
 .right {
 	float: right;
+	margin-top: 1em;
 }
 .center {
 	margin: 0 auto;
@@ -413,7 +414,7 @@ canvas#bar-bkg {
 }
 .radial-chart-title {
 	font-weight: 500;
-	font-size: 0.8em;
+	font-size: 1.2em;
 	padding-bottom: 0;
 	text-transform: uppercase;
 }
@@ -424,6 +425,7 @@ canvas#bar-bkg {
 	background: #fff;
 	font-weight: 400;
 	text-align: center;
+	color: #777;
 }
 .bad-days-number {
 	font-size: 1.3em;
@@ -462,14 +464,15 @@ canvas#bar-bkg {
   padding-left: 0.5em;
   padding-top: 1.55em;
 	float: left;
+	width: 150px;
 }
 /* radial charts legend */
 .legend {
 	position: absolute;
-	right: 4em;
+	right: 2em;
 	font-size: 0.7em;
 	line-height: 1.5em;
-	margin-top: 10.5em;
+	margin-top: -112.5em;
 }
 .legend-title {
 	font-size: 1.2em;
@@ -976,14 +979,22 @@ input[type=range]:focus::-moz-range-track {
     z-index: 555;
     /* top: 740px; */
     /* margin-left: 2rem; */
-    bottom: -262px;
+    bottom: -149px;
     left: 0;
     background: white;
     border-top: 1px solid #ccc;
     width: 100%;
     padding: 2rem;
+		padding-bottom: 1.2rem;
 		padding-top: 0.4em;
 		cursor: pointer;
+	}
+	.legend-left {
+		width: 85px;
+		float: left;
+	}
+	#legend {
+		display: none;
 	}
 	.popped {
 		transition-duration: 0.3s;

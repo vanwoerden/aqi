@@ -162,25 +162,55 @@ var csvs = [
 
 
 $( document ).ready(function() {
-    $("#legend").click(function(){
-		$("#legend").toggleClass("popped");
-		//$('#legend').toggle(
-		//	function(){
-		//		$('#legend').animate({
-		//			bottom: "0"
-		//		}, 500);
-		//		
-		//	},
-		//	function(){
-		//		$('#legend').animate({
-		//			bottom: "-262"
-		//		}, 500);     
-		//});
+	// get current AQI and PM2.5 from stateair.net
+	var url = 'http://stateair.net/web/rss/1/1.xml';
+	
+	feednami.load(url,function(result){
+		if(result.error) {
+			console.log(result.error);
+		} else {
+			var entries = result.feed.entries;
+			for(var i = 0; i < entries.length; i++){
+				var entry = entries[i];
+				console.dir(entry);
+			}
+		}
 	});
 	
+	$("#legend").click(function(){
+		$("#legend").toggleClass("popped");
+	});
+	
+	var radialCharts = document.getElementById('radial-charts');
+	window.addEventListener('scroll', function (event) {
+		//console.log(isInViewport(radialCharts));
+		if (isInViewport(radialCharts)) {
+			//console.log("in viewport");
+			document.getElementById('legend').style.display = "block";
+		} else {
+			document.getElementById('legend').style.display = "none";
+		}
+	}, false);
+	
+	var isInViewport = function (el) {
+		//console.log("isInViewport? " + el.id);
+		const rect = el.getBoundingClientRect();
+		// DOMRect { x: 8, y: 8, width: 100, height: 100, top: 8, right: 108, bottom: 108, left: 8 }
+		const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+		const windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+	
+		// http://stackoverflow.com/questions/325933/determine-whether-two-date-ranges-overlap
+		const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
+		const horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
+	
+		return (vertInView && horInView);
+	};
 });
-/* SLIDER STUFF */
 
+
+
+
+/* SLIDER STUFF */
 
 function initSliders(){
 	//createBarChart("bar-bkg");
