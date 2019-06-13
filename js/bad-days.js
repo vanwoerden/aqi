@@ -164,7 +164,7 @@ var csvs = [
 $( document ).ready(function() {
 	// get current AQI and PM2.5 from stateair.net
 	var url = 'http://stateair.net/web/rss/1/1.xml';
-	
+	feednami.setPublicApiKey('4275c345f113cdbd6aabbce7591be24577fe0ec93777769c6366d2bb0056daee');
 	feednami.load(url,function(result){
 		if(result.error) {
 			console.log(result.error);
