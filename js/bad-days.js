@@ -71,7 +71,7 @@ var sparkContent = "1{2,4,6,9,6,2,12,10,8,10,6,12}12";
 				max: 1001
 		},
 		
-	]
+	];
 var pieArray = ["pie-2009", "pie-2010", "pie-2011", "pie-2012", "pie-2013", "pie-2014", "pie-2015", "pie-2016", "pie-2017", "pie-2018"];
 var mmmArray = [
 				"#mmm-2009",
@@ -84,7 +84,7 @@ var mmmArray = [
 				"#mmm-2016",
 				"#mmm-2017",
 				"#mmm-2018"
-				]
+				];
 var csvs = [
 {
 	csv: "./data/beijing_2009_daily_for_bad_days.csv",
@@ -162,7 +162,8 @@ var csvs = [
 
 
 $( document ).ready(function() {
-	// get current AQI and PM2.5 from stateair.net
+	// get current AQI and PM2.5 from stateair.
+	initSliders();
 	var url = 'http://stateair.net/web/rss/1/1.xml';
 	feednami.setPublicApiKey('4275c345f113cdbd6aabbce7591be24577fe0ec93777769c6366d2bb0056daee');
 	feednami.load(url,function(result){
@@ -170,10 +171,72 @@ $( document ).ready(function() {
 			console.log(result.error);
 		} else {
 			var entries = result.feed.entries;
+			var aqiArr = [];
+			var pm25Arr = [];
+			var timeArr = [];
 			for(var i = 0; i < entries.length; i++){
 				var entry = entries[i];
-				console.dir(entry);
+				//console.log(JSON.stringify(entry['rss:conc']['#']));
+				pm25Arr.push(entry['rss:conc']['#']);
+				aqiArr.push(entry['rss:aqi']['#']);
+				timeArr.push(entry.title);
 			}
+			var curAQI = aqiArr[aqiArr.length-1];
+			var curPM = pm25Arr[pm25Arr.length-1];
+			var colors = [
+				"#242038",
+				"#880D1E",
+				"#D1324C",
+				"#E8A945",
+				"#F7DB76",
+				"#BFF5DB"
+			];
+			var color;
+			var color2;
+			if (curAQI < 50) {
+				color = colors[5];
+			} else if (curAQI >= 50 && curAQI < 100) {
+				
+				color = colors[4];
+			} else if (curAQI >= 100 && curAQI < 150) {
+				color = colors[3];
+			} else if (curAQI >= 150 && curAQI < 200) {
+				color = colors[2];
+			} else if (curAQI >= 200 && curAQI < 300) {
+				color = colors[1];
+			} else if (curAQI > 300) {
+				color = colors[0];
+			}
+			
+			if (curPM < 50) {
+				color2 = colors[5];
+			} else if (curPM >= 50 && curPM < 100) {
+				
+				color2 = colors[4];
+			} else if (curPM >= 100 && curPM < 150) {
+				color2 = colors[3];
+			} else if (curPM >= 150 && curPM < 200) {
+				color2 = colors[2];
+			} else if (curPM >= 200 && curPM < 300) {
+				color2 = colors[1];
+			} else if (curPM > 300) {
+				color2 = colors[0];
+			}
+			
+			var date = new Date(timeArr[timeArr.length-1]);
+			var hrs = date.getHours();
+			var mins = date.getMinutes();
+			var currentTime = hrs + ":" + mins + "0";
+			//console.log("currentTime = " + currentTime);
+			//console.log("hours = " + hrs);
+			//console.log("minutes = " + mins);
+			
+			$("#current-aqi").html(aqiArr[aqiArr.length-1]);
+			$("#current-pm25").html(pm25Arr[pm25Arr.length-1]);
+			$("#current-time").html(currentTime);
+			$(".circle").css("background", color);
+			//$("#current-pm25").css("background", color);
+			$(".circle").fadeIn("200");
 		}
 	});
 	
@@ -223,8 +286,8 @@ function initSliders(){
 		calculateDaysWithMeanAbove(e.csv, e.monthsArray, 25);
 	});
 	_initial = false;
-	console.log('initsliders');
-	console.log(document.getElementsByClassName("slider-hours")[0].valueLow);
+	//console.log('initsliders');
+	//console.log(document.getElementsByClassName("slider-hours")[0].valueLow);
 	//loadData();
 	// set initial positions
 	//createPieCharts(pieArray);
@@ -249,7 +312,7 @@ function initSliders(){
 		_hours = _high - _low;
 		//console.log("hours: " + _hours);
 		var sliderWidth = document.getElementById("sky-rectangle").clientWidth;
-		console.log('slider width = ' + sliderWidth);
+		//console.log('slider width = ' + sliderWidth);
 		document.getElementById("aqi-rectangle").style.height = (150 / 600 * _aqi) + 'px';
 		document.getElementById("aqi-rectangle").style.width = (sliderWidth / 24 * _hours) + 'px';
 		document.getElementById("aqi-rectangle").style.marginLeft = (sliderWidth/18) + 1 + (sliderWidth / 24 * _low) + 'px';
@@ -374,9 +437,11 @@ function calculateAnnualMean(csv, year) {
 			
 		mmm.forEach(function(item, index) {
 			annualMeans.push(item.value);
-			console.log("pushing " + item.value + "into annual mean array");
+			//console.log("pushing " + item.value + "into annual mean array");
 			var target = "annual-mean-" + year;
+			var target2 = "#annual-mean-intro-" + year;
 			document.getElementById(target).innerHTML = Math.round(item.value);
+			drawAnnualMeans(Math.round(item.value), target2);
 		});
 		
 		console.log(annualMeans);
@@ -423,12 +488,37 @@ function calculateDaysWithMeanAbove(csv, year, value) {
 			}
 		});
 		var target = "radial-bad-number-" + year;
-		console.log("setting " + daysWithMeanAbove + " into " + target);
+		var target2 = "#bad-number-bar-" + year;
+		//console.log("setting " + daysWithMeanAbove + " into " + target);
 		document.getElementById(target).innerHTML = daysWithMeanAbove;
 		
-	})
+		drawIntroAnnualDaysAbove25Bar(daysWithMeanAbove ,target2);
+	});
 }
 
+function drawIntroAnnualDaysAbove25Bar(days, target) {
+	//console.log("drawIntroAnnualDaysAbove25Bar " + target);
+	var yeartarget = target + "-year";
+	console.log("drawIntroAnnualDaysAbove25Bar " + yeartarget);
+	//document.getElementById(yeartarget).innerHTML = days;
+	$(yeartarget).html(days);
+	var pcnt = days/365 * 200;
+	console.log("height: " + pcnt);
+	$( target ).animate({
+		height: pcnt + "px",//bad_days * 1.5 + "px",
+	}, 300 );
+}
+
+function drawAnnualMeans(pm25, target) {
+	console.log("drawAnnualMeans " + target);
+	var txttarget = target + "-txt";
+	console.log(txttarget);
+	$(txttarget).html(pm25);
+	
+	$( target ).animate({
+		height: pm25*2 + "px",//bad_days * 1.5 + "px",
+	}, 300 );
+}
 function calculateMinMeanMax(csv, target) {
 	//currently calculating daily values which makes the chart very jagged
 	d3.csv(csv, function(error, data) {
@@ -467,8 +557,8 @@ function calculateMinMeanMax(csv, target) {
 			})
 			.entries(data);
 			
-		console.log('min, mean, mx:');
-		console.log(mmm);
+		//console.log('min, mean, mx:');
+		//console.log(mmm);
 		
 		var minMeanMax = [];
 		
@@ -548,7 +638,7 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		//console.log("tgt for bar = " + tgt);
 		//document.getElementById(tgt).style.height = bad_days * 2.5 + "px";
 		//$(tgt).fadeOut();
-		var pcnt = bad_days/365 * 200;
+		var pcnt = bad_days/365 * 300;
 		$( tgt ).animate({
 			height: pcnt + "px",//bad_days * 1.5 + "px",    
 		}, 300 );
@@ -565,7 +655,7 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		
 		function updateChart(chart) {
 			// do the update
-			console.log('updating the pie chart');
+			//console.log('updating the pie chart');
 		}
 
 		//let's see how many bad days each month
@@ -680,118 +770,22 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 				coordinates.push(xy);
 				arr.push(item);
 			});
-			//console.log(coordinates);
-			//console.log('coords aboove');
-			
-			//drawLine(coordinates, "#compare-bad-days-chart", 600, 100, 0);
-			// send array to sparkline difference div
 			
 			var targetID = "difference-" + sparkTarget.substr(-4)
 			//console.log(targetID);
 			document.getElementById(targetID).innerHTML = "{" + arr + "}";
 		}
-		
-		//var eachMonthsArray = {};
-		//eachMonthsArray.bad_days = badDaysPerMonth;
-		//eachMonthsArray.id = monthsArray; // bad_days_2015
-		
-		
 	})
 	
-	//console.log("months: ");
-	//console.log(months);
-	//console.log("month1 bad days: " + months[0].id);
-	
 }
-//console.log("2015: ");
-//console.log(_2015);
-//console.log("months2 length: " + months.length);
 function onParseComplete() {
 	showDifferenceBetweenYears(months[2].bad_days, months[months.length-1].bad_days);
-}
-
-function createBarChart(bar) {
-	console.log('create bar chart');
-	// draw pie charts with bad days
-	var ctx = document.getElementById(bar).getContext("2d");
-	ctx.height = 150;
-	//ctx.height = 50;
-	//ctx.width = 25;
-	myChart = {};	
-	myChart = new Chart(ctx, {
-		type: 'bar',
-		data: {
-		  labels: ["2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017" ,"2018"],
-		  datasets: [
-			{
-			  label: "bad days",
-			  //backgroundColor: ["#3e95cd"],
-			  data: [194,216,190,198,228, 216, 173, 171, 74, 55]
-			}
-		  ]
-		},
-		options: {
-		  legend: { display: false },
-		  title: {
-			display: true,
-			text: 'Bad air days in Beijing'
-		  }
-		}
-	});
-}
-function createPieChart(chart) {
-	console.log('create pie chart');
-	// draw pie charts with bad days
-	var ctx = document.getElementById(item).getContext("2d");
-	//ctx.height = 50;
-	//ctx.width = 25;
-	myChart = {};	
-	myChart = new Chart(ctx, {
-		type: 'pie',
-		data: {
-			
-			datasets: [{
-				label: '',
-				data: [bad_days, 365-bad_days],
-				backgroundColor: [
-					'#000',
-					'#fff'
-				],
-				borderColor: [
-					'#000',
-					'#999'
-				],
-				borderWidth: 1
-			}]
-		},
-		options: {
-			maintainAspectRatio: false,
-			responsive: false,
-			scales: {
-				yAxes: [{
-					display: false,
-					stacked: true
-				}],
-				xAxes: [{
-					display: false,
-					stacked: true
-				}]
-			},
-			legend: {
-				display: false
-			},
-			tooltips: {
-				enabled: false
-			}
-		}
-	});
-	
 }
 
 //drawHeatmap();
 function drawHeatmap() {
 	// we will need a count for every hour of the day, for all 6 AQI ranges, so that's 24 * 6 = 144 values to calculate
-	console.log("drawheatmap");
+	//console.log("drawheatmap");
 	d3.csv(csvs[8].csv, function(error, data) {
 			if (error) throw error;
 			
