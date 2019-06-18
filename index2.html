@@ -42,95 +42,101 @@
 	<section class="section">
 		
 		<div class="container-14 center flex-container">
+			<div class="flex-item wide">
+                <div class="paragraph">
+                    <h3>
+                        In Beijing, the AQI is the weather.
+                    </h3>
+                    <!--<p>
+                        Before moving here, I never worried about air quality. In Beijing, it's different. You know you've been here for a while if the first thing you do when you arrive in another country is checking the AQI (Air Quality Index).
+                    </p>-->
+                    <p>
+                        Where people elsewhere are obsessed with the weather, here it's all about the AQI. Possibly because, save air quality, the forecast is straightforward; scorching hot or freezing, with a few weeks of spring or fall in between.
+                    </p>
+                    <p>
+                        The AQI, or Air Quality Index, is a single number that roughly communicates how healthy or unhealthy the air is. It's made up of PM10, PM2.5, ozone, carbon monoxide, sulfur dioxide, and nitrogen dioxide. PM2.5 (particulate matter with a diameter of 2.5 &mu;m or less) is widely considered the most harmful out of these six, although there seems to be recent research that suggests ozone is pretty bad too.
+                    </p>
+                    <p>
+                        The AQI can make or break your day. What could have been a perfect day for lounging at the pool becomes a sad Saturday spent inside, on a 'bad airday'.
+                    </p>
+                    <p class="paragraph">
+                        The US Embassy in Beijing has been collecting <a href="http://stateair.net/web/historical/1/1.html" target="_blank">hourly PM2.5 data</a> since 2008. Sadly, they haven't published any data since June 2017. However, Berkeley Earth has been collecting <a href="http://berkeleyearth.lbl.gov/air-quality/local/China/Beijing/Beijing" target="_blank">PM2.5 data since 2014</a>, and their data is current. 
+                    </p>
+                </div>
+            </div>
 			
-			<!--<h3>-->
-			<!--	This is a (air) quality investigation.-->
-			<!--</h3>-->
-			<div class="paragraph">
-				<h3>
-					In Beijing, the AQI is the weather.
-				</h3>
-				<!--<p>
-					Before moving here, I never worried about air quality. In Beijing, it's different. You know you've been here for a while if the first thing you do when you arrive in another country is checking the AQI (Air Quality Index).
-				</p>-->
-				<p>
-					Where people elsewhere are obsessed with the weather, here it's all about the AQI. Possibly because, save air quality, the forecast is straightforward; scorching hot or freezing, with a few weeks of spring or fall in between.
-				</p>
-                <p>
-                    The AQI, or Air Quality Index, is a single number that roughly communicates how healthy or unhealthy the air is. It's made up of PM10, PM2.5, ozone, carbon monoxide, sulfur dioxide, and nitrogen dioxide. PM2.5 (particulate matter with a diameter of 2.5 &mu;m or less) is widely considered the most harmful out of these six, although there seems to be recent research that suggests ozone is pretty bad too.
-                </p>
-				<p>
-					The AQI can make or break your day. What could have been a perfect day for lounging at the pool becomes a sad Saturday spent inside, on a 'bad airday'.
-				</p>
-                <p class="paragraph">
-                    The US Embassy in Beijing has been collecting <a href="http://stateair.net/web/historical/1/1.html" target="_blank">hourly PM2.5 data</a> since 2008. Sadly, they haven't published any data since June 2017. However, Berkeley Earth has been collecting <a href="http://berkeleyearth.lbl.gov/air-quality/local/China/Beijing/Beijing" target="_blank">PM2.5 data since 2014</a>, and their data is current. 
-                </p>
-                <h4 class="sliders-title">
-                    What's a bad air day? 
-                </h4>
-                <p>
-                    The World Health Organization has set a max annual mean of PM2.5 10 &mu;g/m<sup>3</sup>, and a 24hr mean of 25 &mu;g/m<sup>3</sup> as the guideline when it comes to PM2.5 concentration. It's pretty clear that every year since 2009 has not met those criteria: the annual means range from 102 to 70 &mu;g/m<sup>3</sup>.
-                </p>
-                    The number of days "sporting" a daily mean of 25 &mu;g/m<sup>3</sup> or higher is also not so great.
-                </p>
-				<!--<p>-->
-				<!--	At Xiaomi, I worked on the India launch of the Mi Air Purifier 2. The launch event was set to happen in Delhi, which in recent years has come to rival Beijing in terms of air pollution. In the launch presentation, we compared the air quality in Beijing, Delhi, and San Francisco. I had already worked on <a href="http://seriousness.nl/wake_me_run_run.html" target="_blank">an AQI based alarm app</a> with a friend, but what really sparked my interest was finding out that several organizations publish air quality data online. -->
-				<!--</p>-->
-				<p>
-					
-				</p>
-			</div>
-            <div class="column-2">
+            <div class="flex-item wider">
                 <div class="circle">
                     <div id="current-pm25"></div><div class="unit">&mu;g/m<sup>3</sup></div>
                     <div class="current-pm25-label">PM2.5 level in Beijing, <span id="current-time"></span></div>
                     <div id="current-aqi"></div>
                     <div class="current-aqi-label">AQI level in Beijing, <span id="current-time"></span></div>
                 </div>
+                <!--<div class="caption-mean">Annual mean PM2.5 level in Beijing</div>-->
+            </div>
+            <div class="flex-item wide">
+                <div class="paragraph">
+                    <h4 class="sliders-title">
+                        What's a bad air day? 
+                    </h4>
+                    <p>
+                        The World Health Organization has set a max annual mean of PM2.5 10 &mu;g/m<sup>3</sup>, and a 24hr mean of 25 &mu;g/m<sup>3</sup> as the guideline when it comes to PM2.5 concentration. It's pretty clear that every year since 2009 has not met those criteria: the annual means range from 102 to 70 &mu;g/m<sup>3</sup>.
+                    </p>
+                        The number of days "sporting" a daily mean of 25 &mu;g/m<sup>3</sup> or higher is also not so great.
+                    </p>
+                    <!--<p>-->
+                    <!--	At Xiaomi, I worked on the India launch of the Mi Air Purifier 2. The launch event was set to happen in Delhi, which in recent years has come to rival Beijing in terms of air pollution. In the launch presentation, we compared the air quality in Beijing, Delhi, and San Francisco. I had already worked on <a href="http://seriousness.nl/wake_me_run_run.html" target="_blank">an AQI based alarm app</a> with a friend, but what really sparked my interest was finding out that several organizations publish air quality data online. -->
+                    <!--</p>-->
+                    <p>
+                        
+                    </p>
+                </div>
+            </div>
+            <div class="flex-item wide">
                 <div class="annual-mean-bars-container">
                     <div class="spacer-block"></div>
                     
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2009-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2009"></div>
                         <div class="bar-10"></div>
                     </div>
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2010-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2010"></div>
                         <div class="bar-10"></div>
                     </div>
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2011-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2011"></div>
                         <div class="bar-10"></div>
                     </div>
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2012-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2012"></div>
                         <div class="bar-10"></div>
                     </div>
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2013-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2013"></div>
                         <div class="bar-10"></div>
                     </div>
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2014-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2014"></div>
                         <div class="bar-10"></div>
                     </div>
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2015-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2015"></div>
                         <div class="bar-10"></div>
                     </div>
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2016-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2016"></div>
                         <div class="bar-10"></div>
                     </div>
-                    <div class="barkey">
+                    <div class="barkey-narrow">
                         <div class="bad-number" id="annual-mean-intro-2017-txt"></div>
                         <div class="barmean" id="annual-mean-intro-2017"></div>
                         <div class="bar-10"></div>
@@ -142,52 +148,75 @@
                     <!--    <div class="bar" id="bad-days-2018-bar"></div>-->
                     <!--</div>-->
                 </div>
+            <!--</div>-->
+            <!--<div class="flex-item wide">-->
                 <div class="intro-bars-container">
                     <div class="spacer-block"></div>
                     
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2009-year"></div>
+                    <div class="barkey-narrow">
+                        
                         <div class="bar" id="bad-number-bar-2009"></div>
+                        <div class="bad-number" id="bad-number-bar-2009-year"></div>
                     </div>
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2010-year"></div>
+                    <div class="barkey-narrow">
                         <div class="bar" id="bad-number-bar-2010"></div>
+                        <div class="bad-number" id="bad-number-bar-2010-year"></div>
+                        
                     </div>
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2011-year"></div>
+                    <div class="barkey-narrow">
                         <div class="bar" id="bad-number-bar-2011"></div>
+                        <div class="bad-number" id="bad-number-bar-2011-year"></div>
+                        
                     </div>
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2012-year"></div>
+                    <div class="barkey-narrow">
                         <div class="bar" id="bad-number-bar-2012"></div>
+                        <div class="bad-number" id="bad-number-bar-2012-year"></div>
+                        
                     </div>
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2013-year"></div>
+                    <div class="barkey-narrow">
                         <div class="bar" id="bad-number-bar-2013"></div>
+                        <div class="bad-number" id="bad-number-bar-2013-year"></div>
+                        
                     </div>
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2014-year"></div>
+                    <div class="barkey-narrow">
                         <div class="bar" id="bad-number-bar-2014"></div>
+                        <div class="bad-number" id="bad-number-bar-2014-year"></div>
+                        
                     </div>
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2015-year"></div>
+                    <div class="barkey-narrow">
                         <div class="bar" id="bad-number-bar-2015"></div>
+                        <div class="bad-number" id="bad-number-bar-2015-year"></div>
+                        
                     </div>
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2016-year"></div>
+                    <div class="barkey-narrow">
                         <div class="bar" id="bad-number-bar-2016"></div>
+                        <div class="bad-number" id="bad-number-bar-2016-year"></div>
+                        
                     </div>
-                    <div class="barkey">
-                        <div class="bad-number" id="bad-number-bar-2017-year"></div>
+                    <div class="barkey-narrow">
                         <div class="bar" id="bad-number-bar-2017"></div>
+                        <div class="bad-number" id="bad-number-bar-2017-year"></div>
+                        
                     </div>
                     <!--<div class="barkey">-->
                     <!--    <div class="bad-number" id="bad-number-2018"></div>-->
                     <!--    <div class="bar" id="bad-days-2018-bar"></div>-->
                     <!--</div>-->
                 </div>
-                
-                <!--<div class="caption-mean">Annual mean PM2.5 level in Beijing</div>-->
+            </div>
+            <div class="flex-item wide">
+                <div class="big-label-container">
+                    <div class="big-label">
+                        <h4>
+                            Annual mean PM2.5
+                        </h4>
+                    </div>
+                    <div class="big-label">
+                        <h4>
+                            Days with mean exceeding 25 &mu;g/m<sup>3</sup>
+                        </h4>
+                    </div>
+                </div>
             </div>
 		</div>
 		
