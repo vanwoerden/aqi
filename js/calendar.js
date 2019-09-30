@@ -1,5 +1,4 @@
 console.log("calendar.js");
-mixpanel.has_opted_out_tracking();
 // aqi breaks var breaks=[50,100,150,200,300];
 var breaks=[1,2,4,6,8,12,16,20];
 //var colours=["#BFF5DB", "#F7DB76", "#E8A945", "#D1324C", "#880D1E", "#242038"];
