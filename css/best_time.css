@@ -1,0 +1,82 @@
+.content {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+#intro {
+	padding-top: 3em;
+}
+#title {
+	padding-top: 6em;
+	padding-bottom: 2em;
+	text-align: left;
+}
+#calendar-container {
+	height: auto;
+}
+#bad-days-container {
+	/*margin-top: 2em;*/
+	margin-left: 38px;
+	width: 92.5%;
+}
+.month {
+	height: 30px;
+	padding-top: 1em;
+	font-size: 1.2em;
+	font-weight: 500;
+	text-align: center;
+	width: 100%;
+}
+.bad-month-container {
+	float: left;
+	width: calc(100%/12);
+}
+.month-label {
+	font-size: 0.7em;
+	text-align: center;
+	padding-top: 0.4em;
+}
+g#calendar-legend {
+	position: absolute !important;
+	margin-right: 0;
+}
+#weeks-container {
+	margin-top: 2.2em;
+	margin-left: 31px;
+	height: 50px;
+	clear:both;
+}
+.week-rect {
+	float: left;
+	height: 21.5px;
+	width: 21.3px;
+	background: #084081;
+	/*border-radius: 0 0 4px 4px;*/
+	border: 5px solid white;
+}
+.bad-number {
+	font-size: 1.2em;
+	text-align: center;
+	width: 97px;
+	float: left;
+}
+.best-time-slider-container, .best-time-hours-slider-container {
+	margin-left: 100px;
+	margin-top: 50px;
+	width: 300px;
+}
+#slider-aqi-best-time, #slider-hours-best-time {
+	/*width: 100%;*/
+}
+#weather {
+	margin-top: 6em;
+}
+.tick {
+	font-size: 0.8em;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
+}

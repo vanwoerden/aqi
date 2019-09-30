@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/best_time.css">
+    <link rel="stylesheet" type="text/css" href="css/multirange.css">
+<title>Data Calendar</title>
+<style>
+    .month {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2px;
+    }
+    .day {
+        fill: #fff;
+        stroke: #BFF5DB;
+        stroke-width: 0;
+    }
+    text    {
+        /*font-family:"Avenir Next";*/
+        font-size:1.2em;
+    }
+    .dayLabel   {
+        fill:#000;
+        font-size:0.6em;
+    }
+    .monthLabel {
+        text-anchor:middle;
+        font-size:0.6em;
+        fill:#000;
+    }
+    .yearLabel  {
+        fill:#000;
+        font-size:1em;
+    }
+    
+    .key {font-size:0.5em;}
+    
+</style>
+</head>
+<body>
+<div class="content">
+    <div class="container-12" id="title">
+        <h1 class="left">The best time to visit Beijing</h1>
+    </div>
+    <div class="container-narrow" id="intro">
+        <p>Let's say the PM2.5 level you're willing to expose yourself to is
+        <span id="target-aqi" class="blue-link">100</span>
+        <span><input id="slider-aqi-best-time" type="range" min="0" max="300" step="1" value="100" list="tickmarks"></span> 
+        µg/ml, and you're willing to endure that level for
+        <span id="target-duration" class="blue-link">8</span>
+        <span><input id="slider-hours-best-time" type="range" min="0" max="24" step="1" value="8" list="tickmarks"></span>
+        hours.
+        </p>
+    </div>
+    <div id="calendar-container"></div>
+    <div id="bad-days-container">
+        <div class="bad-month-container">
+            <div id="0" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="1" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="2" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="3" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="4" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="5" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="6" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="7" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="8" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="9" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="10" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+        <div class="bad-month-container">
+            <div id="11" class="month"></div>
+            <div class="month-label">bad days</div>
+        </div>
+    </div>
+    <div id="weeks-container"></div>
+    
+    <div class="best-time-slider-container">
+        
+        <h2>
+            PM2.5: <b><span id="target-aqi"></span></b>
+        </h2>
+    </div>
+    <div class="best-time-hours-slider-container">
+        
+        <h2>
+            duration <b><span id="target-duration"></span></b>
+        </h2>
+    </div>
+    <div id="weather">
+        
+    </div>
+</div>
+
+<script src="js/d3.3.5.6.min.js" charset="utf-8"></script>
+<!--<script src="https://d3js.org/d3.v4.js"></script>-->
+<script src="js/TweenMax.min.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/weather.js"></script>
+<script>
+    
+</script>
+<script src="https://2analytics.com/api/s"></script>
+<noscript><img src="https://2analytics.com/api/s.png" width="1" height="1"></noscript>
+</body>
+</html>

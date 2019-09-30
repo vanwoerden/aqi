@@ -2,6 +2,7 @@ function drawMinMeanMax(data, target) {
 	//note:
     //avg != (min+max)/2
     //it can be anything between min and max
+    //console.log('drawminmenamax en target ' + target);
   
     var data2 = [
     //[min,avg,max]//
@@ -15,18 +16,18 @@ function drawMinMeanMax(data, target) {
     ];
     
     var setup = {
-      width: 1200,
+      width: 245,
       height: 150,
       margin: 20
-    }
+    };
     
     var svg = d3.select(target)
       .attr("width", setup.width)
       .attr("height", setup.height);
 
     var x = d3.scaleLinear()
-    	.domain([0,data.length-1])
-	    .range([setup.margin,setup.width-setup.margin]);
+    	.domain([1,12])
+	    .range([0,setup.width]);
     
     var y = d3.scaleLinear()
     	.domain([0,700])
@@ -41,18 +42,19 @@ function drawMinMeanMax(data, target) {
     
     svg.append('g')
 	    .attr('transform','translate('+[0,(setup.height-setup.margin)]+')')
+        //.attr('transform','translate('+[0,(600)]+')')
     	.call(xAxis);
         
     var area = d3.area()
     	.x((d,i)=>x(i))
     	.y0((d) => setup.height-max(d))
     	.y1((d) => setup.height-min(d))
-			.curve(d3.curveNatural);
+			.curve(d3.curveCatmullRomOpen);
     
     var line = d3.line()
     	.x((d,i)=>x(i))
     	.y((d) => setup.height-avg(d))
-			.curve(d3.curveNatural);
+			.curve(d3.curveCatmullRomOpen);
 
     
     svg.append('path')
@@ -61,9 +63,9 @@ function drawMinMeanMax(data, target) {
     
     svg.append('path') 
     	.attr('d', line(data))
-    	.attr('stroke', 'blue')
+    	.attr('stroke', '#aaa')
 	    .attr("fill", "none")
 		.attr("opacity", 0.5)
-	    .attr('stroke-width', 1);
+	    .attr('stroke-width', 2);
     		
 }

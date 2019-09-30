@@ -3,34 +3,34 @@
 <html>
 <head>
     <title>AQI</title>
-    <link rel="stylesheet" type="text/css" href="fonts.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="multirange.css">
+    <link rel="stylesheet" type="text/css" href="./css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/multirange.css">
     <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
-	
-	<!--<header class="hugo-background">-->
-	<!--	<div class="container center white">-->
-	<!--		<h1 class="highlight">-->
-	<!--			Air quality in Beijing: clearing up?	-->
-	<!--		</h1>-->
-	<!--		<!--<h2>-->
-	<!--			Exploring the air quality in Beijing and other parts of the world.-->
-	<!--		</h2>-->
-	<!--	</div>-->
-	<!--</header>-->
 	
 	<header class="sky-background">
 		<div class="container-14 center">
 			<h1 class="white">
 				Air quality in Beijing: clearing up?
 			</h1>
-			<!--<h2>-->
-			<!--	Exploring the air quality in Beijing and other parts of the world.-->
-			<!--</h2>-->
+			<!--<h2>
+				Exploring the air quality in Beijing
+            </h2>-->
 		</div>
+        <div class="circle">
+            <span id="current-pm25"></span><span class="unit"></span>
+            <div class="current-pm25-label">PM2.5 (&mu;g/m<sup>3</sup>)</div>
+            <div id="current-aqi"></div>
+            <div class="current-aqi-label">AQI</div>
+            <div class="line-spacer"></div>
+            <div class="current-aqi-label">
+                <span>Today, Beijing, </span>
+                <span id="current-time"></span>
+            </div>
+        </div>
 	</header>
 	
 	<div class="container-14 center">
@@ -41,20 +41,17 @@
 	
 	<section class="section">
 		
-		<div class="container-14 center flex-container">
-			<div class="flex-item wide">
+		<div class="container-narrow center">
+			<div class="para">
                 <div class="paragraph">
                     <h3>
                         In Beijing, the AQI is the weather.
                     </h3>
-                    <!--<p>
-                        Before moving here, I never worried about air quality. In Beijing, it's different. You know you've been here for a while if the first thing you do when you arrive in another country is checking the AQI (Air Quality Index).
-                    </p>-->
                     <p>
                         Where people elsewhere are obsessed with the weather, here it's all about the AQI. Possibly because, save air quality, the forecast is straightforward; scorching hot or freezing, with a few weeks of spring or fall in between.
                     </p>
                     <p>
-                        The AQI, or Air Quality Index, is a single number that roughly communicates how healthy or unhealthy the air is. It's made up of PM10, PM2.5, ozone, carbon monoxide, sulfur dioxide, and nitrogen dioxide. PM2.5 (particulate matter with a diameter of 2.5 &mu;m or less) is widely considered the most harmful out of these six, although there seems to be recent research that suggests ozone is pretty bad too.
+                        The AQI, or Air Quality Index, is a single number that roughly communicates how healthy or unhealthy the air is. It's made up of PM10, PM2.5, ozone, carbon monoxide, sulfur dioxide, and nitrogen dioxide. PM2.5&mdash;<i>particulate matter</i> with a diameter of 2.5 &mu;m or less&mdash;is widely considered the most harmful out of these six, because once inhaled, the lungs can't get rid of these tiny particles; they remain trapped in the airways forever.
                     </p>
                     <p>
                         The AQI can make or break your day. What could have been a perfect day for lounging at the pool becomes a sad Saturday spent inside, on a 'bad airday'.
@@ -64,165 +61,169 @@
                     </p>
                 </div>
             </div>
-			
-            <div class="flex-item wider">
-                <div class="circle">
-                    <div id="current-pm25"></div><div class="unit">&mu;g/m<sup>3</sup></div>
-                    <div class="current-pm25-label">PM2.5 level in Beijing, <span id="current-time"></span></div>
-                    <div id="current-aqi"></div>
-                    <div class="current-aqi-label">AQI level in Beijing, <span id="current-time"></span></div>
-                </div>
-                <!--<div class="caption-mean">Annual mean PM2.5 level in Beijing</div>-->
-            </div>
-            <div class="flex-item wide">
-                <div class="paragraph">
-                    <h4 class="sliders-title">
-                        What's a bad air day? 
-                    </h4>
-                    <p>
-                        The World Health Organization has set a max annual mean of PM2.5 10 &mu;g/m<sup>3</sup>, and a 24hr mean of 25 &mu;g/m<sup>3</sup> as the guideline when it comes to PM2.5 concentration. It's pretty clear that every year since 2009 has not met those criteria: the annual means range from 102 to 70 &mu;g/m<sup>3</sup>.
-                    </p>
-                        The number of days "sporting" a daily mean of 25 &mu;g/m<sup>3</sup> or higher is also not so great.
-                    </p>
-                    <!--<p>-->
-                    <!--	At Xiaomi, I worked on the India launch of the Mi Air Purifier 2. The launch event was set to happen in Delhi, which in recent years has come to rival Beijing in terms of air pollution. In the launch presentation, we compared the air quality in Beijing, Delhi, and San Francisco. I had already worked on <a href="http://seriousness.nl/wake_me_run_run.html" target="_blank">an AQI based alarm app</a> with a friend, but what really sparked my interest was finding out that several organizations publish air quality data online. -->
-                    <!--</p>-->
-                    <p>
-                        
-                    </p>
-                </div>
-            </div>
-            <div class="flex-item wide">
-                <div class="annual-mean-bars-container">
-                    <div class="spacer-block"></div>
-                    
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2009-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2009"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2010-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2010"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2011-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2011"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2012-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2012"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2013-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2013"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2014-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2014"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2015-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2015"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2016-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2016"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bad-number" id="annual-mean-intro-2017-txt"></div>
-                        <div class="barmean" id="annual-mean-intro-2017"></div>
-                        <div class="bar-10"></div>
-                    </div>
-                    <div class="line-10">10 &mu;g/m<sup>3</sup></div>
-                    
-                    <!--<div class="barkey">-->
-                    <!--    <div class="bad-number" id="bad-number-2018"></div>-->
-                    <!--    <div class="bar" id="bad-days-2018-bar"></div>-->
-                    <!--</div>-->
-                </div>
-            <!--</div>-->
-            <!--<div class="flex-item wide">-->
-                <div class="intro-bars-container">
-                    <div class="spacer-block"></div>
-                    
-                    <div class="barkey-narrow">
-                        
-                        <div class="bar" id="bad-number-bar-2009"></div>
-                        <div class="bad-number" id="bad-number-bar-2009-year"></div>
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bar" id="bad-number-bar-2010"></div>
-                        <div class="bad-number" id="bad-number-bar-2010-year"></div>
-                        
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bar" id="bad-number-bar-2011"></div>
-                        <div class="bad-number" id="bad-number-bar-2011-year"></div>
-                        
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bar" id="bad-number-bar-2012"></div>
-                        <div class="bad-number" id="bad-number-bar-2012-year"></div>
-                        
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bar" id="bad-number-bar-2013"></div>
-                        <div class="bad-number" id="bad-number-bar-2013-year"></div>
-                        
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bar" id="bad-number-bar-2014"></div>
-                        <div class="bad-number" id="bad-number-bar-2014-year"></div>
-                        
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bar" id="bad-number-bar-2015"></div>
-                        <div class="bad-number" id="bad-number-bar-2015-year"></div>
-                        
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bar" id="bad-number-bar-2016"></div>
-                        <div class="bad-number" id="bad-number-bar-2016-year"></div>
-                        
-                    </div>
-                    <div class="barkey-narrow">
-                        <div class="bar" id="bad-number-bar-2017"></div>
-                        <div class="bad-number" id="bad-number-bar-2017-year"></div>
-                        
-                    </div>
-                    <!--<div class="barkey">-->
-                    <!--    <div class="bad-number" id="bad-number-2018"></div>-->
-                    <!--    <div class="bar" id="bad-days-2018-bar"></div>-->
-                    <!--</div>-->
-                </div>
-            </div>
-            <div class="flex-item wide">
-                <div class="big-label-container">
-                    <div class="big-label">
-                        <h4>
-                            Annual mean PM2.5
-                        </h4>
-                    </div>
-                    <div class="big-label">
-                        <h4>
-                            Days with mean exceeding 25 &mu;g/m<sup>3</sup>
-                        </h4>
-                    </div>
-                </div>
-            </div>
 		</div>
+        <div class="container-14 center">
+            <div class="flex-container align-end">
+                
+                <div class="flex-item para-right">
+                    <div class="intro-bars-container right">
+                        <div class="spacer-block"></div>
+                        
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2009-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2009"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label">2009</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2010-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2010"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label">'10</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2011-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2011"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label">'11</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2012-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2012"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label center">'12</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2013-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2013"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label">'13</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2014-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2014"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label">'14</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2015-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2015"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label">'15</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2016-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2016"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label">'16</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="annual-mean-intro-2017-txt"></div>
+                            <div class="barmean" id="annual-mean-intro-2017"></div>
+                            <div class="bar-10"></div>
+                            <div class="year-label">'17</div>
+                        </div>
+                        <div class="line-10">10 &mu;g/m<sup>3</sup></div>
+                        
+                        
+                        <!--<div class="barkey">-->
+                        <!--    <div class="bad-number" id="bad-number-2018"></div>-->
+                        <!--    <div class="bar" id="bad-days-2018-bar"></div>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="big-label right">
+                        <caption>
+                            Annual mean PM2.5
+                        </caption>
+                    </div>
+                </div>
+                <div class="flex-item para">
+                    <div class="paragraph">
+                        <h4 class="sliders-title">
+                            What's a bad air day? 
+                        </h4>
+                        <p>
+                            The World Health Organization has set a max annual mean of PM2.5 10 &mu;g/m<sup>3</sup>, and a 24hr mean of 25 &mu;g/m<sup>3</sup> as the guideline when it comes to PM2.5 concentration. It's pretty clear that every year since 2009 has not met those criteria: the annual means range from 102 to 70 &mu;g/m<sup>3</sup>.
+                        </p>
+                            The number of days "sporting" a daily mean of 25 &mu;g/m<sup>3</sup> or higher is also not so great.
+                        </p>
+                        <!--<p>-->
+                        <!--	At Xiaomi, I worked on the India launch of the Mi Air Purifier 2. The launch event was set to happen in Delhi, which in recent years has come to rival Beijing in terms of air pollution. In the launch presentation, we compared the air quality in Beijing, Delhi, and San Francisco. I had already worked on <a href="http://seriousness.nl/wake_me_run_run.html" target="_blank">an AQI based alarm app</a> with a friend, but what really sparked my interest was finding out that several organizations publish air quality data online. -->
+                        <!--</p>-->
+                        <p>
+                            
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-item para-left">
+                    <div class="intro-bars-container left">
+                        <!--<div class="spacer-block"></div>-->
+                        
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2009-year"></div>
+                            <div class="bar" id="bad-number-bar-2009"></div>
+                            <div class="year-label">2009</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2010-year"></div>
+                            <div class="bar" id="bad-number-bar-2010"></div>
+                            <div class="year-label">'10</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2011-year"></div>
+                            <div class="bar" id="bad-number-bar-2011"></div>
+                            <div class="year-label">'11</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2012-year"></div>
+                            <div class="bar" id="bad-number-bar-2012"></div>
+                            <div class="year-label">'12</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2013-year"></div>
+                            <div class="bar" id="bad-number-bar-2013"></div>
+                            <div class="year-label">'13</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2014-year"></div>
+                            <div class="bar" id="bad-number-bar-2014"></div>
+                            <div class="year-label">'14</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2015-year"></div>
+                            <div class="bar" id="bad-number-bar-2015"></div>
+                            <div class="year-label">'15</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2016-year"></div>
+                            <div class="bar" id="bad-number-bar-2016"></div>
+                            <div class="year-label">'16</div>
+                        </div>
+                        <div class="barkey-narrow">
+                            <div class="bad-number" id="bad-number-bar-2017-year"></div>
+                            <div class="bar" id="bad-number-bar-2017"></div>
+                            <div class="year-label">'17</div>
+                        </div>
+                       
+                        <!--<div class="barkey">-->
+                        <!--    <div class="bad-number" id="bad-number-2018"></div>-->
+                        <!--    <div class="bar" id="bad-days-2018-bar"></div>-->
+                        <!--</div>-->
+                    </div>
+                     <div class="big-label left">
+                        <caption>
+                            Days with mean exceeding 25 &mu;g/m<sup>3</sup>
+                        </caption>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            
 		
 	</section>
 	
-	<!--<section class="hugo-background">
+	<section class="hugo-background">
         <div class="hugo-overlay">
             <h2 class="bad-air-day">
                 <span class="black-bkg">A bad air day in Beijing.</span>
@@ -232,14 +233,14 @@
             </p>
             
 		</div>
-        <div class="container center">
+        <div class="container-14 center">
             <div class="sky-header">
                 <span>
                     photo by the author
                 </span>
             </div>
         </div>
-	</section>-->
+	</section>
 
 					
 					<!--<ol class="large">-->
@@ -264,7 +265,7 @@
 	
     <!--<section class="spacer gray"></section>-->
     <section class="section radial-charts" id="radial-charts">
-        <div class="container-14 center flex-container">
+        <div class="container-9 center flex-container">
             <div class="block column-2">
                 <h3>
                     So, is it getting better?
@@ -274,59 +275,296 @@
                 </p>
              </div>
         </div>
-		<div class="container-14 center flex-container">
-             <div class="flex-item wide first">
-                <h4 class="radial-chart-title">
-                    2009 - 2011
-                </h4>
-                <p>
-                    2009 has some gaps in the data; January and half of February are missing. November and December have some pretty dark areas, but July through September are overall the worst period of the year. Interestingly enough, July has the least amount of green air. October through December have the highest amount of darkness going on, qnd January and April seem to be the nicest months of the year. Great start of the year, but then Febuary, which had a similar spike in 2010, ruins it for everybody. March totally makes up for it though. Here we have the two nicest month and the worst month all in the first quarter of the year. Remarkable.
-                </p>
-             </div>
-             <div class="flex-item wide second">
-                <h4 class="radial-chart-title">
-                    2012 - 2014
-                </h4>
-                <p>
-                    Definitely a more balanced year, 2012 starts off with its worst month. The summer months are the best so far. Similar to 2011 and 2012, from October things start to get worse again. Like 2012, January is the worst month of the year, but by much more. It's also interesting to see a bit of a trend develop: moderate but overall more polluted spring and summer, and extreme fall and winter. 2013 actually looks worse than 2012. 2014 looks worse than 2013. What's going on? Moderate spring and summer vs extreme fall and winter trend is continuining. The last two months of the year looks like it's improving.
-                </p>
-             </div>
-             <div class="flex-item wide third">
-                <h4 class="radial-chart-title">
-                    2015 - 2017
-                </h4>
-                <p>
-                    A sizeable improvement, especially in the summer months. Interesting to see the dark areas diminish all the way down in July and August. December is the worst. 2016 is off to a good start with February looking extremely pleasant (for Beijing standards). Notice the spike in March, however. The summer months seem very similar to the previous year. mean amount of pm2.5 per day
-					total amount of pm2.5 yearly
-					how many cigarettes per day
-                </p>
-             </div>
-             <div class="flex-item narrow first">
+		<div class="container-9 center flex-container">
+            
+            <!--2008-->
+            
+            <div class="flex-item narrow first">
 				<div class="square">
-					<svg id="one" width="200" height="200"></svg>
-					<div class="year">2009</div>
+					<svg id="zero" width="200" height="200"></svg>
+					
+					<div class="bad-days-number" id="radial-bad-number-2008">0</div>
+                    <div class="annual-mean" id="annual-mean-2008">0</div>
+				</div>
+                <div class="radial-sparkline" id="bars-2008"></div>
+                <div class="year">2008</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2008" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    April 2008
+                </h4>
+                <p>
+                    The US embassy in Beijing starts tweeting out hourly PM2.5 readings
+                </p>
+                <div class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    Oct 2008 - Post-olympic car ban et al
+                </h4>
+                <p>
+                    Beijing puts several measures in place that aim to restrict the number of cars on its roads: limits based on the first number of license plates, a 75% decrease in the number of newly registered cars, and hiking up the tax on gasoline.
+                </p>
+            </div>
+            
+            <!--2009-->
+            
+            <div class="flex-item narrow first <!--sticky-top-->">
+				<div class="square">
+					<svg id="one" width="200" height="200">
+                        <g></g>
+                    </svg>
+					
 					<div class="bad-days-number" id="radial-bad-number-2009">0</div>
                     <div class="annual-mean" id="annual-mean-2009">0</div>
+                    <button class="fixed" onclick="jumpToNextYear()">click it</button>
 				</div>
-             </div>
-             <div class="flex-item narrow first">
+                <div class="radial-sparkline" id="bars-2009"></div>
+                <div class="year">2009</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2009" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    2009
+                </h4>
+                <p>
+                    2009 has some gaps in the data; January and half of February are missing. November and December have some pretty dark areas, but July through September are overall the worst period of the year. Interestingly enough, July has the least amount of green air. Great start of the year, but then Febuary, which had a similar spike in 2010, ruins it for everybody. March totally makes up for it though. Here we have the two nicest month and the worst month all in the first quarter of the year. Remarkable.
+                </p>
+            </div>
+            
+            <!--2010-->
+            
+            <div class="flex-item narrow first">
 				<div class="square">
 					<svg id="two" width="200" height="200"></svg>
-					<div class="year">2010</div>
+					
 					<div class="bad-days-number" id="radial-bad-number-2010">0</div>
                     <div class="annual-mean" id="annual-mean-2010">0</div>
 				</div>
-             </div>
-             <div class="flex-item narrow first">
+                <div class="radial-sparkline" id="bars-2010"></div>
+                <div class="year">2010</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2010" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    Nov 2010: Crazy bad air
+                </h4>
+                <p>
+                    AQI exceeds 500 for the first time 
+                </p>
+            </div>
+            
+            <!--2011-->
+            
+            <div class="flex-item narrow first">
 				<div class="square">
 					<svg id="three" width="200" height="200"></svg>
-					<div class="year">2011</div>
 					<div class="bad-days-number" id="radial-bad-number-2011">0</div>
                     <div class="annual-mean" id="annual-mean-2011">0</div>
 				</div>
+                <div class="radial-sparkline" id="bars-2011"></div>
+                <div class="year">2011</div>
+            </div> 
+            <div class="flex-item wide first">
+                <div id="2011" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    2011
+                </h4>
+                <p>
+                    Where January seems ok, February is a terrible month. NASA reports massive smog blankets. A compounding factor is so-called "temperature inversion": an effeet where the air close to the earth's surface is colder than the air above. This effect is more common in winter, because the nights are longer, and the sun is not as strong. The fact that Beijing is surrounded by mountains further intensifies the problem. Finally, Beijing relies heavily on coal-burning for heat during the winter. A toxic combination, shall we say. The end of 2011 marks another bad episode in Beijing air quality. 200 Flights cancelled. Local news outlets are putting the pressure on the government to admit that the air is problematic.
+                </p>
             </div>
-        
-            <div class="flex-item wide fourth">
+            
+            <!--2012-->
+            
+            <div class="flex-item narrow first">
+				<div class="square">
+					<svg id="four" width="200" height="200"></svg>
+					
+					<div class="bad-days-number" id="radial-bad-number-2012">0</div>
+                    <div class="annual-mean" id="annual-mean-2012">0</div>
+				</div>
+                <div class="radial-sparkline" id="bars-2012"></div>
+                <div class="year">2012</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2012" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    2012 - local data incoming
+                </h4>
+                <p>
+                    Under pressure from local and foreign sources, Beijing starts to release its own PM2.5 data. Definitely a more balanced year, 2012 starts off with its worst month. The summer months are the best so far. Similar to 2011 and 2012, from October things start to get worse again. 
+                </p>
+            </div>
+            
+            <!--2013-->
+            
+            <div class="flex-item narrow first">
+				<div class="square">
+					<svg id="five" width="200" height="200"></svg>
+					
+					<div class="bad-days-number" id="radial-bad-number-2013">0</div>
+                    <div class="annual-mean" id="annual-mean-2013">0</div>
+				</div>
+                <div class="radial-sparkline" id="bars-2013"></div>
+                <div class="year">2013</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2013" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    Jan 2013 - Airpocalypse
+                </h4>
+                <p>
+                    Oof. That big black spot in January? That's airpocalypse. Back in 2013, China experienced its worst smog outbreak since 1961. 
+                </p>
+                <div class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    Sept 2013 - Government steps up
+                </h4>
+                <p>
+                    In September, State Council unveils Action Plan for the Prevention and Control of Air Pollution. Apparently, Xi JinPing said: "green mountains and clear water are equal to mountains of gold and silver."    2014 looks worse than 2013. What's going on? Moderate spring and summer vs extreme fall and winter trend is continuining. The last two months of the year looks like it's improving.
+                </p>
+            </div>
+            
+            <!--2014-->
+            
+            <div class="flex-item narrow first">
+				<div class="square">
+					<svg id="six" width="200" height="200"></svg>
+					
+					<div class="bad-days-number" id="radial-bad-number-2014">0</div>
+                    <div class="annual-mean" id="annual-mean-2014">0</div>
+				</div>
+                <div class="radial-sparkline" id="bars-2014"></div>
+                <div class="year">2014</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2014" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    2014
+                </h4>
+                <p>
+                    Oof. That big black spot in January? That's airpocalypse. Back in 2013, China experienced its worst smog outbreak since 1961. 
+                </p>
+            </div>
+            
+            <!--2015-->
+            
+            <div class="flex-item narrow first">
+				<div class="square">
+					<svg id="seven" width="200" height="200"></svg>
+					
+					<div class="bad-days-number" id="radial-bad-number-2015">0</div>
+                    <div class="annual-mean" id="annual-mean-2015">0</div>
+				</div>
+                <div class="radial-sparkline" id="bars-2015"></div>
+                <div class="year">2015</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2015" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    2015
+                </h4>
+                <p>
+                    A sizeable improvement, especially in the summer months. Interesting to see the dark areas diminish all the way down in July and August. December is the worst. 2016 is off to a good start with February looking extremely pleasant (for Beijing standards). Notice the spike in March, however. The summer months seem very similar to the previous year. mean amount of pm2.5 per day
+                </p>
+            </div>
+            
+            <!--2016-->
+            
+            <div class="flex-item narrow first">
+				<div class="square">
+					<svg id="eight" width="200" height="200"></svg>
+					
+					<div class="bad-days-number" id="radial-bad-number-2016">0</div>
+                    <div class="annual-mean" id="annual-mean-2016">0</div>
+				</div>
+                <div class="radial-sparkline" id="bars-2016"></div>
+                <div class="year">2016</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2016" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    2016
+                </h4>
+                <p>
+                    A sizeable improvement, especially in the summer months. Interesting to see the dark areas diminish all the way down in July and August. December is the worst. 2016 is off to a good start with February looking extremely pleasant (for Beijing standards). Notice the spike in March, however. The summer months seem very similar to the previous year. mean amount of pm2.5 per day
+                </p>
+            </div>
+           
+            <!--2017-->
+            
+            <div class="flex-item narrow first">
+				<div class="square">
+					<svg id="nine" width="200" height="200"></svg>
+					
+					<div class="bad-days-number" id="radial-bad-number-2017">0</div>
+                    <div class="annual-mean" id="annual-mean-2017">0</div>
+				</div>
+                <div class="radial-sparkline" id="bars-2017"></div>
+                <div class="year">2017</div>
+            </div>
+            <div class="flex-item wide first">
+                <div id="2017" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <h4 class="radial-chart-title">
+                    2017
+                </h4>
+                <p>
+                    A sizeable improvement, especially in the summer months. Interesting to see the dark areas diminish all the way down in July and August. December is the worst. 2016 is off to a good start with February looking extremely pleasant (for Beijing standards). Notice the spike in March, however. The summer months seem very similar to the previous year. mean amount of pm2.5 per day
+                </p>
+            </div>
+            
+            <!--2018-->
+            
+            <div class="flex-item narrow first">
+				<div class="square">
+					<svg id="ten" width="200" height="200"></svg>
+					<div class="bad-days-number" id="radial-bad-number-2018">0</div>
+                    <div class="annual-mean" id="annual-mean-2018">0</div>
+				</div>
+                <div class="radial-sparkline" id="bars-2018"></div>
+                <div class="year">2018</div>
+			</div>
+            <div class="flex-item wide first">
+                <div id="2018" class="timeline">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
                 <h4 class="radial-chart-title">
                     2018
                 </h4>
@@ -334,63 +572,6 @@
                     Do a short description of each year, maybe add some events or newspaper links of extremely bad airdays, other things like govt meetings, vacations, traffic data? new regulations for factories? Government efforts to curb pollution?
                 </p>
             </div>
-            <div class="flex-item narrow second">
-				<div class="square">
-					<svg id="four" width="200" height="200"></svg>
-					<div class="year">2012</div>
-					<div class="bad-days-number" id="radial-bad-number-2012">0</div>
-                    <div class="annual-mean" id="annual-mean-2012">0</div>
-				</div>
-            </div>
-            <div class="flex-item narrow second">
-				<div class="square">
-					<svg id="five" width="200" height="200"></svg>
-					<div class="year">2013</div>
-					<div class="bad-days-number" id="radial-bad-number-2013">0</div>
-                    <div class="annual-mean" id="annual-mean-2013">0</div>
-				</div>
-            </div>
-            <div class="flex-item narrow second">
-				<div class="square">
-					<svg id="six" width="200" height="200"></svg>
-					<div class="year">2014</div>
-					<div class="bad-days-number" id="radial-bad-number-2014">0</div>
-                    <div class="annual-mean" id="annual-mean-2014">0</div>
-				</div>
-            </div>
-            <div class="flex-item narrow third">
-				<div class="square">
-					<svg id="seven" width="200" height="200"></svg>
-					<div class="year">2015</div>
-					<div class="bad-days-number" id="radial-bad-number-2015">0</div>
-                    <div class="annual-mean" id="annual-mean-2015">0</div>
-				</div>
-            </div>
-            <div class="flex-item narrow third">
-				<div class="square">
-					<svg id="eight" width="200" height="200"></svg>
-					<div class="year">2016</div>
-					<div class="bad-days-number" id="radial-bad-number-2016">0</div>
-                    <div class="annual-mean" id="annual-mean-2016">0</div>
-				</div>
-            </div>
-            <div class="flex-item narrow third">
-				<div class="square">
-					<svg id="nine" width="200" height="200"></svg>
-					<div class="year">2017</div>
-					<div class="bad-days-number" id="radial-bad-number-2017">0</div>
-                    <div class="annual-mean" id="annual-mean-2017">0</div>
-				</div>
-            </div>
-           
-            <div class="flex-item narrow fourth">
-				<div class="square">
-					<svg id="ten" width="200" height="200"></svg>
-					<div class="year">2018</div>
-					<div class="bad-days-number" id="radial-bad-number-2018">0</div>
-                    <div class="annual-mean" id="annual-mean-2018">0</div>
-				</div>
-			</div>
         </div>
             <div class="legend" id="legend">
                 <h4>LEGEND</h4>
@@ -478,33 +659,7 @@
 						
 						<div class="horizontal-slider">
 							<input class="slider-hours" type="range" multiple value="0,23.9" min="0" max="24" step="1" list="tickmarks-hours">
-								<!--<datalist id="tickmarks-hours">
-									<option value="0">
-									<option value="1">
-									<option value="2">
-									<option value="3">
-									<option value="4">
-									<option value="5">
-									<option value="6">
-									<option value="7">
-									<option value="8">
-									<option value="9">
-									<option value="10">
-									<option value="11">
-									<option value="12">
-									<option value="13">
-									<option value="14">
-									<option value="15">
-									<option value="16">
-									<option value="17">
-									<option value="18">
-									<option value="19">
-									<option value="20">
-									<option value="21">
-									<option value="22">
-									<option value="23">
-									<option value="24">
-								</datalist>-->
+								
 							<div id="low-hrs" class="slider-label">0</div>
 							<div id="high-hrs" class="slider-label">24</div>
 						</div>
@@ -581,7 +736,7 @@
                         <p>Jun</p>
                         <p>Jul</p>
                         <p>Aug</p>
-                        <p>Sept</p>
+                        <p>Sep</p>
                         <p>Oct</p>
                         <p>Nov</p>
                         <p>Dec</p>
@@ -663,22 +818,22 @@
             </div>
         </div>
         
-		<!--<div class="container-12 center">
-			<svg id="mmm-2009"></svg>
-			<svg id="mmm-2010"></svg>
-			<svg id="mmm-2011"></svg>
-			<svg id="mmm-2012"></svg>
-			<svg id="mmm-2013"></svg>
-			<svg id="mmm-2014"></svg>
-			<svg id="mmm-2015"></svg>
-			<svg id="mmm-2016"></svg>
-			<svg id="mmm-2017"></svg>
-			<svg id="mmm-2018"></svg>				
+		<div class="container-12 center">
+			<svg id="mmm-2009" class="mmm"></svg>
+			<svg id="mmm-2010" class="mmm"></svg>
+			<svg id="mmm-2011" class="mmm"></svg>
+			<svg id="mmm-2012" class="mmm"></svg>
+			<svg id="mmm-2013" class="mmm"></svg>
+			<svg id="mmm-2014" class="mmm"></svg>
+			<svg id="mmm-2015" class="mmm"></svg>
+			<svg id="mmm-2016" class="mmm"></svg>
+			<svg id="mmm-2017" class="mmm"></svg>
+			<svg id="mmm-2018" class="mmm"></svg>				
 			
 			<div id="compare-bad-days-chart">
 				
 			</div>
-		</div>-->
+		</div>
     </section>
 	
 	<section class="section-nopad">
@@ -739,14 +894,15 @@
 		</div>
 	</section>
     <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+    <!--<script type="text/javascript" src="js/jquery.waypoints.min.js"></script>-->
     <script type="text/javascript" src="js/feednami-client-v1.1.js"></script>
-	<script type="text/javascript" src="js/d3.min.js"></script>
+	<script type="text/javascript" src="js/d3.min.5.9.7.js"></script>
 	<script type="text/javascript" src="js/d3-scale-radial.js"></script>
 	<!--<script type="text/javascript" src="js/Chart.min.js"></script>-->
 	<script type="text/javascript" src="js/multirange.js"></script>
 	<script type="text/javascript" src="js/radial-bar.js"></script>
 	<!--s<script type="text/javascript" src="js/line-chart.js"></script>-->
-	<script type="text/javascript" src="js/min-mean-max-chart.js"></script>
+	<!--<script type="text/javascript" src="js/min-mean-max-chart.js"></script>-->
 	<script type="text/javascript" src="js/bad-days.js"></script>
 	
 	<script>
@@ -757,6 +913,7 @@
 		//console.log("bad days: " + bad_days);
 		
 		draw("data/2009_monthly_inverted_relative.csv", "#one", "");
+        //draw("data/2014_monthly_inverted_relative.csv", "#one", "");
 		draw("data/2010_monthly_inverted_relative.csv", "#two", "");
 		draw("data/2011_monthly_inverted_relative.csv", "#three", "");
 		draw("data/2012_monthly_inverted_relative.csv", "#four", "");

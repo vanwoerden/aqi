@@ -15,6 +15,8 @@ var _aqiSliderOffset = 45;
 var d3data;
 var _bad_days = 0;
 
+var badDaysMonthly = [];
+
 var badDaysPerYear = [];
 var months = [];
 var years = [];
@@ -165,10 +167,12 @@ $( document ).ready(function() {
 	// get current AQI and PM2.5 from stateair.
 	initSliders();
 	var url = 'http://stateair.net/web/rss/1/1.xml';
+	//try loading rss with jQuery
+	
 	feednami.setPublicApiKey('4275c345f113cdbd6aabbce7591be24577fe0ec93777769c6366d2bb0056daee');
 	feednami.load(url,function(result){
 		if(result.error) {
-			console.log(result.error);
+			//console.log(result.error);
 		} else {
 			var entries = result.feed.entries;
 			var aqiArr = [];
@@ -235,8 +239,12 @@ $( document ).ready(function() {
 			$("#current-pm25").html(pm25Arr[pm25Arr.length-1]);
 			$("#current-time").html(currentTime);
 			$(".circle").css("background", color);
+			
 			//$("#current-pm25").css("background", color);
-			$(".circle").fadeIn("200");
+			$(".circle").fadeIn("200", function(){
+				
+			});
+			$(".paragraph h3").addClass("has-padding");
 		}
 	});
 	
@@ -244,16 +252,70 @@ $( document ).ready(function() {
 		$("#legend").toggleClass("popped");
 	});
 	
+//	var waypoints = $('.timeline').waypoint({
+//		handler: function(direction) {
+//		  console.log(this.element.id + ' hit');
+//		  decideWhereToJump(this.element.id);
+//		},
+//		offset: -305
+//	});
+//	
+//	var distance_2015 = $('#2015').offset().top;
+//	var distance_2014 = $('#2014').offset().top;
+//    var $window = $(window);
+//	console.log('distance 15 ' + distance_2015);
+//	console.log('distance 14 ' + distance_2014);
+//	
+//	var didScroll = false;
+//	 
+//	$(window).scroll(function() {
+//		didScroll = true;
+//	});
+	 
+	//setInterval(function() {
+	//	if ( didScroll ) {
+	//		didScroll = false;
+	//		//var timeline_year = $('.timeline').attr('id');
+	//		//if ( $window.scrollTop() >= distance_2015 ) {
+	//		//	var timeline_year = $('.timeline:visible:first').attr('id');
+	//		//	decideWhereToJump(2015);
+	//		//}
+	//		
+	//		// Check your page position and then
+	//		// Load in more results
+	//		if (isInViewport(radialCharts)) {
+	//			//console.log("in viewport");
+	//			document.getElementById('legend').style.display = "block";
+	//			//document.getElementById('one').classList.toggle("fixed");
+	//			//$("#one").addClass("fixed");
+	//		} else {
+	//			document.getElementById('legend').style.display = "none";
+	//			//document.getElementById('one').classList.toggle("fixed");
+	//			//$("#one").removeClass("fixed");
+	//		}
+	//	}
+	//}, 250);
 	var radialCharts = document.getElementById('radial-charts');
-	window.addEventListener('scroll', function (event) {
-		//console.log(isInViewport(radialCharts));
-		if (isInViewport(radialCharts)) {
-			//console.log("in viewport");
-			document.getElementById('legend').style.display = "block";
-		} else {
-			document.getElementById('legend').style.display = "none";
-		}
-	}, false);
+	//window.addEventListener('scroll', function (event) {
+	//	//console.log(isInViewport(radialCharts));
+	//	if (isInViewport(radialCharts)) {
+	//		//console.log("in viewport");
+	//		document.getElementById('legend').style.display = "block";
+	//		//document.getElementById('one').classList.toggle("fixed");
+	//		//$("#one").addClass("fixed");
+	//	} else {
+	//		document.getElementById('legend').style.display = "none";
+	//		//document.getElementById('one').classList.toggle("fixed");
+	//		//$("#one").removeClass("fixed");
+	//	}
+	//}, false);
+	
+	function decideWhereToJump(yr) {
+		// compare curren year with id of closest timeline element
+		console.log('yr ' + yr);
+		var draw_string = "data/" + yr + "_monthly_inverted_relative.csv";
+		draw(draw_string, "#one", "");
+	}
 	
 	var isInViewport = function (el) {
 		//console.log("isInViewport? " + el.id);
@@ -296,7 +358,7 @@ function initSliders(){
 	
 	function setPositions(aqi, low, high) {
 		var hours = high - low;
-		console.log("hours: " + hours);
+		//console.log("hours: " + hours);
 		document.getElementById("max-aqi").style.marginTop = -Math.round((aqi/600) * 100) + 'px';
 		updatePollution();
 	}
@@ -347,7 +409,7 @@ function initSliders(){
 			years = [];
 			
 			csvs.forEach(function(e){
-				updateTheScore(_aqi, _hours, e.csv, e.target, e.sparkTarget, e.pieTarget, e.monthsArrary);
+				updateTheScore(_aqi, _hours, e.csv, e.target, e.sparkTarget, e.pieTarget, e.monthsArray);
 			});
 	};
 	//update the hours slider value label
@@ -410,10 +472,7 @@ function initSliders(){
 	
 }
 function calculateAnnualMean(csv, year) {
-	d3.csv(csv, function(error, data) {
-		if (error) throw error;
-		
-		//d3data = data;
+	d3.csv(csv).then(function(data) {
 		
 		data.forEach(function(d) {
 			d.date = parseDay(d.date);
@@ -444,14 +503,12 @@ function calculateAnnualMean(csv, year) {
 			drawAnnualMeans(Math.round(item.value), target2);
 		});
 		
-		console.log(annualMeans);
+		//console.log(annualMeans);
 	})
 }
 
 function calculateDaysWithMeanAbove(csv, year, value) {
-	d3.csv(csv, function(error, data) {
-		if (error) throw error;
-		
+	d3.csv(csv).then(function(data) {
 		//d3data = data;
 		
 		data.forEach(function(d) {
@@ -498,32 +555,38 @@ function calculateDaysWithMeanAbove(csv, year, value) {
 
 function drawIntroAnnualDaysAbove25Bar(days, target) {
 	//console.log("drawIntroAnnualDaysAbove25Bar " + target);
+	var opac = days/365;
+	var opacString = "rgba(170, 170, 170, " + opac + ")";
+	
 	var yeartarget = target + "-year";
-	console.log("drawIntroAnnualDaysAbove25Bar " + yeartarget);
+	//console.log("drawIntroAnnualDaysAbove25Bar " + yeartarget);
 	//document.getElementById(yeartarget).innerHTML = days;
 	$(yeartarget).html(days);
 	var pcnt = days/365 * 200;
-	console.log("height: " + pcnt);
+	//console.log("height: " + pcnt);
 	$( target ).animate({
 		height: pcnt + "px",//bad_days * 1.5 + "px",
 	}, 300 );
+	$(target).css({
+		"background-color": opacString
+	});
 }
 
 function drawAnnualMeans(pm25, target) {
-	console.log("drawAnnualMeans " + target);
+	//console.log("drawAnnualMeans " + target);
+	var opac = pm25/100;
 	var txttarget = target + "-txt";
-	console.log(txttarget);
+	//console.log(txttarget);
 	$(txttarget).html(pm25);
 	
 	$( target ).animate({
-		height: pm25*2 + "px",//bad_days * 1.5 + "px",
+		height: pm25 + "px",//bad_days * 1.5 + "px",
+		opacity: opac
 	}, 300 );
 }
 function calculateMinMeanMax(csv, target) {
 	//currently calculating daily values which makes the chart very jagged
-	d3.csv(csv, function(error, data) {
-		if (error) throw error;
-		
+	d3.csv(csv).then(function(data) {
 		//d3data = data;
 		
 		data.forEach(function(d) {
@@ -542,7 +605,7 @@ function calculateMinMeanMax(csv, target) {
 		var mmm = [];
 		mmm = d3.nest()
 			.key(function(d) {
-				return d.date;
+				return d.month;
 			})
 			.rollup(function(v) {
 				return [
@@ -566,7 +629,7 @@ function calculateMinMeanMax(csv, target) {
 			minMeanMax.push(item.value);
 		})
 		//console.log(minMeanMax);
-		drawMinMeanMax(minMeanMax, target);
+		//drawMinMeanMax(minMeanMax, target);
 		
 		var totalOutput = [];
 		totalOutput = d3.nest()
@@ -587,10 +650,9 @@ function calculateMinMeanMax(csv, target) {
 	})
 }
 function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsArray) {
-	console.log("******** UPDATE SCORE csv = " + csv);
+	//console.log("******** UPDATE SCORE csv = " + csv);
 	
-	d3.csv(csv, function(error, data) {
-		if (error) throw error;
+	d3.csv(csv).then(function(data) {
 		
 		d3data = data;
 		
@@ -645,22 +707,10 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		
 		badDaysPerYear.push(bad_days);
 		//console.log("_initial = " + _initial);
-		if(_initial) {
-			// new
-			createPieChart(pieTarget);
-		} else {
-			//update
-			updateChart(pieTarget);
-		}
-		
-		function updateChart(chart) {
-			// do the update
-			//console.log('updating the pie chart');
-		}
 
 		//let's see how many bad days each month
 		var badHoursPerMonth = [];
-		var bad_dayss = 0;
+		//var bad_dayss = 0;
 		
 		badHoursPerMonth = d3.nest()
 			//.key(function(d) { return d.year; })
@@ -688,7 +738,7 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 					// Houston, we have a bad day
 					bad_days_month++;
 				}
-			})
+			});
 			
 			var bdm = {};
 			bdm.month = index + 1;
@@ -703,7 +753,10 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 			var max = Math.max.apply(Math, badDaysPerMonth); // picks out 5000
 			percents = badDaysPerMonth.map(n => Math.round(n/max * 100));
 			
-			document.getElementById(sparkTarget).innerHTML = "{" + percents + "}";
+			var bartgt = "bars-" + monthsArray;
+			
+			document.getElementById(sparkTarget).innerHTML = "{" + badDaysPerMonth + "}";
+			document.getElementById(bartgt).innerHTML = "{" + badDaysPerMonth + "}";
 		});
 		
 		switch(monthsArray) {
@@ -748,34 +801,11 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 				_2018 = badDaysPerMonth;
 				break;
 		}
-		//showDifferenceBetweenYears(_2016, _2010);
-		function showDifferenceBetweenYears(year1, year2) {
-			//console.log("************** showDifferenceBetweenYears");
-			//console.log(year1);
-			//console.log(year2);
-			var diff = year2.map(function(item, index) {
-				// In this case item correspond to currentValue of array a, 
-				// using index to get value from array b
-				return item - year1[index];
-			})
-			//console.log("the diff");
-			//console.log(diff);
-			// now create an array of coordinates from this array
-			var coordinates = [];
-			var arr = [];
-			diff.forEach(function(item, index) {
-				var xy = {};
-				xy.month = index+1;
-				xy.bad_days = item;
-				coordinates.push(xy);
-				arr.push(item);
-			});
-			
-			var targetID = "difference-" + sparkTarget.substr(-4)
-			//console.log(targetID);
-			document.getElementById(targetID).innerHTML = "{" + arr + "}";
-		}
-	})
+		
+		
+		// what's the cumulative total PM2.5 concentration
+		
+	});
 	
 }
 function onParseComplete() {
