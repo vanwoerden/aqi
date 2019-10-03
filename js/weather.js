@@ -34,7 +34,7 @@ var svg = d3.select("#weather").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-d3.csv("data/beijing_weather_2016.csv", type, function(error, data) {
+d3.csv("../data/beijing_weather_2016.csv", type, function(error, data) {
   if (error) throw error;
   x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain(d3.extent(data, function(d) { return d.temp; }));

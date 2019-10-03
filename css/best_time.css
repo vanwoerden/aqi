@@ -80,3 +80,32 @@ g#calendar-legend {
   shape-rendering: crispEdges;
   stroke-width: 1px;
 }
+    .month {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2px;
+    }
+    .day {
+        fill: #fff;
+        stroke: #BFF5DB;
+        stroke-width: 0;
+    }
+    text    {
+        /*font-family:"Avenir Next";*/
+        font-size:1.2em;
+    }
+    .dayLabel   {
+        fill:#000;
+        font-size:0.6em;
+    }
+    .monthLabel {
+        text-anchor:middle;
+        font-size:0.6em;
+        fill:#000;
+    }
+    .yearLabel  {
+        fill:#000;
+        font-size:1em;
+    }
+    
+    .key {font-size:0.5em;}

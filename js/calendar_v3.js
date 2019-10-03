@@ -14,11 +14,10 @@ var calY=50;//offset of calendar in each group
 var calX=25;
 var width = 960;
 var height = 163;
-//var parseDate = d3.time.format("%m/%d/%Y").parse; //d3 v3
-var parseDate = d3.timeParse("%m/%d/%Y"); //d3 v5
-var format = d3.timeParse("%Y/%m/%d"); 
-var toolDate = d3.timeParse("%m/%d/%Y");
-var parseDay = d3.timeParse("%m/%d/%Y");
+var parseDate = d3.time.format("%m/%d/%Y").parse; //d3 v3
+var format = d3.time.format("%Y/%m/%d"); //d3 v
+var toolDate = d3.time.format("%m/%d/%Y");
+var parseDay = d3.time.format("%m/%d/%Y");
 
 var weekXPos = [];
 
@@ -42,8 +41,7 @@ function createWeekBlocks() {
 createWeekBlocks();
 function updateCalendar(targetAQI, targetDuration) {
     //console.log("updateCalendar: aqi = " + targetAQI);
-
-    d3.csv("../data/beijing_2016_daily_for_bad_days.csv").then(function(data) {
+    d3.csv("../data/beijing_2016_daily_for_bad_days.csv", function(error, data) {
   
         data.forEach(function(d) {
             d.date= d.date;
@@ -72,12 +70,7 @@ function updateCalendar(targetAQI, targetDuration) {
             .entries(data);
         
         var badHoursPerWeek = d3.nest()
-            //d3.timeWeek.count(d3.timeYear(now), now); // 24
-            .key(function(d) {
-                //console.log(parseDate(d.date));
-                var dt = parseDate(d.date);
-                return d3.timeWeek.count(d3.timeYear(dt), dt);
-            })
+            .key(function(d) { return d3.time.weekOfYear(parseDate(d.date)); })
             .key(function(d) { return d.day; })
             .rollup(function(v) { return {    
                 //count: v.length,
@@ -86,14 +79,13 @@ function updateCalendar(targetAQI, targetDuration) {
                 }).length
             }; })
             .entries(data);
-        console.log("bad hrs per wekk");
-        console.log(badHoursPerWeek);
+        
         var badDaysPerWeek = [];
         badHoursPerWeek.forEach(function(week, index) {
             var bad_days_week = 0;
-            console.log(week);
+            
             week.values.forEach(function(day, index) {
-                if(day.bad_hours > targetDuration) {
+                if(day.values.bad_hours > targetDuration) {
                     // bad day
                     bad_days_week++;
                 }
@@ -129,7 +121,7 @@ function updateCalendar(targetAQI, targetDuration) {
             
             badDaysForOneMonth.forEach(function(day, index) {
                 // loop through the days
-                if(day.bad_hours > targetDuration) {
+                if(day.values.bad_hours > targetDuration) {
                     // Houston, we have a bad day
                     bad_days_month++;
                 }
@@ -187,7 +179,7 @@ function updateCalendar(targetAQI, targetDuration) {
         var rects = cals.append("g")
             .attr("id","alldays")
             .selectAll(".day")
-            .data(function(d) { return d3.timeDays(new Date(parseInt(d.key), 0, 1), new Date(parseInt(d.key) + 1, 0, 1)); })
+            .data(function(d) { return d3.time.days(new Date(parseInt(d.key), 0, 1), new Date(parseInt(d.key) + 1, 0, 1)); })
             .enter().append("rect")
             .attr("id",function(d) {
                 return "_"+format(d);
@@ -197,8 +189,7 @@ function updateCalendar(targetAQI, targetDuration) {
             .attr("width", cellSize)
             .attr("height", cellSize)
             .attr("x", function(d) {
-                //d3.timeWeek.count(d3.timeYear(now), now);
-                return xOffset+calX+(d3.timeWeek.count(d3.timeYear(d), d) * cellSize);
+                return xOffset+calX+(d3.time.weekOfYear(d) * cellSize);
             })
             .attr("y", function(d) { return calY+(d.getDay() * cellSize); })
             .datum(format);

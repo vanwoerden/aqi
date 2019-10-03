@@ -89,63 +89,63 @@ var mmmArray = [
 				];
 var csvs = [
 {
-	csv: "./data/beijing_2009_daily_for_bad_days.csv",
+	csv: "../data/beijing_2009_daily_for_bad_days.csv",
 	target: "bad-number-2009",
 	sparkTarget: "bad-days-2009",
 	pieTarget: "pie-2009",
 	monthsArray: "2009"
 },
 {
-	csv: "./data/beijing_2010_daily_for_bad_days.csv",
+	csv: "../data/beijing_2010_daily_for_bad_days.csv",
 	target: "bad-number-2010",
 	sparkTarget: "bad-days-2010",
 	pieTarget: "pie-2010",
 	monthsArray: "2010"
 },
 {
-	csv: "./data/beijing_2011_daily_for_bad_days.csv",
+	csv: "../data/beijing_2011_daily_for_bad_days.csv",
 	target: "bad-number-2011",
 	sparkTarget: "bad-days-2011",
 	pieTarget: "pie-2011",
 	monthsArray: "2011"
 },
 {
-	csv: "./data/beijing_2012_daily_for_bad_days.csv",
+	csv: "../data/beijing_2012_daily_for_bad_days.csv",
 	target: "bad-number-2012",
 	sparkTarget: "bad-days-2012",
 	pieTarget: "pie-2012",
 	monthsArray: "2012"
 },
 {
-	csv: "./data/beijing_2013_daily_for_bad_days.csv",
+	csv: "../data/beijing_2013_daily_for_bad_days.csv",
 	target: "bad-number-2013",
 	sparkTarget: "bad-days-2013",
 	pieTarget: "pie-2013",
 	monthsArray: "2013"
 },
 {
-	csv: "./data/beijing_2014_daily_for_bad_days.csv",
+	csv: "../data/beijing_2014_daily_for_bad_days.csv",
 	target: "bad-number-2014",
 	sparkTarget: "bad-days-2014",
 	pieTarget: "pie-2014",
 	monthsArray: "2014"
 },
 {
-	csv: "./data/beijing_2015_daily_for_bad_days.csv",
+	csv: "../data/beijing_2015_daily_for_bad_days.csv",
 	target: "bad-number-2015",
 	sparkTarget: "bad-days-2015",
 	pieTarget: "pie-2015",
 	monthsArray: "2015"
 },
 {
-	csv: "./data/beijing_2016_daily_for_bad_days.csv",
+	csv: "../data/beijing_2016_daily_for_bad_days.csv",
 	target: "bad-number-2016",
 	sparkTarget: "bad-days-2016",
 	pieTarget: "pie-2016",
 	monthsArray: "2016"
 },
 {
-	csv: "./data/beijing_2017_daily_for_bad_days.csv",
+	csv: "../data/beijing_2017_daily_for_bad_days.csv",
 	target: "bad-number-2017",
 	sparkTarget: "bad-days-2017",
 	pieTarget: "pie-2017",
