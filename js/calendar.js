@@ -86,14 +86,14 @@ function updateCalendar(targetAQI, targetDuration) {
                 }).length
             }; })
             .entries(data);
-        console.log("bad hrs per wekk");
-        console.log(badHoursPerWeek);
+        //console.log("bad hrs per wekk");
+        //console.log(badHoursPerWeek);
         var badDaysPerWeek = [];
         badHoursPerWeek.forEach(function(week, index) {
             var bad_days_week = 0;
-            console.log(week);
+            //console.log(week);
             week.values.forEach(function(day, index) {
-                if(day.bad_hours > targetDuration) {
+                if(day.value.bad_hours > targetDuration) {
                     // bad day
                     bad_days_week++;
                 }
@@ -129,7 +129,7 @@ function updateCalendar(targetAQI, targetDuration) {
             
             badDaysForOneMonth.forEach(function(day, index) {
                 // loop through the days
-                if(day.bad_hours > targetDuration) {
+                if(day.value.bad_hours > targetDuration) {
                     // Houston, we have a bad day
                     bad_days_month++;
                 }
@@ -146,6 +146,7 @@ function updateCalendar(targetAQI, targetDuration) {
             var max = Math.max.apply(Math, badDaysPerMonth); // picks out 5000
             percents = badDaysPerMonth.map(n => Math.round(n/max * 100));
             
+            console.log(bad_days_month);
             document.getElementById(index).innerHTML = bad_days_month;
         });
         
@@ -178,9 +179,9 @@ function updateCalendar(targetAQI, targetDuration) {
             })
         
         var labels = cals.append("text")
-            .attr("class","yearLabel")
+            .attr("class","yearLabel bold")
             .attr("x",xOffset)
-            .attr("y",25)
+            .attr("y", 0)
             .text(function(d){return d.key});
         
         //create a daily rectangle for each year
@@ -234,41 +235,48 @@ function updateCalendar(targetAQI, targetDuration) {
             .attr("width",cellSize)
             .attr("height",cellSize)
             .attr("x", function(d){
-                var xPos = xOffset+calX+(d3.time.weekOfYear(parseDate(d.key)) * cellSize);
+                // return xOffset+calX+(d3.timeWeek.count(d3.timeYear(d), d) * cellSize);
+                var dt = parseDate(d.key);
+                var xPos = xOffset+calX+(d3.timeWeek.count(d3.timeYear(dt), dt) * cellSize);
                 weekXPos.push(xPos);
-                return xOffset+calX+(d3.time.weekOfYear(parseDate(d.key)) * cellSize);
+                return xPos; //xOffset+calX+(d3.timeWekk.count(d3.timeYear(dt), dt) * cellSize);
             })
             .attr("y", function(d) { return calY+(parseDate(d.key).getDay() * cellSize); })
             .attr("fill", function(d) {
-                if (d.values.value<0) {
+                //console.log(d.value.value);
+                if (d.value.value<0) {
             return "#ffffff";
                 } else
-        if (d.values.value<breaks[0]) {
+        if (d.value.value<breaks[0]) {
+                    //console.log(colours[0]);
                     return colours[0];
                 } 
                 for (i=0;i<breaks.length+1;i++){
-                    if (d.values.value>=breaks[i]&&d.values.value<breaks[i+1]){
+                    if (d.value.value>=breaks[i]&&d.value.value<breaks[i+1]){
                         return colours[i+1];
                     }
                 }
-                if (d.values.value>breaks.length-1){
-                    return colours[breaks.length]   
+                if (d.value.value>breaks.length-1){
+                    return colours[breaks.length];
                 }
-            })
+            });
         
         //append a title element to give basic mouseover info
         dataRects.append("title")
-            .text(function(d) { return parseDate(d.key)+":\n"+d.values.value+units; });
+            .text(function(d) { return parseDate(d.key)+":\n"+d.value.value+units; });
         
         //add montly outlines for calendar
         cals.append("g")
         .attr("id","monthOutlines")
         .selectAll(".month")
-        .data(function(d) { 
-            return d3.time.months(new Date(parseInt(d.key), 0, 1),
+        .data(function(d) {
+            //console.log(d3.timeMonths(new Date(parseInt(d.key), 0, 1),
+            //                      new Date(parseInt(d.key) + 1, 0, 1)));
+            return d3.timeMonths(new Date(parseInt(d.key), 0, 1),
                                   new Date(parseInt(d.key) + 1, 0, 1)); 
         })
-        .enter().append("path")
+        .enter()
+        .append("path")
         .attr("class", "month")
         .attr("transform","translate("+(xOffset+calX)+","+calY+")")
         .attr("d", monthPath);
@@ -342,9 +350,11 @@ function updateCalendar(targetAQI, targetDuration) {
 
 //pure Bostock - compute and return monthly path data for any year
 function monthPath(t0) {
+    console.log("monthPath " + t0);
   var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
-      d0 = t0.getDay(), w0 = d3.time.weekOfYear(t0),
-      d1 = t1.getDay(), w1 = d3.time.weekOfYear(t1);
+        // return xOffset+calX+(d3.timeWeek.count(d3.timeYear(d), d) * cellSize);
+      d0 = t0.getDay(), w0 = d3.timeWeek.count(d3.timeYear(t0), t0),
+      d1 = t1.getDay(), w1 = d3.timeWeek.count(d3.timeYear(t1), t1);
   return "M" + (w0 + 1) * cellSize + "," + d0 * cellSize
       + "H" + w0 * cellSize + "V" + 7 * cellSize
       + "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize

@@ -1,7 +1,7 @@
 /*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select,textarea{margin:0}html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}img,embed,iframe,object,audio,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0;text-align:left}
 html{
 	/*font-family: "Cera Basic Regular", serif;*/
-	font-family: "Franklin Gothic Light", serif;
+	font-family: "Franklin Gothic Book", sans-serif;
 	/*font-family: "Maax Rounded";*/
 	font-size: 16px;
 	line-height: 1.5em;
@@ -24,10 +24,26 @@ header {
 	padding-bottom: 18em;
 }
 .sky-background {
+	background: rgba(67, 61, 11, 0.2);
+	height: 800px;
+}
+.sky-background::after {
+  content: "";
 	background: url(../img/peiheng-yang-799503-unsplash.jpg) no-repeat center center;
 	background-size: cover;
-	/*background-attachment: fixed;*/
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 	height: 800px;
+  position: absolute;
+  z-index: -1;
+	transition: 0.3s;
+}
+.blue-skies {
+	background: url(../img/peiheng-yang-799503-unsplash.jpg) no-repeat center center;
+	background-size: cover;
 }
 .sky-soon {
 	background: url(../img/peiheng-yang-799503-unsplash.jpg) no-repeat center center;
@@ -50,6 +66,9 @@ header {
 .sky-header span {
 	background: black;
 	padding: 0.4em;
+}
+a#getting-better-link:hover {
+	
 }
 .hugo-background {
 	background-color: rgba(0, 0, 0, 0.5);	
@@ -84,15 +103,16 @@ h1 {
 	font-size: 4em;
 	font-weight: bold;
 	line-height: 1em;
-	/*padding: 0.2em;*/
-	/*background: black;*/
-	text-align: center;
+	padding: 1em 0;
 }
 h2 {
 	font-size: 1.6em;
 	font-weight: normal;
 	line-height: 1.2em !important;
 	padding: 2em 0;
+}
+h2.white {
+	max-width: 840px;
 }
 h3 {
 	font-family: "Clarendon Bold";
@@ -125,6 +145,12 @@ p.small {
 }
 a, a:visited, h4 a, h4 a:visited {
 	color: black;
+}
+a.white:visited {
+	color: white;
+}
+.bold {
+	font-family: "Franklin Gothic Medium", sans-serif;
 }
 .large {
 	/*font-size: 1.2em;*/
@@ -211,7 +237,7 @@ sub {
 	width: 300px;
 	height: 300px;
 	padding-top: 4em;
-	margin: 24em auto;
+	margin: 14em auto;
 	/*opacity: 0.7;*/
 }
 #current-aqi {

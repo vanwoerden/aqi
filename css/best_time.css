@@ -6,21 +6,25 @@
 	padding-top: 3em;
 }
 #title {
-	padding-top: 6em;
-	padding-bottom: 2em;
+	padding-top: 10em;
+	padding-bottom: 4em;
 	text-align: left;
+}
+.cal-sliders {
+	padding-bottom: 4em;
 }
 #calendar-container {
 	height: auto;
 }
 #bad-days-container {
-	/*margin-top: 2em;*/
-	margin-left: 38px;
-	width: 92.5%;
+	margin-top: 1em;
+  margin-left: 62px;
+  width: 76%;
+  position: absolute;	
 }
 .month {
 	height: 30px;
-	padding-top: 1em;
+	padding-top: 0.5em;
 	font-size: 1.2em;
 	font-weight: 500;
 	text-align: center;
@@ -33,31 +37,31 @@
 .month-label {
 	font-size: 0.7em;
 	text-align: center;
-	padding-top: 0.4em;
+	margin-top: -0.4em;
 }
 g#calendar-legend {
 	position: absolute !important;
 	margin-right: 0;
 }
 #weeks-container {
-	margin-top: 2.2em;
-	margin-left: 31px;
+	margin-top: -0.8em;
+  margin-left: 30.5px;	
 	height: 50px;
-	clear:both;
+	clear: both;
 }
 .week-rect {
 	float: left;
-	height: 21.5px;
-	width: 21.3px;
+	/*height: 21.5px;*/
+	width: 21.29px;
 	background: #084081;
-	/*border-radius: 0 0 4px 4px;*/
-	border: 5px solid white;
+	border-top: 3px solid #022957;
+	/*border: 5px solid white;*/
 }
 .bad-number {
-	font-size: 1.2em;
-	text-align: center;
-	width: 97px;
-	float: left;
+	/*font-size: 1.2em;*/
+	/*text-align: center;*/
+	/*width: 97px;*/
+	/*float: left;*/
 }
 .best-time-slider-container, .best-time-hours-slider-container {
 	margin-left: 100px;
@@ -102,6 +106,7 @@ g#calendar-legend {
         text-anchor:middle;
         font-size:0.6em;
         fill:#000;
+				display: none;
     }
     .yearLabel  {
         fill:#000;

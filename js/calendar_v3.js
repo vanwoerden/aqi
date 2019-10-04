@@ -255,7 +255,9 @@ function updateCalendar(targetAQI, targetDuration) {
         cals.append("g")
         .attr("id","monthOutlines")
         .selectAll(".month")
-        .data(function(d) { 
+        .data(function(d) {
+            console.log(d3.time.months(new Date(parseInt(d.key), 0, 1),
+                                  new Date(parseInt(d.key) + 1, 0, 1)));
             return d3.time.months(new Date(parseInt(d.key), 0, 1),
                                   new Date(parseInt(d.key) + 1, 0, 1)); 
         })
@@ -333,6 +335,7 @@ function updateCalendar(targetAQI, targetDuration) {
 
 //pure Bostock - compute and return monthly path data for any year
 function monthPath(t0) {
+    console.log("monthPath " + t0); 
   var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
       d0 = t0.getDay(), w0 = d3.time.weekOfYear(t0),
       d1 = t1.getDay(), w1 = d3.time.weekOfYear(t1);

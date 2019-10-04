@@ -47,6 +47,16 @@
 }
 
 @font-face {
+	font-family: 'Franklin Gothic Medium';
+	src: url('../fonts/FranklinGothicURW-Med.eot');
+	src: url('../fonts/FranklinGothicURW-Med.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/FranklinGothicURW-Med.woff') format('woff'),
+	     url('../fonts/FranklinGothicURW-Med.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
 	font-family: 'Fakt Air';
 	src: url('../fonts/FaktPro-Air.eot');
 	src: url('../fonts/FaktPro-Air.eot?#iefix') format('embedded-opentype'),
