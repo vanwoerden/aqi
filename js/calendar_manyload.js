@@ -25,13 +25,10 @@ var weekXPos = [];
 var initAQI = 150; // target AQI set by user
 var _aqi;
 var _duration;
-var _data;
 var units=" hours for which PM2.5 exceeds " + initAQI;
 var initDuration = 8; // max hours of below targetAQI duration
 
 var bad_days_year = 0;
-
-var csvData;
 
 function createWeekBlocks() {
     for (var i = 0; i < 53; i++) {
@@ -45,38 +42,27 @@ function createWeekBlocks() {
     }
 }
 createWeekBlocks();
+function updateCalendar(targetAQI, targetDuration) {
+    //console.log("updateCalendar: aqi = " + targetAQI);
 
-var csvList = "../data/beijing_2017_daily_for_bad_days.csv";
-function loadCSVS(csvs) {
-    // 1. load all csvs and store data
-    d3.csv(csvs).then(function(data) {
+    d3.csv("../data/beijing_2017_daily_for_bad_days.csv").then(function(data) {
+  
+        data.forEach(function(d) {
+            d.date= d.date;
+            if(d.value<0){d.value = -1;}
+            d.year=+d.year;
+            d.month = +d.month;
+            d.day = +d.day;
+            d.hour = +d.hour;
+            d.value = +d.value;
+        });
         
-        _data = data;
-        
-        
-        
-        // 2. draw charts for the first time
-        drawOrUpdateCharts(100, 8, data);
-    });
+        var yearlyData = d3.nest()
+            .key(function(d){return d.year;})
+            .entries(data);
+  
     
-    // 3. create event handlers that trigger updateCharts function ?
-}
-loadCSVS(csvList);
-
-function drawOrUpdateCharts(targetAQI, targetDuration, data) {
-    // draw
-    console.log(data);
-    data.forEach(function(d) {
-        d.date= d.date;
-        if(d.value<0){d.value = -1;}
-        d.year=+d.year;
-        d.month = +d.month;
-        d.day = +d.day;
-        d.hour = +d.hour;
-        d.value = +d.value;
-    });
-    
-    var badHoursPerDay = [];
+        var badHoursPerDay = [];
         badHoursPerDay = d3.nest()
             .key(function(d) { return d.year; })
             .key(function(d) { return d.date; })
@@ -136,6 +122,7 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             }; })
             .entries(data);
         
+        
         var badDaysPerMonth = [];
         var percents = [];
         badHoursPerMonth.forEach(function(month, index){
@@ -176,7 +163,7 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
                 bad_days++;
             }
         });
-        
+
         d3.select("#calendar").remove();
         var svg = d3.select("#calendar-container").append("svg")
             .attr("width","100%")
@@ -184,6 +171,7 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             .attr("preserveAspectRatio", "xMinYMin meet")
             .attr("viewBox","0 0 960 200")
             .attr("id", "calendar")
+
         //create an SVG group for each year
         var cals = svg.selectAll("g")
             .data(badHoursPerDay)
@@ -363,28 +351,6 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
                     return "over "+breaks[i-1] + " hours with PM2.5 exceeding " + targetAQI;   
                 }
             });
-}
-function updateCalendar(targetAQI, targetDuration) {
-    // update should be seprate fro mloading csv's
-    //console.log("updateCalendar: aqi = " + targetAQI);
-
-    d3.csv("../data/beijing_2017_daily_for_bad_days.csv").then(function(data) {
-  
-        data.forEach(function(d) {
-            d.date= d.date;
-            if(d.value<0){d.value = -1;}
-            d.year=+d.year;
-            d.month = +d.month;
-            d.day = +d.day;
-            d.hour = +d.hour;
-            d.value = +d.value;
-        });
-        
-        var yearlyData = d3.nest()
-            .key(function(d){return d.year;})
-            .entries(data);
-  
-        
     });//end data load
 }
 
@@ -413,9 +379,7 @@ document.getElementById("slider-aqi-best-time").oninput = function() {
     _aqi = document.getElementById("slider-aqi-best-time").value; //gets the oninput value
     _duration = document.getElementById("slider-hours-best-time").value;
     document.getElementById("target-aqi").innerHTML = _aqi;
-    //updateCalendar(_aqi, _duration);
-    var svg = document.getElementById("calendar");
-    drawOrUpdateCharts(_aqi, _duration, _data, svg);
+    updateCalendar(_aqi, _duration);
 };
 document.getElementById("slider-aqi-best-time").onchange = function() {
     _aqi = document.getElementById("slider-aqi-best-time").value;
@@ -444,7 +408,7 @@ var sliderThrottle = debounce(function() {
 //updateCalendar(100, 8);
 document.getElementById("target-aqi").innerHTML = 100;
 document.getElementById("target-duration").innerHTML = 8;
-//updateCalendar(100, 8);
+updateCalendar(100, 8);
 
 
 /*******
