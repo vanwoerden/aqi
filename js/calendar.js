@@ -46,7 +46,7 @@ function createWeekBlocks() {
 }
 createWeekBlocks();
 
-var csvList = "../data/beijing_2017_daily_for_bad_days.csv";
+var csvList = "../data/beijing_2016_daily_for_bad_days.csv";
 function loadCSVS(csvs) {
     // 1. load all csvs and store data
     d3.csv(csvs).then(function(data) {
@@ -65,7 +65,8 @@ loadCSVS(csvList);
 
 function drawOrUpdateCharts(targetAQI, targetDuration, data) {
     // draw
-    console.log(data);
+    bad_days_year = 0;
+    //console.log(data);
     data.forEach(function(d) {
         d.date= d.date;
         if(d.value<0){d.value = -1;}
@@ -162,10 +163,8 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             var max = Math.max.apply(Math, badDaysPerMonth); // picks out 5000
             percents = badDaysPerMonth.map(n => Math.round(n/max * 100));
             
-            console.log(bad_days_month);
             document.getElementById(index).innerHTML = bad_days_month;
             bad_days_year += bad_days_month;
-            //console.log("bad days for this year " + bad_days_year);
         });
         document.getElementById("yearly-bad-days").innerHTML = bad_days_year;
         
@@ -390,7 +389,6 @@ function updateCalendar(targetAQI, targetDuration) {
 
 //pure Bostock - compute and return monthly path data for any year
 function monthPath(t0) {
-    console.log("monthPath " + t0);
   var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
         // return xOffset+calX+(d3.timeWeek.count(d3.timeYear(d), d) * cellSize);
       d0 = t0.getDay(), w0 = d3.timeWeek.count(d3.timeYear(t0), t0),
@@ -420,7 +418,6 @@ document.getElementById("slider-aqi-best-time").oninput = function() {
 document.getElementById("slider-aqi-best-time").onchange = function() {
     _aqi = document.getElementById("slider-aqi-best-time").value;
     //mixpanel.track("Slider Updated", {"type": "AQI"});
-    console.log("slider aqi");
 };
 document.getElementById("slider-hours-best-time").oninput = function() {
     //sliderThrottle();

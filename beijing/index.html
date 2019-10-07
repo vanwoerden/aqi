@@ -12,10 +12,16 @@
 
 <body>
 	
-	<header class="sky-background">
-		<div class="content">
-			<h1 class="white">
-				Air quality in Beijing: clearing up?
+	<header class="sky-background" id="sky-background">
+        <div id="sky-pic">
+            
+        </div>
+        <div id="sky-pollution">
+            
+        </div>
+		<div class="container-9 center">
+			<h1 class="white" id="page-title">
+				Air quality in Beijing
 			</h1>
 			<h2 class="white">
 				Beijing is famous or a lot of things: good food, nightlife, culture. But when it comes to air quality, Beijing doesn't top the chart. At least historically; it seems to be <a id="getting-better-link" class="white" href="#radial-charts">getting better</a>. So what's the best time to visit Beijing?
@@ -42,11 +48,28 @@
 	<!-- start calendar -->
     <div class="content">
         <div class="container-9 center" id="title">
-            <h1 class="left">The best time to visit Beijing</h1>
+            <h3 class="left has-padding">The best time to visit Beijing in
+            <span class="custom-select" style="width:200px;">
+                <select class="select-css">
+                  <option value="2008">2008</option>
+                  <option value="2009">2009</option>
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option selected="selected" value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                </select>
+            </span>
+            is <span id="best-month">August</span>*</h3>
         </div>
         <div class="container-9 center" id="intro">
             <div class="paragraph cal-sliders">
-                <p>Let's say the PM2.5 level you're willing to expose yourself to is
+                <p>*Let's say the PM2.5 level you're willing to expose yourself to is
                     <span id="target-aqi" class="blue-link">100</span>
                     <span><input id="slider-aqi-best-time" type="range" min="0" max="300" step="1" value="100" list="tickmarks"></span> 
                     µg/ml, and you're willing to endure that level for
@@ -57,9 +80,12 @@
             </div>
 
         </div>
-        
+        <div class="bad-year-container">
+            <div id="yearly-bad-days" class="bold">0</div>
+            <div class="month-label">bad days</div>
+        </div>
         <div id="bad-days-container">
-            <div id="yearly-bad-days">0</div>
+            
             <div class="bad-month-container">
                 <div class="month-label">JANUARY</div>
                 <div id="0" class="month bold"></div>
@@ -930,7 +956,7 @@
 			<div class="half-width left">
 				<div class="block">
 					<h3>
-						Next: The best time of year to visit Beijing
+						Next: The best time of year to visit Beijing 
 					</h3>
 					<p class="paragraph">
 						A deep dive into the best and worst time to be in Beijing throughout the year. 
@@ -1001,10 +1027,18 @@
 		$( document ).ready(function() {
             $("#getting-better-link").hover(
                 function() {
-                    $(".sky-background").addClass("blue-skies");
+                    //$(".sky-background").addClass("blue-skies");
+                    var sky = document.getElementById("sky-pic");
+                    var pol = document.getElementById("sky-pollution");
+                    TweenMax.to(pol, 0.2, { opacity: 0.05 });
+                    TweenMax.to(sky, 0.2, { filter: "blur(0)" });
                 },
                 function() {
-                    $(".sky-background").removeClass("blue-skies");
+                    //$(".sky-background").removeClass("blue-skies");
+                    var sky = document.getElementById("sky-pic");
+                    var pol = document.getElementById("sky-pollution");
+                    TweenMax.to(pol, 0.2, { opacity: 0.2 });
+                    TweenMax.to(sky, 0.2, { filter: "blur(0) grayscale(60%)" });
                 }
             );
             // on hover, add class to .sky-background
