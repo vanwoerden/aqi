@@ -32,6 +32,19 @@ var initDuration = 8; // max hours of below targetAQI duration
 var bad_days_year = 0;
 
 var csvData;
+var csvList = [
+               "../data/beijing_2009_daily_for_bad_days.csv",
+               "../data/beijing_2010_daily_for_bad_days.csv",
+               "../data/beijing_2011_daily_for_bad_days.csv",
+               "../data/beijing_2012_daily_for_bad_days.csv",
+               "../data/beijing_2013_daily_for_bad_days.csv",
+               "../data/beijing_2014_daily_for_bad_days.csv",
+               "../data/beijing_2015_daily_for_bad_days.csv",
+               "../data/beijing_2016_daily_for_bad_days.csv",
+               "../data/beijing_2017_daily_for_bad_days.csv",
+               "../data/beijing_2018_daily_for_bad_days.csv",
+               "../data/beijing_2019_daily_for_bad_days.csv"
+              ];
 
 function createWeekBlocks() {
     for (var i = 0; i < 53; i++) {
@@ -46,22 +59,68 @@ function createWeekBlocks() {
 }
 createWeekBlocks();
 
-var csvList = "../data/beijing_2016_daily_for_bad_days.csv";
-function loadCSVS(csvs) {
+function loadCSV(csv) {
     // 1. load all csvs and store data
-    d3.csv(csvs).then(function(data) {
+    // TODO check if the csv has been loaded before?
+    d3.csv(csv).then(function(data) {
         
         _data = data;
-        
-        
-        
         // 2. draw charts for the first time
         drawOrUpdateCharts(100, 8, data);
     });
     
     // 3. create event handlers that trigger updateCharts function ?
 }
-loadCSVS(csvList);
+loadCSV(csvList[0]);
+
+function calculateBestMonth(a) {
+    var lowest = 0;
+    for (var i = 1; i < a.length; i++) {
+        if (a[i].bad_days < a[lowest].bad_days) lowest = i;
+    }
+    //console.log(lowest);
+    //return lowest;
+    var month = '';
+    switch (lowest+1) {
+        case 1:
+            month = "January";
+            break;
+        case 2:
+            month = "February";
+            break;
+        case 3:
+            month = "March";
+            break;
+        case 4:
+            month = "April";
+            break;
+        case 5:
+            month = "May";
+            break;
+        case 6:
+            month = "June";
+            break;
+        case 7:
+            month = "July";
+            break;
+        case 8:
+            month = "August";
+            break;
+        case 9:
+            month = "September";
+            break;
+        case 10:
+            month = "October";
+            break;
+        case 11:
+            month = "November";
+            break;
+        case 12:
+            month = "December";
+            break;
+    }
+    document.getElementById("best-month").innerHTML = month;
+}
 
 function drawOrUpdateCharts(targetAQI, targetDuration, data) {
     // draw
@@ -138,6 +197,7 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             .entries(data);
         
         var badDaysPerMonth = [];
+        var badDaysAndMonths = [];
         var percents = [];
         badHoursPerMonth.forEach(function(month, index){
             // make another recursion for each month
@@ -154,9 +214,8 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             
             var bdm = {};
             bdm.month = index + 1;
-
             bdm.bad_days = bad_days_month;
-            
+            badDaysAndMonths.push(bdm);
             //need to percentify for sparklines
             badDaysPerMonth.push(bdm.bad_days);
             
@@ -166,6 +225,8 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             document.getElementById(index).innerHTML = bad_days_month;
             bad_days_year += bad_days_month;
         });
+        calculateBestMonth(badDaysAndMonths);
+            
         document.getElementById("yearly-bad-days").innerHTML = bad_days_year;
         
         var bad_days = 0;
@@ -424,7 +485,7 @@ document.getElementById("slider-hours-best-time").oninput = function() {
     _aqi = document.getElementById("slider-aqi-best-time").value; //gets the oninput value
     _duration = document.getElementById("slider-hours-best-time").value;
     document.getElementById("target-duration").innerHTML = _duration;
-    updateCalendar(_aqi, _duration);
+    drawOrUpdateCharts(_aqi, _duration, _data, svg);
 };
 document.getElementById("slider-hours-best-time").onchange = function() {
     _duration = document.getElementById("slider-hours-best-time").value;
@@ -432,6 +493,10 @@ document.getElementById("slider-hours-best-time").onchange = function() {
     
      console.log("slider duration");
 };
+document.getElementById("year-selector").onchange = function() {
+    //console.log(document.getElementById("year-selector").value);
+    loadCSV("../data/beijing_" + document.getElementById("year-selector").value + "_daily_for_bad_days.csv");
+}
 //throttle function
 var sliderThrottle = debounce(function() {
 	_aqi = document.getElementById("slider-aqi-best-time").value; //gets the oninput value

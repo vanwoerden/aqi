@@ -50,7 +50,7 @@
         <div class="container-9 center" id="title">
             <h3 class="left has-padding">The best time to visit Beijing in
             <span class="custom-select" style="width:200px;">
-                <select class="select-css">
+                <select class="select-css" id="year-selector">
                   <option value="2008">2008</option>
                   <option value="2009">2009</option>
                   <option value="2010">2010</option>
@@ -69,14 +69,22 @@
         </div>
         <div class="container-9 center" id="intro">
             <div class="paragraph cal-sliders">
-                <p>*Let's say the PM2.5 level you're willing to expose yourself to is
+                <div class="leftie">
+                    *Let's say the PM2.5 level you're willing to expose yourself to is
+                </div>
+                <div class="leftie">
                     <span id="target-aqi" class="blue-link">100</span>
                     <span><input id="slider-aqi-best-time" type="range" min="0" max="300" step="1" value="100" list="tickmarks"></span> 
-                    µg/ml, and you're willing to endure that level for
+                    µg/ml, 
+                </div>
+                <div class="leftie">
+                    and you're willing to endure that level for
+                </div>
+                <div class="leftie">
                     <span id="target-duration" class="blue-link">8</span>
                     <span><input id="slider-hours-best-time" type="range" min="0" max="24" step="1" value="8" list="tickmarks"></span>
                     hours.
-                </p>
+                </div>
             </div>
 
         </div>

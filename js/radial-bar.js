@@ -68,8 +68,8 @@ function draw(csvFile, target, year) {
 				//.padAngle(0.01);
 				//.padRadius(innerRadius);
 				
-		console.log('arc');
-		console.log(arc);
+		//console.log('arc');
+		//console.log(arc);
 
 				//var tween = pathTween(arc, 4);
 				
