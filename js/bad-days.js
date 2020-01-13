@@ -85,7 +85,8 @@ var mmmArray = [
 				"#mmm-2015",
 				"#mmm-2016",
 				"#mmm-2017",
-				"#mmm-2018"
+				"#mmm-2018",
+				"#mmm-2019"
 				];
 var csvs = [
 {
@@ -150,6 +151,20 @@ var csvs = [
 	sparkTarget: "bad-days-2017",
 	pieTarget: "pie-2017",
 	monthsArray: "2017"
+},
+{
+	csv: "../data/beijing_2018_berkeley.csv",
+	target: "bad-number-2018",
+	sparkTarget: "bad-days-2018",
+	pieTarget: "pie-2018",
+	monthsArray: "2018"
+},
+{
+	csv: "../data/beijing_2019_berkeley.csv",
+	target: "bad-number-2019",
+	sparkTarget: "bad-days-2019",
+	pieTarget: "pie-2019",
+	monthsArray: "2019"
 }
 ]
 
@@ -172,7 +187,7 @@ $( document ).ready(function() {
 	feednami.setPublicApiKey('4275c345f113cdbd6aabbce7591be24577fe0ec93777769c6366d2bb0056daee');
 	feednami.load(url,function(result){
 		if(result.error) {
-			//console.log(result.error);
+
 		} else {
 			var entries = result.feed.entries;
 			var aqiArr = [];
@@ -180,7 +195,6 @@ $( document ).ready(function() {
 			var timeArr = [];
 			for(var i = 0; i < entries.length; i++){
 				var entry = entries[i];
-				//console.log(JSON.stringify(entry['rss:conc']['#']));
 				pm25Arr.push(entry['rss:conc']['#']);
 				aqiArr.push(entry['rss:aqi']['#']);
 				timeArr.push(entry.title);
@@ -231,9 +245,6 @@ $( document ).ready(function() {
 			var hrs = date.getHours();
 			var mins = date.getMinutes();
 			var currentTime = hrs + ":" + mins + "0";
-			//console.log("currentTime = " + currentTime);
-			//console.log("hours = " + hrs);
-			//console.log("minutes = " + mins);
 			
 			$("#current-aqi").html(aqiArr[aqiArr.length-1]);
 			$("#current-pm25").html(pm25Arr[pm25Arr.length-1]);
@@ -244,81 +255,24 @@ $( document ).ready(function() {
 			$(".circle").fadeIn("200", function(){
 				
 			});
-			$(".paragraph h3").addClass("has-padding");
+			//$(".paragraph h3").addClass("has-padding");
 		}
 	});
 	
 	$("#legend").click(function(){
 		$("#legend").toggleClass("popped");
 	});
-	
-//	var waypoints = $('.timeline').waypoint({
-//		handler: function(direction) {
-//		  console.log(this.element.id + ' hit');
-//		  decideWhereToJump(this.element.id);
-//		},
-//		offset: -305
-//	});
-//	
-//	var distance_2015 = $('#2015').offset().top;
-//	var distance_2014 = $('#2014').offset().top;
-//    var $window = $(window);
-//	console.log('distance 15 ' + distance_2015);
-//	console.log('distance 14 ' + distance_2014);
-//	
-//	var didScroll = false;
-//	 
-//	$(window).scroll(function() {
-//		didScroll = true;
-//	});
-	 
-	//setInterval(function() {
-	//	if ( didScroll ) {
-	//		didScroll = false;
-	//		//var timeline_year = $('.timeline').attr('id');
-	//		//if ( $window.scrollTop() >= distance_2015 ) {
-	//		//	var timeline_year = $('.timeline:visible:first').attr('id');
-	//		//	decideWhereToJump(2015);
-	//		//}
-	//		
-	//		// Check your page position and then
-	//		// Load in more results
-	//		if (isInViewport(radialCharts)) {
-	//			//console.log("in viewport");
-	//			document.getElementById('legend').style.display = "block";
-	//			//document.getElementById('one').classList.toggle("fixed");
-	//			//$("#one").addClass("fixed");
-	//		} else {
-	//			document.getElementById('legend').style.display = "none";
-	//			//document.getElementById('one').classList.toggle("fixed");
-	//			//$("#one").removeClass("fixed");
-	//		}
-	//	}
-	//}, 250);
+
 	var radialCharts = document.getElementById('radial-charts');
-	//window.addEventListener('scroll', function (event) {
-	//	//console.log(isInViewport(radialCharts));
-	//	if (isInViewport(radialCharts)) {
-	//		//console.log("in viewport");
-	//		document.getElementById('legend').style.display = "block";
-	//		//document.getElementById('one').classList.toggle("fixed");
-	//		//$("#one").addClass("fixed");
-	//	} else {
-	//		document.getElementById('legend').style.display = "none";
-	//		//document.getElementById('one').classList.toggle("fixed");
-	//		//$("#one").removeClass("fixed");
-	//	}
-	//}, false);
+
 	
 	function decideWhereToJump(yr) {
 		// compare curren year with id of closest timeline element
-		console.log('yr ' + yr);
 		var draw_string = "data/" + yr + "_monthly_inverted_relative.csv";
 		draw(draw_string, "#one", "");
 	}
 	
 	var isInViewport = function (el) {
-		//console.log("isInViewport? " + el.id);
 		const rect = el.getBoundingClientRect();
 		// DOMRect { x: 8, y: 8, width: 100, height: 100, top: 8, right: 108, bottom: 108, left: 8 }
 		const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
@@ -348,128 +302,21 @@ function initSliders(){
 		calculateDaysWithMeanAbove(e.csv, e.monthsArray, 25);
 	});
 	_initial = false;
-	//console.log('initsliders');
-	//console.log(document.getElementsByClassName("slider-hours")[0].valueLow);
 	//loadData();
 	// set initial positions
 	//createPieCharts(pieArray);
-	updatePollution();
+
 	//updateSliders(150, 9, 17);
 	
 	function setPositions(aqi, low, high) {
 		var hours = high - low;
-		//console.log("hours: " + hours);
 		document.getElementById("max-aqi").style.marginTop = -Math.round((aqi/600) * 100) + 'px';
 		updatePollution();
 	}
 	function updateSliders() {
-		
-		
-	}
-	function updatePollution() {
-		//console.log("updatePollution");
-		//console.log("AQI: " + _aqi);
-		//console.log("low: " + _low);
-		//console.log("high: " + _high);
-		_hours = _high - _low;
-		//console.log("hours: " + _hours);
-		var sliderWidth = document.getElementById("sky-rectangle").clientWidth;
-		//console.log('slider width = ' + sliderWidth);
-		document.getElementById("aqi-rectangle").style.height = (150 / 600 * _aqi) + 'px';
-		document.getElementById("aqi-rectangle").style.width = (sliderWidth / 24 * _hours) + 'px';
-		document.getElementById("aqi-rectangle").style.marginLeft = (sliderWidth/18) + 1 + (sliderWidth / 24 * _low) + 'px';
-		document.getElementById("high-hrs").style.marginLeft = (sliderWidth / 24 * _high) * 0.938 + 5 + 'px';
-		document.getElementById("low-hrs").style.marginLeft = (sliderWidth / 24 * _low) * 0.938 + 5 + 'px';
-		
-		document.getElementById("max-aqi").style.marginTop = -Math.round((_aqi/600) * 150) * 0.92 - _aqiSliderOffset + 'px';
-		
-		//update labels for sliders and chart
-		document.getElementById("low-hrs").innerHTML = _low;
-		document.getElementById("high-hrs").innerHTML = _high;
-		document.getElementById("max-aqi-value").innerHTML = _aqi;
+
 	}
 
-	document.getElementById("slider-AQI").oninput = function() {
-			_aqi = document.getElementById("slider-AQI").value; //gets the oninput value
-			document.getElementById("max-aqi").innerHTML = _aqi;
-			// change label position
-			
-			//document.getElementById("aqi-rectangle").style.height = (100 / 600 * aqi) + 'px';
-			updatePollution();
-	};
-	document.getElementById("slider-AQI").onchange = function() {
-			_aqi = document.getElementById("slider-AQI").value;
-			_low = document.getElementsByClassName("slider-hours")[0].valueLow;
-			_high = document.getElementsByClassName("slider-hours")[0].valueHigh;
-			//var hours = high - low;
-			document.getElementById("max-aqi").innerHTML = _aqi;
-			
-			badDaysPerYear = [];
-			months = [];
-			years = [];
-			
-			csvs.forEach(function(e){
-				updateTheScore(_aqi, _hours, e.csv, e.target, e.sparkTarget, e.pieTarget, e.monthsArray);
-			});
-	};
-	//update the hours slider value label
-	document.getElementsByClassName("slider-hours")[1].oninput = function() {
-			_low = document.getElementsByClassName("slider-hours")[0].valueLow;
-			_high = document.getElementsByClassName("slider-hours")[0].valueHigh;
-			//var hours = high - low;
-			//console.log(hours + "1");
-			document.getElementById("max-hrs").innerHTML = _hours;
-			
-			updatePollution();
-			
-	};
-	document.getElementsByClassName("slider-hours")[0].oninput = function() {
-			_low = document.getElementsByClassName("slider-hours")[0].valueLow;
-			_high = document.getElementsByClassName("slider-hours")[0].valueHigh;
-			//var hours = high - low;
-			//console.log(hours + "0");
-			
-			document.getElementById("max-hrs").innerHTML = _hours;
-			updatePollution();
-			
-	};
-	document.getElementsByClassName("slider-hours")[1].onchange = function() {
-			_low = document.getElementsByClassName("slider-hours")[0].valueLow;
-			_high = document.getElementsByClassName("slider-hours")[0].valueHigh;
-			//var hours = high - low;
-			
-			_aqi = document.getElementById("slider-AQI").value;
-			document.getElementById("max-hrs").innerHTML = _hours;
-			
-			badDaysPerYear = [];
-			months = [];
-			years = [];
-			
-			csvs.forEach(function(e){
-				var bds = updateTheScore(_aqi, _hours, e.csv, e.target, e.sparkTarget, e.pieTarget, e.monthsArray);
-			});
-			//console.log('bds: ' + badDaysPerYear);
-	};
-	document.getElementsByClassName("slider-hours")[0].onchange = function() {
-			_low = document.getElementsByClassName("slider-hours")[0].valueLow;
-			_high = document.getElementsByClassName("slider-hours")[0].valueHigh;
-			//_hours = high - low;
-			
-			_aqi = document.getElementById("slider-AQI").value;
-			document.getElementById("max-hrs").innerHTML = _hours;
-			
-			badDaysPerYear = [];
-			months = [];
-			years = [];
-			
-			csvs.forEach(function(e){
-				var bds = updateTheScore(_aqi, _hours, e.csv, e.target, e.sparkTarget, e.pieTarget, e.monthsArray);
-			});
-			//console.log('bds: ' + badDaysPerYear);
-	};
-	
-	// finally run the first calculation with initial preset data
-	
 }
 function calculateAnnualMean(csv, year) {
 	d3.csv(csv).then(function(data) {
@@ -494,17 +341,14 @@ function calculateAnnualMean(csv, year) {
 			})
 			.entries(data);
 			
-		mmm.forEach(function(item, index) {
+		mmm.forEach(function(item) {
 			annualMeans.push(item.value);
-			//console.log("pushing " + item.value + "into annual mean array");
 			var target = "annual-mean-" + year;
 			var target2 = "#annual-mean-intro-" + year;
 			document.getElementById(target).innerHTML = Math.round(item.value);
 			drawAnnualMeans(Math.round(item.value), target2);
 		});
-		
-		//console.log(annualMeans);
-	})
+	});
 }
 
 function calculateDaysWithMeanAbove(csv, year, value) {
@@ -537,33 +381,33 @@ function calculateDaysWithMeanAbove(csv, year, value) {
 			})
 			.entries(data);
 			
-		dailyMeans.forEach(function(item, index) {
+		dailyMeans.forEach(function(item) {
 			//annualMeans.push(item.value);
-			//console.log("pushing " + item.value + "into daily mean array");
 			if (item.value > value) {
 				daysWithMeanAbove++;
 			}
 		});
 		var target = "radial-bad-number-" + year;
 		var target2 = "#bad-number-bar-" + year;
-		//console.log("setting " + daysWithMeanAbove + " into " + target);
+		var target3 = "bad-number-bar-" + year + "-year";
+
 		document.getElementById(target).innerHTML = daysWithMeanAbove;
+		document.getElementById(target3).innerHTML = daysWithMeanAbove;
 		
-		drawIntroAnnualDaysAbove25Bar(daysWithMeanAbove ,target2);
+		//drawIntroAnnualDaysAbove25Bar(daysWithMeanAbove, target2);
+		drawDonuts(daysWithMeanAbove, target2);
 	});
 }
 
 function drawIntroAnnualDaysAbove25Bar(days, target) {
-	//console.log("drawIntroAnnualDaysAbove25Bar " + target);
 	var opac = days/365;
 	var opacString = "rgba(170, 170, 170, " + opac + ")";
 	
 	var yeartarget = target + "-year";
-	//console.log("drawIntroAnnualDaysAbove25Bar " + yeartarget);
 	//document.getElementById(yeartarget).innerHTML = days;
 	$(yeartarget).html(days);
 	var pcnt = days/365 * 200;
-	//console.log("height: " + pcnt);
+
 	$( target ).animate({
 		height: pcnt + "px",//bad_days * 1.5 + "px",
 	}, 300 );
@@ -573,16 +417,11 @@ function drawIntroAnnualDaysAbove25Bar(days, target) {
 }
 
 function drawAnnualMeans(pm25, target) {
-	//console.log("drawAnnualMeans " + target);
-	var opac = pm25/100;
-	var txttarget = target + "-txt";
-	//console.log(txttarget);
-	$(txttarget).html(pm25);
+	var bgColor = "rgba(8, 64, 129, " + pm25/100 + ")";
+	var txttarget = target.substr(1) + "-txt";
 	
-	$( target ).animate({
-		height: pm25 + "px",//bad_days * 1.5 + "px",
-		opacity: opac
-	}, 300 );
+	document.getElementById(txttarget).innerHTML = pm25;
+	TweenMax.to(target, 0.3, {backgroundColor: bgColor, height: pm25 + "px"});
 }
 function calculateMinMeanMax(csv, target) {
 	//currently calculating daily values which makes the chart very jagged
@@ -619,17 +458,13 @@ function calculateMinMeanMax(csv, target) {
 						];
 			})
 			.entries(data);
-			
-		//console.log('min, mean, mx:');
-		//console.log(mmm);
 		
 		var minMeanMax = [];
 		
-		mmm.forEach(function(item, index) {
+		mmm.forEach(function(item) {
 			minMeanMax.push(item.value);
-		})
-		//console.log(minMeanMax);
-		//drawMinMeanMax(minMeanMax, target);
+		});
+		//MinMeanMax(minMeanMax, target);
 		
 		var totalOutput = [];
 		totalOutput = d3.nest()
@@ -645,12 +480,9 @@ function calculateMinMeanMax(csv, target) {
 			})
 			.entries(data);
 		totalOutputArray.push(totalOutput);
-		//console.log("total pm2.5 output: ");
-		//console.log(totalOutputArray);
 	})
 }
 function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsArray) {
-	//console.log("******** UPDATE SCORE csv = " + csv);
 	
 	d3.csv(csv).then(function(data) {
 		
@@ -677,7 +509,6 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 			.entries(d3data);
 		
 		var bad_days = 0;
-		//console.log("badHoursPerDay: " + badHoursPerDay);
 		badHoursPerDay.forEach(function(item, index){
 		
 			if(item.value.bad_hours > hours) {
@@ -686,7 +517,7 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 			}
 		});
 
-		document.getElementById(target).innerHTML = bad_days;
+		//document.getElementById(target).innerHTML = bad_days;
 		// Set bad days for radial charts once only
 		// TODO need to check for each year separately, has it been set
 		// Or always update but use the same settings
@@ -697,7 +528,6 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		
 		// set bar to height of 3*bad days
 		var tgt = "#" + sparkTarget + "-bar";
-		//console.log("tgt for bar = " + tgt);
 		//document.getElementById(tgt).style.height = bad_days * 2.5 + "px";
 		//$(tgt).fadeOut();
 		var pcnt = bad_days/365 * 300;
@@ -706,7 +536,6 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 		}, 300 );
 		
 		badDaysPerYear.push(bad_days);
-		//console.log("_initial = " + _initial);
 
 		//let's see how many bad days each month
 		var badHoursPerMonth = [];
@@ -719,7 +548,6 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 			.rollup(function(v) { return {    
 				//count: v.length,
 				bad_hours: v.filter(function(d){
-					//console.log(d.value);
 					return d.value > aqi;
 				}).length
 			}; })
@@ -755,161 +583,49 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 			
 			var bartgt = "bars-" + monthsArray;
 			
-			document.getElementById(sparkTarget).innerHTML = "{" + badDaysPerMonth + "}";
-			document.getElementById(bartgt).innerHTML = "{" + badDaysPerMonth + "}";
+			//document.getElementById(sparkTarget).innerHTML = "{" + badDaysPerMonth + "}";
+			//document.getElementById(bartgt).innerHTML = "{" + badDaysPerMonth + "}";
 		});
 		
 		switch(monthsArray) {
 			case "2009":
-				//console.log("switch " + monthsArray);
 				_2009 = badDaysPerMonth;
 				break;
 			case "2010":
-				//console.log("switch " + monthsArray);
 				_2010 = badDaysPerMonth;
 				break;
 			case "2011":
-				//console.log("switch " + monthsArray);
 				_2011 = badDaysPerMonth;
 				break;
 			case "2012":
-				//console.log("switch " + monthsArray);
 				_2012 = badDaysPerMonth;
 				break;
 			case "2013":
-				//console.log("switch " + monthsArray);
 				_2013 = badDaysPerMonth;
 				break;
 			case "2014":
-				//console.log("switch " + monthsArray);
 				_2014 = badDaysPerMonth;
 				break;
 			case "2015":
-				//console.log("switch " + monthsArray);
 				_2015 = badDaysPerMonth;
 				break;
 			case "2016":
-				//console.log("switch " + monthsArray);
 				_2016 = badDaysPerMonth;
 				break;
 			case "2017":
-				//console.log("switch " + monthsArray);
 				_2017 = badDaysPerMonth;
 				break;
 			case "2018":
-				//console.log("switch " + monthsArray);
 				_2018 = badDaysPerMonth;
+				break;
+			case "2019":
+				_2019 = badDaysPerMonth;
 				break;
 		}
 		
-		
 		// what's the cumulative total PM2.5 concentration
-		
 	});
-	
 }
 function onParseComplete() {
 	showDifferenceBetweenYears(months[2].bad_days, months[months.length-1].bad_days);
-}
-
-//drawHeatmap();
-function drawHeatmap() {
-	// we will need a count for every hour of the day, for all 6 AQI ranges, so that's 24 * 6 = 144 values to calculate
-	//console.log("drawheatmap");
-	d3.csv(csvs[8].csv, function(error, data) {
-			if (error) throw error;
-			
-			//d3data = data;
-			
-			data.forEach(function(d) {
-				d.date = parseDay(d.date);
-				d.year = +d.year;
-				d.month = +d.month;
-				d.day = +d.day;
-				d.hour = +d.hour;
-				d.value = +d.value;
-			});
-			
-			var countsPerHour = [];
-
-			countsPerHour = d3.nest()
-				// key should be hour of the day
-				// let's try to get all values converted to ranges
-				//and we need the converted data in this format: [{"year":"2017","range":"0-50","hour":1,"value":1},
-				//																								{"year":"2017","range":"0-50","hour":2,"value":9}]
-				.key(function(d) { return d.hour+1; })
-				.rollup(function(v) { return {    
-
-					max1: v.filter(function(d){
-						return d.value < 51;
-					}).length,
-					max2: v.filter(function(d){
-						return d.value > 50 && d.value < 101;
-					}).length,
-					max3: v.filter(function(d){
-						return d.value > 100 && d.value < 151;
-					}).length,
-					max4: v.filter(function(d){
-						return d.value > 150 && d.value < 201;
-					}).length,
-					max5: v.filter(function(d){
-						return d.value > 200 && d.value < 301;
-					}).length,
-					max6: v.filter(function(d){
-						return d.value > 300;
-					}).length
-				}; })
-				.entries(data);
-			
-			// now we should start drawing the heatmap
-			var heatmapJSON = [];
-			countsPerHour.forEach(function(item, index){
-				// let's add everything to our JSON object
-				//console.log('len ' );
-			//	console.log(JSON.parse(item.value).length);
-				var i;
-				
-				for (i = 0; i < 6; i++) {
-					switch(i) {
-						case 0:
-							v = item.value.max1;
-							r = 6;
-							break;
-						case 1:
-							v = item.value.max2;
-							r = 5;
-							break;
-						case 2:
-							v = item.value.max3;
-							r = 4;
-							break
-						case 3:
-							v = item.value.max4;
-							r = 3;
-							break;
-						case 4:
-							v = item.value.max5;
-							r = 2;
-							break;
-						case 5:
-							v = item.value.max6;
-							r = 1;
-							break;
-					}
-					var cell = {
-					year : 2017,
-					range : r,
-					hour : item.key,
-					value : v
-					};
-					//console.log(cell);
-					heatmapJSON.push(cell);
-				}
-				
-			});
-			//console.log('heatmapJSON: ');
-			//console.log(heatmapJSON);
-			//console.log(JSON.stringify(heatmapJSON));
-	});
-	//drawTheActualHeatMap();
 }

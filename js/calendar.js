@@ -26,7 +26,8 @@ var initAQI = 150; // target AQI set by user
 var _aqi;
 var _duration;
 var _data;
-var units=" hours for which PM2.5 exceeds " + initAQI;
+
+const initialPM25 = 30;
 var initDuration = 8; // max hours of below targetAQI duration
 
 var bad_days_year = 0;
@@ -41,9 +42,10 @@ var csvList = [
                "../data/beijing_2014_daily_for_bad_days.csv",
                "../data/beijing_2015_daily_for_bad_days.csv",
                "../data/beijing_2016_daily_for_bad_days.csv",
-               "../data/beijing_2017_daily_for_bad_days.csv",
-               "../data/beijing_2018_daily_for_bad_days.csv",
-               "../data/beijing_2019_daily_for_bad_days.csv"
+               "../data/beijing_2017_daily_berkeley_from_july.csv",
+               "../data/beijing_2018_berkeley.csv",
+               "../data/beijing_2019_berkeley.csv",
+               "../data/beijing_2014-2019_berkeley.csv"
               ];
 
 function createWeekBlocks() {
@@ -66,20 +68,18 @@ function loadCSV(csv) {
         
         _data = data;
         // 2. draw charts for the first time
-        drawOrUpdateCharts(100, 8, data);
+        drawOrUpdateCharts(initialPM25, initDuration, data, true);
     });
     
     // 3. create event handlers that trigger updateCharts function ?
 }
-loadCSV(csvList[0]);
+loadCSV(csvList[10]);
 
 function calculateBestMonth(a) {
     var lowest = 0;
     for (var i = 1; i < a.length; i++) {
         if (a[i].bad_days < a[lowest].bad_days) lowest = i;
     }
-    //console.log(lowest);
-    //return lowest;
     var month = '';
     switch (lowest+1) {
         case 1:
@@ -122,10 +122,9 @@ function calculateBestMonth(a) {
     document.getElementById("best-month").innerHTML = month;
 }
 
-function drawOrUpdateCharts(targetAQI, targetDuration, data) {
+function drawOrUpdateCharts(targetAQI, targetDuration, data, yearSlider = false) {
     // draw
     bad_days_year = 0;
-    //console.log(data);
     data.forEach(function(d) {
         d.date= d.date;
         if(d.value<0){d.value = -1;}
@@ -150,7 +149,6 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
         var badHoursPerWeek = d3.nest()
             //d3.timeWeek.count(d3.timeYear(now), now); // 24
             .key(function(d) {
-                //console.log(parseDate(d.date));
                 var dt = parseDate(d.date);
                 return d3.timeWeek.count(d3.timeYear(dt), dt);
             })
@@ -162,10 +160,31 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
                 }).length
             }; })
             .entries(data);
-        //console.log("bad hrs per wekk");
-        //console.log(badHoursPerWeek);
         
         var badDaysPerWeek = [];
+        // TODO need to use weeks in a year as keys, not the keys of thet array
+        /* var i;
+        for(i=0; i < 52; i++) {
+            var bad_days_week = 0;
+            badHoursPerWeek[i].values.forEach(function(day, index) {
+                if(day.value.bad_hours > targetDuration) {
+                    // bad day
+                    bad_days_week++;
+                }
+            });
+            //var bar = document.getElementById("week-"+(parseInt(week.key)+1));
+            var bar = document.getElementById("week-"+(i+1));
+            console.log("bad_Days_week " + bad_days_week);
+            var h = 1 + bad_days_week * 10 + "px";
+
+            if(i != parseInt(badHoursPerWeek[i].key)) {
+                console.log('emptyweekbar");');
+                var barretje = document.getElementById("week-"+(i+1));
+                TweenMax.to(barretje, 0.3, { height: h});
+            } else {
+                 TweenMax.to(bar, 0.3, { height: h});
+            }
+        } */
         badHoursPerWeek.forEach(function(week, index) {
             var bad_days_week = 0;
             //console.log(week);
@@ -175,12 +194,19 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
                     bad_days_week++;
                 }
             });
-            //document.getElementById("week-"+(index+1)).innerHTML = bad_days_week;
-            var bar = document.getElementById("week-"+(index+1));
+            var bar = document.getElementById("week-"+(parseInt(week.key)+1));
+            //var bar = document.getElementById("week-"+(index+1));
+            //console.log(week);
             var h = 1 + bad_days_week * 10 + "px";
 
+            if(index != parseInt(week.key)) {
+                var barretje = document.getElementById("week-"+(index+1));
+                //TweenMax.to(barretje, 0.3, { height: h});
+            } else {
+                //TweenMax.to(bar, 0.3, { height: h});
+            }
             TweenMax.to(bar, 0.3, { height: h});
-        });
+        }); 
         
         // calculate and plot bad hours for each month
         var badHoursPerMonth = [];
@@ -243,7 +269,7 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             //.attr("viewBox","0 0 "+(xOffset+width)+" 2500")
             .attr("preserveAspectRatio", "xMinYMin meet")
             .attr("viewBox","0 0 960 200")
-            .attr("id", "calendar")
+            .attr("id", "calendar");
         //create an SVG group for each year
         var cals = svg.selectAll("g")
             .data(badHoursPerDay)
@@ -254,13 +280,13 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             })
             .attr("transform",function(d,i){
                 return "translate(0,"+(yOffset+(i*(height+calY)))+")";  
-            })
+            });
         
         var labels = cals.append("text")
             .attr("class","yearLabel bold")
-            .attr("x",xOffset)
-            .attr("y", 0)
-            .text(function(d){return d.key});
+            .attr("x",0)
+            .attr("y", 3)
+            .text(function(d){return d.key;});
         
         //create a daily rectangle for each year
         var rects = cals.append("g")
@@ -321,12 +347,10 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             })
             .attr("y", function(d) { return calY+(parseDate(d.key).getDay() * cellSize); })
             .attr("fill", function(d) {
-                //console.log(d.value.value);
                 if (d.value.value<0) {
-            return "#ffffff";
+                    return "#ffffff";
                 } else
-        if (d.value.value<breaks[0]) {
-                    //console.log(colours[0]);
+                if (d.value.value<breaks[0]) {
                     return colours[0];
                 } 
                 for (i=0;i<breaks.length+1;i++){
@@ -340,6 +364,7 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
             });
         
         //append a title element to give basic mouseover info
+        var units=" hours for which PM2.5 exceeds " + _aqi;
         dataRects.append("title")
             .text(function(d) { return parseDate(d.key)+":\n"+d.value.value+units; });
         
@@ -348,8 +373,6 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
         .attr("id","monthOutlines")
         .selectAll(".month")
         .data(function(d) {
-            //console.log(d3.timeMonths(new Date(parseInt(d.key), 0, 1),
-            //                      new Date(parseInt(d.key) + 1, 0, 1)));
             return d3.timeMonths(new Date(parseInt(d.key), 0, 1),
                                   new Date(parseInt(d.key) + 1, 0, 1)); 
         })
@@ -424,29 +447,7 @@ function drawOrUpdateCharts(targetAQI, targetDuration, data) {
                 }
             });
 }
-function updateCalendar(targetAQI, targetDuration) {
-    // update should be seprate fro mloading csv's
-    //console.log("updateCalendar: aqi = " + targetAQI);
 
-    d3.csv("../data/beijing_2017_daily_for_bad_days.csv").then(function(data) {
-  
-        data.forEach(function(d) {
-            d.date= d.date;
-            if(d.value<0){d.value = -1;}
-            d.year=+d.year;
-            d.month = +d.month;
-            d.day = +d.day;
-            d.hour = +d.hour;
-            d.value = +d.value;
-        });
-        
-        var yearlyData = d3.nest()
-            .key(function(d){return d.year;})
-            .entries(data);
-  
-        
-    });//end data load
-}
 
 //pure Bostock - compute and return monthly path data for any year
 function monthPath(t0) {
@@ -471,7 +472,16 @@ document.getElementById("slider-aqi-best-time").oninput = function() {
     //sliderThrottle();
     _aqi = document.getElementById("slider-aqi-best-time").value; //gets the oninput value
     _duration = document.getElementById("slider-hours-best-time").value;
-    document.getElementById("target-aqi").innerHTML = _aqi;
+    var targetAQI = document.getElementById("target-aqi");
+    targetAQI.innerHTML = _aqi;
+    var targetAQI2 = document.getElementById("target-aqi-sentence");
+    targetAQI2.innerHTML = _aqi;
+    
+    var targetAQIContainer = document.getElementById("target-aqi-container");
+    
+    var xPos = (_aqi/600) * 250 - 0.5 * targetAQIContainer.clientWidth - (_aqi * 0.02) + 5;
+    TweenMax.to("#target-aqi-container", 0.2, {marginLeft: xPos});
+    
     //updateCalendar(_aqi, _duration);
     var svg = document.getElementById("calendar");
     drawOrUpdateCharts(_aqi, _duration, _data, svg);
@@ -485,17 +495,20 @@ document.getElementById("slider-hours-best-time").oninput = function() {
     _aqi = document.getElementById("slider-aqi-best-time").value; //gets the oninput value
     _duration = document.getElementById("slider-hours-best-time").value;
     document.getElementById("target-duration").innerHTML = _duration;
+    document.getElementById("target-duration-sentence").innerHTML = _duration;
+    var svg = document.getElementById("calendar");
     drawOrUpdateCharts(_aqi, _duration, _data, svg);
 };
 document.getElementById("slider-hours-best-time").onchange = function() {
     _duration = document.getElementById("slider-hours-best-time").value;
     //mixpanel.track("Slider Updated", {"type": "duration"});
-    
-     console.log("slider duration");
 };
 document.getElementById("year-selector").onchange = function() {
-    //console.log(document.getElementById("year-selector").value);
-    loadCSV("../data/beijing_" + document.getElementById("year-selector").value + "_daily_for_bad_days.csv");
+    
+    // load csv from the right year
+    loadCSV(csvList[document.getElementById("year-selector").selectedIndex-1]);
+    // TODO dont load if already loaded
+    //loadCSV("../data/beijing_" + document.getElementById("year-selector").value + "_daily_for_bad_days.csv");
 }
 //throttle function
 var sliderThrottle = debounce(function() {
@@ -504,8 +517,10 @@ var sliderThrottle = debounce(function() {
     updateCalendar(_aqi, initDuration);
 }, 50);
 //updateCalendar(100, 8);
-document.getElementById("target-aqi").innerHTML = 100;
-document.getElementById("target-duration").innerHTML = 8;
+document.getElementById("target-aqi").innerHTML = initialPM25;
+document.getElementById("target-duration").innerHTML = initDuration;
+document.getElementById("target-aqi-sentence").innerHTML = initialPM25;
+document.getElementById("target-duration-sentence").innerHTML = initDuration;
 //updateCalendar(100, 8);
 
 
