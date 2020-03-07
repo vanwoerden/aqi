@@ -30,8 +30,8 @@ function draw(csvFile, target, year) {
 	var svg = d3.select(target),
 	width = +svg.attr("width"),
 	height = +svg.attr("height"),
-	innerRadius = 30, //30
-	outerRadius = 200,
+	innerRadius = 30,
+	outerRadius = 190,
 	g = svg.append("g")
 		.attr("class", "first-g")
 		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");

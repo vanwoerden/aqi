@@ -184,80 +184,80 @@ $( document ).ready(function() {
 	var url = 'http://stateair.net/web/rss/1/1.xml';
 	//try loading rss with jQuery
 	
-	feednami.setPublicApiKey('4275c345f113cdbd6aabbce7591be24577fe0ec93777769c6366d2bb0056daee');
-	feednami.load(url,function(result){
-		if(result.error) {
-
-		} else {
-			var entries = result.feed.entries;
-			var aqiArr = [];
-			var pm25Arr = [];
-			var timeArr = [];
-			for(var i = 0; i < entries.length; i++){
-				var entry = entries[i];
-				pm25Arr.push(entry['rss:conc']['#']);
-				aqiArr.push(entry['rss:aqi']['#']);
-				timeArr.push(entry.title);
-			}
-			var curAQI = aqiArr[aqiArr.length-1];
-			var curPM = pm25Arr[pm25Arr.length-1];
-			var colors = [
-				"#242038",
-				"#880D1E",
-				"#D1324C",
-				"#E8A945",
-				"#F7DB76",
-				"#BFF5DB"
-			];
-			var color;
-			var color2;
-			if (curAQI < 50) {
-				color = colors[5];
-			} else if (curAQI >= 50 && curAQI < 100) {
-				
-				color = colors[4];
-			} else if (curAQI >= 100 && curAQI < 150) {
-				color = colors[3];
-			} else if (curAQI >= 150 && curAQI < 200) {
-				color = colors[2];
-			} else if (curAQI >= 200 && curAQI < 300) {
-				color = colors[1];
-			} else if (curAQI > 300) {
-				color = colors[0];
-			}
-			
-			if (curPM < 50) {
-				color2 = colors[5];
-			} else if (curPM >= 50 && curPM < 100) {
-				
-				color2 = colors[4];
-			} else if (curPM >= 100 && curPM < 150) {
-				color2 = colors[3];
-			} else if (curPM >= 150 && curPM < 200) {
-				color2 = colors[2];
-			} else if (curPM >= 200 && curPM < 300) {
-				color2 = colors[1];
-			} else if (curPM > 300) {
-				color2 = colors[0];
-			}
-			
-			var date = new Date(timeArr[timeArr.length-1]);
-			var hrs = date.getHours();
-			var mins = date.getMinutes();
-			var currentTime = hrs + ":" + mins + "0";
-			
-			$("#current-aqi").html(aqiArr[aqiArr.length-1]);
-			$("#current-pm25").html(pm25Arr[pm25Arr.length-1]);
-			$("#current-time").html(currentTime);
-			$(".circle").css("background", color);
-			
-			//$("#current-pm25").css("background", color);
-			$(".circle").fadeIn("200", function(){
-				
-			});
-			//$(".paragraph h3").addClass("has-padding");
-		}
-	});
+	//feednami.setPublicApiKey('4275c345f113cdbd6aabbce7591be24577fe0ec93777769c6366d2bb0056daee');
+	//feednami.load(url,function(result){
+	//	if(result.error) {
+	//
+	//	} else {
+	//		var entries = result.feed.entries;
+	//		var aqiArr = [];
+	//		var pm25Arr = [];
+	//		var timeArr = [];
+	//		for(var i = 0; i < entries.length; i++){
+	//			var entry = entries[i];
+	//			pm25Arr.push(entry['rss:conc']['#']);
+	//			aqiArr.push(entry['rss:aqi']['#']);
+	//			timeArr.push(entry.title);
+	//		}
+	//		var curAQI = aqiArr[aqiArr.length-1];
+	//		var curPM = pm25Arr[pm25Arr.length-1];
+	//		var colors = [
+	//			"#242038",
+	//			"#880D1E",
+	//			"#D1324C",
+	//			"#E8A945",
+	//			"#F7DB76",
+	//			"#BFF5DB"
+	//		];
+	//		var color;
+	//		var color2;
+	//		if (curAQI < 50) {
+	//			color = colors[5];
+	//		} else if (curAQI >= 50 && curAQI < 100) {
+	//			
+	//			color = colors[4];
+	//		} else if (curAQI >= 100 && curAQI < 150) {
+	//			color = colors[3];
+	//		} else if (curAQI >= 150 && curAQI < 200) {
+	//			color = colors[2];
+	//		} else if (curAQI >= 200 && curAQI < 300) {
+	//			color = colors[1];
+	//		} else if (curAQI > 300) {
+	//			color = colors[0];
+	//		}
+	//		
+	//		if (curPM < 50) {
+	//			color2 = colors[5];
+	//		} else if (curPM >= 50 && curPM < 100) {
+	//			
+	//			color2 = colors[4];
+	//		} else if (curPM >= 100 && curPM < 150) {
+	//			color2 = colors[3];
+	//		} else if (curPM >= 150 && curPM < 200) {
+	//			color2 = colors[2];
+	//		} else if (curPM >= 200 && curPM < 300) {
+	//			color2 = colors[1];
+	//		} else if (curPM > 300) {
+	//			color2 = colors[0];
+	//		}
+	//		
+	//		var date = new Date(timeArr[timeArr.length-1]);
+	//		var hrs = date.getHours();
+	//		var mins = date.getMinutes();
+	//		var currentTime = hrs + ":" + mins + "0";
+	//		
+	//		$("#current-aqi").html(aqiArr[aqiArr.length-1]);
+	//		$("#current-pm25").html(pm25Arr[pm25Arr.length-1]);
+	//		$("#current-time").html(currentTime);
+	//		$(".circle").css("background", color);
+	//		
+	//		//$("#current-pm25").css("background", color);
+	//		$(".circle").fadeIn("200", function(){
+	//			
+	//		});
+	//		//$(".paragraph h3").addClass("has-padding");
+	//	}
+	//});
 	
 	$("#legend").click(function(){
 		$("#legend").toggleClass("popped");
