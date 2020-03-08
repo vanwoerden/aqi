@@ -221,7 +221,7 @@ sub {
 }
 .container-3 {
 	max-width: 400px;
-	margin-left: 2em;
+	/*margin-left: 2em;*/
 }
 .container-4 {
 	max-width: 460px;
@@ -229,8 +229,11 @@ sub {
 .container-6 {
 	max-width: 600px;
 }
+.container-8 {
+	max-width: 860px;
+}
 .container-9 {
-	max-width: 960px;
+	max-width: 900px;
 }
 .container-11 {
 	max-width: 1040px;
@@ -345,7 +348,8 @@ svg {
 	padding-top: 12em;
 }
 .radial-grid {
-	margin-left: 2em;
+	margin-left: 1em;
+	justify-content: center;
 }
 .paragraph {
 	max-width: 460px;
@@ -358,6 +362,12 @@ svg {
 p.large {
 	font-size: 1em;
 	line-height: 1.5em;
+}
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
 }
 .left {
 	float: left;
@@ -380,12 +390,6 @@ p.large {
 }
 .three-q-width {
 	width: 75%;
-}
-.flex-container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: flex-start;
 }
 .align-end {
 	align-items: flex-end;
@@ -516,8 +520,9 @@ canvas#bar-bkg {
   align-items: flex-start;
 }
 .narrow {
-	margin-top: 2em;
-	padding-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-right: 0.5em;
 }
 .wide {
 	/*width: 460px;*/
@@ -643,7 +648,7 @@ canvas#bar-bkg {
 	font-weight: 400;
 	text-align: center;
 	color: #777;
-	margin-top: 1.3em;
+	margin-top: 0.5em;
 }
 .bad-days-number {
 	font-size: 1.3em;
@@ -686,13 +691,12 @@ canvas#bar-bkg {
 }
 /* radial charts legend */
 .legend {
-	position: absolute;
-	right: 2em;
 	font-size: 0.7em;
 	line-height: 1.5em;
-	margin-top: -112.5em;
+	padding-right: 1.2em;
 }
 .legend-title {
+	font-family: "Texta Heavy";
 	font-size: 1.2em;
 	font-weight: 500;
 	padding-bottom: 0.5em;
@@ -902,11 +906,11 @@ span.spark-date {
 }
 .radial-sparkline {
 	font-family: "Sparks-Bar-Medium";
-	font-size: 1.3em;
+	font-size: 0.9em;
 	color: #555;
 	text-align: center;
 	transform: scaleY(5);
-	margin-top: -0.4em;
+	margin-top: -2.1em;
 }
 .paragraph-narrow {
 	line-height: 1.5em;

@@ -584,7 +584,7 @@ function updateTheScore(aqi, hours, csv, target, sparkTarget, pieTarget, monthsA
 			var bartgt = "bars-" + monthsArray;
 			
 			//document.getElementById(sparkTarget).innerHTML = "{" + badDaysPerMonth + "}";
-			//document.getElementById(bartgt).innerHTML = "{" + badDaysPerMonth + "}";
+			document.getElementById(bartgt).innerHTML = "{" + badDaysPerMonth + "}";
 		});
 		
 		switch(monthsArray) {
