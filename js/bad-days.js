@@ -90,6 +90,13 @@ var mmmArray = [
 				];
 var csvs = [
 {
+	csv: "../data/beijing_2008_daily_for_bad_days.csv",
+	target: "bad-number-2008",
+	sparkTarget: "bad-days-2008",
+	pieTarget: "pie-2008",
+	monthsArray: "2008"
+},
+{
 	csv: "../data/beijing_2009_daily_for_bad_days.csv",
 	target: "bad-number-2009",
 	sparkTarget: "bad-days-2009",
@@ -391,7 +398,7 @@ function calculateDaysWithMeanAbove(csv, year, value) {
 		var target2 = "#bad-number-bar-" + year;
 		var target3 = "bad-number-bar-" + year + "-year";
 
-		document.getElementById(target).innerHTML = daysWithMeanAbove;
+		document.getElementById(target).innerHTML = Math.round((daysWithMeanAbove/365)*100) + "%";
 		document.getElementById(target3).innerHTML = daysWithMeanAbove;
 		
 		//drawIntroAnnualDaysAbove25Bar(daysWithMeanAbove, target2);

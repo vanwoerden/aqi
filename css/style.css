@@ -691,9 +691,17 @@ canvas#bar-bkg {
 }
 /* radial charts legend */
 .legend {
+	top: 8em;
 	font-size: 0.7em;
 	line-height: 1.5em;
 	padding-right: 1.2em;
+	z-index: -2;
+}
+.legend-line::before {
+	position: absolute;
+	content: "——————————————";
+	margin-left: -10em;
+	color: #555;
 }
 .legend-title {
 	font-family: "Texta Heavy";
