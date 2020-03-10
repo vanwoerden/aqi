@@ -699,8 +699,8 @@ canvas#bar-bkg {
 }
 .legend-line::before {
 	position: absolute;
-	content: "——————————————";
-	margin-left: -10em;
+	content: "—————";
+	margin-left: -4.3em;
 	color: #555;
 }
 .legend-title {

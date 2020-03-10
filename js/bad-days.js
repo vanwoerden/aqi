@@ -153,7 +153,7 @@ var csvs = [
 	monthsArray: "2016"
 },
 {
-	csv: "../data/beijing_2017_daily_for_bad_days.csv",
+	csv: "../data/beijing_2017_berkeley.csv",
 	target: "bad-number-2017",
 	sparkTarget: "bad-days-2017",
 	pieTarget: "pie-2017",
