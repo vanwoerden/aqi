@@ -398,7 +398,7 @@ function calculateDaysWithMeanAbove(csv, year, value) {
 		var target2 = "#bad-number-bar-" + year;
 		var target3 = "bad-number-bar-" + year + "-year";
 
-		document.getElementById(target).innerHTML = Math.round((daysWithMeanAbove/365)*100) + "%";
+		document.getElementById(target).innerHTML = daysWithMeanAbove; //Math.round((daysWithMeanAbove/365)*100) + "%";
 		document.getElementById(target3).innerHTML = daysWithMeanAbove;
 		
 		//drawIntroAnnualDaysAbove25Bar(daysWithMeanAbove, target2);

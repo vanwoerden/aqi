@@ -602,7 +602,6 @@ canvas#bar-bkg {
 	font-family: "Texta Heavy";
 	font-size: 1.4em;
 	padding-bottom: 0;
-	background: #f5f5f5;
 	color: #000;
 	padding: 0.55em 0em 0.2em 0em;
 }
@@ -618,9 +617,6 @@ canvas#bar-bkg {
 .dot {
 	border: 0.5px solid #bbb;
 	width: 15px;
-	/*height: 9px;*/
-	/*border-radius: 20px;*/
-	/*background: white;*/
 	margin-top: -0.4em;
 	margin-left: -0.15em;
 }
@@ -651,10 +647,10 @@ canvas#bar-bkg {
 	margin-top: 0.5em;
 }
 .bad-days-number {
-	font-size: 1.3em;
-	font-weight: 400;
+	font-size: 1.1em;
+	font-weight: 600;
 	text-align: center;
-	margin-top: -6.35em;
+	margin-top: -7.5em;
 }
 .bad-days-number-legend {
 	font-size: 1.5em;
@@ -663,8 +659,8 @@ canvas#bar-bkg {
 .annual-mean {
 	text-align: center;
 	font-weight: 400;
-	font-size: 0.9em;
-	margin-top: -0.7em;
+	font-size: 0.8em;
+	margin-top: -0.9em;
 	color: #555;
 }
 .annual-mean-legend {
@@ -927,7 +923,7 @@ span.spark-date {
 	background: #fff;
 	padding: 2em;
 	font-size: 0.9em;
-	width: 390px;
+	width: 410px;
 	margin-left: 6em;
 	/*border: 2px solid #000;*/
 }
@@ -938,8 +934,8 @@ span.spark-date {
 	position: absolute;
 	min-width: 100px;
 	min-height: 100px;
-	height: 39em;
-	width: 24em;
+	height: 38em;
+	width: 27em;
 	z-index: -1;
 	margin-left: -4em;
 }
@@ -995,7 +991,7 @@ span.spark-date {
 	position: absolute;
     font-size: 0.7em;
     margin-top: -29px;
-    margin-left: 340px;
+    margin-left: 370px;
     text-align: left;
     background: #a8ddb5;
     color: black;
