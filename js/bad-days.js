@@ -167,7 +167,7 @@ var csvs = [
 	monthsArray: "2018"
 },
 {
-	csv: "../data/beijing_2019_berkeley.csv",
+	csv: "../data/beijing_2019_young-0.csv",
 	target: "bad-number-2019",
 	sparkTarget: "bad-days-2019",
 	pieTarget: "pie-2019",
@@ -301,6 +301,7 @@ $( document ).ready(function() {
 function initSliders(){
 	//createBarChart("bar-bkg");
 	csvs.forEach(function(e, index){
+		console.log(e.csv);
 		aqi = AQI_threshold;
 		hours = bad_hours_threshold;
 		updateTheScore(aqi, hours, e.csv, e.target, e.sparkTarget, e.pieTarget, e.monthsArray);

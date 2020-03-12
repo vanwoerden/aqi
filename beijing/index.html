@@ -442,7 +442,7 @@
         <div class="container-3">
             <div class="block column-2">
                 <h3>
-                    Is it getting better?
+                    Percentage of hours by AQI category
                 </h3>
                 <!--<p class="large bottom-space">
                     Let's do a yearly plot of percentual pm2.5 values in Beijing. There are some white gaps in the data in the first few years; those are invalid readings. A few findings that jump out: 
@@ -784,14 +784,15 @@
             
         </div>
             <div class="legend sticky-top" id="legend">
-                <!--<h4>LEGEND</h4>-->
+                <!--<h4>Percentage of hours by AQI</h4>-->
                 <div class="legend-line">days with mean > 25</div>
                 <div class="legend-line">annual mean (&mu;g/m<sup>3</sup>)</div>
                 <div class="legend-title">PM2.5 (&mu;g/m<sup>3</sup>)</div>
+                <br>
                 <div class="legend-left">
                     <div class="legend-item">
                         <span class="rect green"></span>
-                        <span class="label">0 - 50</span>
+                        <span class="label">0 - 50 (&mu;g/m<sup>3</sup>)</span>
                     </div>
                     <div class="legend-item">
                         <span class="rect yellow"></span>
@@ -901,8 +902,8 @@
 		draw("../data/2016_monthly_inverted_relative.csv", "#eight", "");
 		//draw("data/2017_monthly_inverted_relative.csv", "#nine", "2017");
 		draw("../data/2017_monthly_inverted_relative_berkeley.csv", "#nine", "");
-		draw("../data/2018_monthly_inverted_relative_berkeley.csv", "#ten", "");
-        draw("../data/2019_monthly_inverted_relative_berkeley.csv", "#eleven", "");
+		draw("../data/2018_monthly_inverted_relative.csv", "#ten", "");
+        draw("../data/2019_monthly_inverted_relative.csv", "#eleven", "");
         calculateRelativePollution("../data/beijing_2015_daily_for_bad_days.csv");
 	</script>
 </body>

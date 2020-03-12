@@ -691,7 +691,6 @@ canvas#bar-bkg {
 	font-size: 0.7em;
 	line-height: 1.5em;
 	padding-right: 1.2em;
-	z-index: -2;
 }
 .legend-line::before {
 	position: absolute;
@@ -700,9 +699,9 @@ canvas#bar-bkg {
 	color: #555;
 }
 .legend-title {
-	font-family: "Texta Heavy";
+	/*font-family: "Texta Heavy";*/
 	font-size: 1.2em;
-	font-weight: 500;
+	font-weight: 600;
 	padding-bottom: 0.5em;
 	padding-top: 1em;
 }
