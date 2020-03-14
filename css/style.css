@@ -308,7 +308,7 @@ sub {
 	font-size: 0.9em;
 }
 .value {
-	font-weight: bold;
+	font-weight: 600;
 }
 .line-spacer {
 	margin: 0 auto;

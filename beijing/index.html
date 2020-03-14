@@ -79,11 +79,11 @@
             
             <div class="container-3-narrow flex-item">
                 <h2 class="pad-2">
-                    There were <span id="yearly-bad-days" class="value"></span> days for which the PM 2.5 level exceeded <span id="target-aqi-sentence" class="value"></span> <span class="value">&mu;g/m<sup>3</sup></span> for <span id="target-duration-sentence" class="value"></span> <span class="value">hours.</span>
+                    There were <span id="yearly-bad-days" class="value"></span> days for which the PM 2.5 level exceeded <span id="target-aqi-sentence" class="value"></span> <span class="value">&mu;g/m<sup>3</sup></span> for <span id="target-duration-sentence" class="value"></span> <span class="value">hours or more.</span>
                 </h2>
             </div>
             
-            <div class="container-6 flex-item">
+            <div class="container-9 flex-item">
                 <div class="cal-sliders">
                     <div class="slider-cont shadow">
                         <div class="pm-slider left">
@@ -106,7 +106,7 @@
                                     <span id="target-aqi" class="blue-link">30</span> 
                                     &mu;g/m<sup>3</sup>
                                 </div>
-                                <span><input id="slider-aqi-best-time" type="range" min="0" max="600" step="1" value="30" list="tickmarks"></span>
+                                <span><input id="slider-aqi-best-time" type="range" min="0" max="600" step="1" value="25" list="tickmarks"></span>
                             </div>
                         </div>
                         
@@ -115,7 +115,7 @@
                         </h3>
                         <div class="hours-slider left">
                             <input id="slider-hours-best-time" type="range" min="0" max="24" step="1" value="8">
-                            <span id="target-duration" class="blue-link">8</span> hours.
+                            <span id="target-duration" class="blue-link">8</span> hours or more.
                         </div>
                     </div>
                 </div>
@@ -188,6 +188,9 @@
         </div>
         <div id="calendar-container"></div>
         <div id="weeks-container"></div>
+        <div class="calendar-caption">
+            PM2.5 > <span id="caption-aqi">25</span> &mu;g/m<sup>3</sup> for 
+        </div>
         
         <div id="weather">
         
@@ -901,7 +904,7 @@
 		draw("../data/2015_monthly_inverted_relative.csv", "#seven", "");
 		draw("../data/2016_monthly_inverted_relative.csv", "#eight", "");
 		//draw("data/2017_monthly_inverted_relative.csv", "#nine", "2017");
-		draw("../data/2017_monthly_inverted_relative_berkeley.csv", "#nine", "");
+		draw("../data/2017_monthly_inverted-young_0.csv", "#nine", "");
 		draw("../data/2018_monthly_inverted_relative.csv", "#ten", "");
         draw("../data/2019_monthly_inverted_relative.csv", "#eleven", "");
         calculateRelativePollution("../data/beijing_2015_daily_for_bad_days.csv");

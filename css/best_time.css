@@ -313,3 +313,13 @@ text    {
 .select-css option {
     font-weight:normal;
 }
+.calendar-caption {
+    font-size: 0.7em;
+    /* text-align: center; */
+    margin-top: 3em;
+    position: absolute;
+    right: 2em;
+    width: 120px;
+    line-height: 120%;
+    margin-top: -18.8em;
+}
