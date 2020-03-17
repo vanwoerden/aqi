@@ -467,7 +467,7 @@ document.getElementById("slider-aqi-best-time").oninput = function() {
 };
 document.getElementById("slider-aqi-best-time").onchange = function() {
     _aqi = document.getElementById("slider-aqi-best-time").value;
-    //mixpanel.track("Slider Updated", {"type": "AQI"});
+    mixpanel.track("Slider Updated", {"type": "AQI"});
 };
 document.getElementById("slider-hours-best-time").oninput = function() {
     //sliderThrottle();
@@ -481,7 +481,7 @@ document.getElementById("slider-hours-best-time").oninput = function() {
 };
 document.getElementById("slider-hours-best-time").onchange = function() {
     _duration = document.getElementById("slider-hours-best-time").value;
-    //mixpanel.track("Slider Updated", {"type": "duration"});
+    mixpanel.track("Slider Updated", {"type": "duration"});
 };
 document.getElementById("year-selector").onchange = function() {
     
