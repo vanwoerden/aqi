@@ -9,6 +9,14 @@
 	<link rel="stylesheet" type="text/css" href="../css/multirange.css">
     <meta name="viewport" content="width=device-width">
     <meta charset="UTF-8">
+    <!-- start Mixpanel -->
+    <script type="text/javascript">(function(c,a){if(!a.__SV){var b=window;try{var d,m,j,k=b.location,f=k.hash;d=function(a,b){return(m=a.match(RegExp(b+"=([^&]*)")))?m[1]:null};f&&d(f,"state")&&(j=JSON.parse(decodeURIComponent(d(f,"state"))),"mpeditor"===j.action&&(b.sessionStorage.setItem("_mpcehash",f),history.replaceState(j.desiredHash||"",c.title,k.pathname+k.search)))}catch(n){}var l,h;window.mixpanel=a;a._i=[];a.init=function(b,d,g){function c(b,i){var a=i.split(".");2==a.length&&(b=b[a[0]],i=a[1]);b[i]=function(){b.push([i].concat(Array.prototype.slice.call(arguments,
+0)))}}var e=a;"undefined"!==typeof g?e=a[g]=[]:g="mixpanel";e.people=e.people||[];e.toString=function(b){var a="mixpanel";"mixpanel"!==g&&(a+="."+g);b||(a+=" (stub)");return a};e.people.toString=function(){return e.toString(1)+".people (stub)"};l="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+for(h=0;h<l.length;h++)c(e,l[h]);var f="set set_once union unset remove delete".split(" ");e.get_group=function(){function a(c){b[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));e.push([d,call2])}}for(var b={},d=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<f.length;c++)a(f[c]);return b};a._i.push([b,d,g])};a.__SV=1.2;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+MIXPANEL_CUSTOM_LIB_URL:"file:"===c.location.protocol&&"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js";d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d)}})(document,window.mixpanel||[]);
+mixpanel.init("c532500418560f932e195adcf3353733");
+    </script>
+    <!-- end Mixpanel -->
 </head>
 
 <body>
@@ -445,7 +453,7 @@
         <div class="container-3">
             <div class="block column-2">
                 <h3>
-                    Percentage of hours by AQI category
+                    A brief history of Beijing air quality
                 </h3>
                 <!--<p class="large bottom-space">
                     Let's do a yearly plot of percentual pm2.5 values in Beijing. There are some white gaps in the data in the first few years; those are invalid readings. A few findings that jump out: 
@@ -458,20 +466,20 @@
                     <div class="line"></div>
                 </div>
                 <span class="radial-chart-title">
-                    April 2008
+                    April 2008 - the start of @BeijingAir
                 </span>
                 <p class="timeline-para">
-                    The US embassy in Beijing starts tweeting out hourly PM2.5 readings
+                    The US Embassy in Beijing <a href="https://www.wired.com/2015/03/opinion-us-embassy-beijing-tweeted-clear-air/" target="_blank">installs a rooftop air-quality monitor</a> that automatically <a href="https://twitter.com/beijingair" target="_blank_">tweets out</a> air quality data every hour.
                 </p>
                 <div class="timeline">
                     <div class="dot"></div>
                     <div class="line"></div>
                 </div>
                 <span class="radial-chart-title">
-                    Oct 2008 - Post-olympic car ban et al
+                    2008 - Olympic car ban
                 </span>
                 <p class="timeline-para">
-                    Beijing puts several measures in place that aim to restrict the number of cars on its roads: limits based on the first number of license plates, a 75% decrease in the number of newly registered cars, and hiking up the tax on gasoline.
+                    Prior to the 2008 Summer Olympics, <a href="https://www.reuters.com/article/us-olympics-traffic/beijing-to-launch-olympic-odd-even-car-ban-in-july-idUSPEK1121120080620" target="_blank">Beijing puts several measures in place</a> that aim to restrict the number of cars on its roads: limits based on the first number of license plates, a 75% decrease in the number of newly registered cars, and hiking up the tax on gasoline. A <a href="https://www.theguardian.com/environment/2009/apr/06/beijing-pollution-carbon-cars" target="_blank">watered down version of these measures</a> stays in place after the Olympics. 
                 </p>
             </div>
             
@@ -481,10 +489,10 @@
                     <div class="line"></div>
                 </div>
                 <span class="radial-chart-title">
-                    2009
+                    July 2009 - Stop the tweets
                 </span>
                 <p class="timeline-para">
-                    2009 has some gaps in the data; January and half of February are missing. November and December have some pretty dark areas, but July through September are overall the worst period of the year. Interestingly enough, July has the least amount of green air. Great start of the year, but then Febuary, which had a similar spike in 2010, ruins it for everybody. March totally makes up for it though. Here we have the two nicest month and the worst month all in the first quarter of the year. Remarkable.
+                    A Chinese Foreign Ministry official <a href="https://www.nytimes.com/2013/01/13/science/earth/beijing-air-pollution-off-the-charts.html" target="_blank">tells the US to halt the Twitter feed</a>, claiming the data is <i>“not only confusing but also insulting”</i> and warming it could lead to <i>“social consequences”</i>.
                 </p>
             </div>
             
@@ -497,7 +505,7 @@
                     Nov 2010: Extremely bad air
                 </span>
                 <p class="timeline-para">
-                    AQI exceeds 500 for the first time 
+                    AQI exceeds 500 for the first time; @BeijingAir calls it <a href="https://foreignpolicy.com/2010/11/19/beijing-air-crazy-bad/" target="_blank">crazy bad</a>.
                 </p>
             </div>
             
@@ -510,7 +518,7 @@
                     2011
                 </span>
                 <p class="timeline-para">
-                    Where January seems ok, February is a terrible month. NASA reports massive smog blankets. A compounding factor is so-called "temperature inversion": an effeet where the air close to the earth's surface is colder than the air above. This effect is more common in winter, because the nights are longer, and the sun is not as strong. The fact that Beijing is surrounded by mountains further intensifies the problem. Finally, Beijing relies heavily on coal-burning for heat during the winter. A toxic combination, shall we say. The end of 2011 marks another bad episode in Beijing air quality. 200 Flights cancelled. Local news outlets are putting the pressure on the government to admit that the air is problematic.
+                    2011 Starts out great, but in February things take a turn for the worse. <a href="https://www.theatlantic.com/international/archive/2011/12/chinese-smog-disaster-rouses-chinese-media/249533/" target="_blank">Global Times uses the word smog for the first time</a> in a headline, instead of the traditional "fog" or "mist". NASA reports <a href="https://earthobservatory.nasa.gov/images/49398/haze-over-china" target="_blank">massive</a> <a href="https://earthobservatory.nasa.gov/images/49398/haze-over-eastern-china" target="_blank">smog blankets</a>. A compounding factor is <i>temperature inversion</i>: an effect where the air close to the earth's surface is colder than the air above. This effect is stronger in winter, because the nights are longer, and the sun is not as strong. The fact that Beijing is surrounded by mountains further intensifies the problem. Finally, Beijing relies heavily on coal-burning for heat during the winter. A toxic combination, shall we say. The end of 2011 marks another bad episode in Beijing air quality. 200 Flights cancelled. Local news outlets are putting the pressure on the government to admit that the air is problematic.
                 </p>
             </div>
             
@@ -874,6 +882,7 @@
 	
 	<script>
 		$( document ).ready(function() {
+            mixpanel.track("beijing loaded");
             $("#getting-better-link").hover(
                 function() {
                     //$(".sky-background").addClass("blue-skies");

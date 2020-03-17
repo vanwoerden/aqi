@@ -42,7 +42,7 @@ function drawDonuts(days, target) {
 		.outerRadius(radius)
 	  )
 	  .attr('fill', function(d){ return(color(d.data.key)); })
-	  .attr("stroke", "black")
+	  .attr("stroke", "#084081")
 	  .style("stroke-width", "1px")
 	  .style("opacity", 1);
 }

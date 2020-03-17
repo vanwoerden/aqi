@@ -973,7 +973,7 @@ span.spark-date {
 }
 .barmean {
 	background: #084081;
-	border: 1px solid #000;
+	border: 1px solid #084081;
 	/*width: 20px;*/
 }
 .bar-10 {
@@ -983,8 +983,8 @@ span.spark-date {
 	position: absolute;
 	margin-top: -10px;
 	width: 24px;
-	border: 1px solid #000;
-	border-top: 0.5px solid black;
+	border: 1px solid #084081;
+	border-top: 0.5px solid #084081;
 }
 .line-10 {
 	position: absolute;
