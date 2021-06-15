@@ -1,4 +1,13 @@
 @font-face {
+	font-family: 'Sparks Bar Medium';
+	src: url('../fonts/ClarendonURW-Bol.eot');
+	src: url('../fonts/ClarendonURW-Bol.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/ClarendonURW-Bol.woff') format('woff'),
+	     url('../fonts/ClarendonURW-Bol.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
 	font-family: 'Clarendon Bold';
 	src: url('../fonts/ClarendonURW-Bol.eot');
 	src: url('../fonts/ClarendonURW-Bol.eot?#iefix') format('embedded-opentype'),
