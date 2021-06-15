@@ -123,7 +123,7 @@ h2 {
 	/*padding: 2em 0;*/
 }
 h2.white {
-	max-width: 640px;
+	max-width: 1100px;
 }
 h3 {
 	font-family: "Tiempos";
@@ -173,7 +173,7 @@ a.white:visited {
 	font-family: "Franklin Gothic Medium", sans-serif;
 }
 .large {
-	/*font-size: 1.2em;*/
+	font-size: 1.5em;
 }
 span.highlight {
 	font-family: "Tiempos";
