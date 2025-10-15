@@ -1,9 +1,9 @@
-@font-face {
-	font-family: 'Sparks Bar Medium';
-	src: url('../fonts/ClarendonURW-Bol.eot');
-	src: url('../fonts/ClarendonURW-Bol.eot?#iefix') format('embedded-opentype'),
-	     url('../fonts/ClarendonURW-Bol.woff') format('woff'),
-	     url('../fonts/ClarendonURW-Bol.ttf') format('truetype');
+	@font-face {
+	font-family: 'Sparks';
+	src: url('../fonts/Sparks-Bar-Medium.eot');
+	src: url('../fonts/Sparks-Bar-Medium.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/Sparks-Bar-Medium.woff') format('woff'),
+	     url('../fonts/Sparks-Bar-Medium.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
